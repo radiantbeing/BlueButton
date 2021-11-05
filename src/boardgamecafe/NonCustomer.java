@@ -3,7 +3,7 @@ package boardgamecafe;
 import java.util.Scanner;
 
 public class NonCustomer extends Customer {
-	
+
 	@Override
 	public void read(Scanner scan) {
 		super.read(scan);
@@ -16,8 +16,7 @@ public class NonCustomer extends Customer {
 	}
 	
 	public void printUserType() {
-		// TODO Auto-generated method stub
-		System.out.print("[비회원] ");
+=		System.out.print("[비회원] ");
 	}
 	
 	@Override

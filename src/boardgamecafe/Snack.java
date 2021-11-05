@@ -34,8 +34,6 @@ public class Snack implements Manageable {
 			return true;
 		if (kinds.equals(kwd))
 			return true;
-		if (kwd.equals(""+quantity))
-			return true;
 		return false;
 	}
 }

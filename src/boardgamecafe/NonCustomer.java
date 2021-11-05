@@ -16,7 +16,7 @@ public class NonCustomer extends Customer {
 	}
 	
 	public void printUserType() {
-=		System.out.print("[비회원] ");
+		System.out.print("[비회원] ");
 	}
 	
 	@Override

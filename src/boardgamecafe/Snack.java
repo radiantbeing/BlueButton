@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 
 public class Snack implements Manageable {
+	//에스프레소 커피 3800 20
 	String name;
 	String kinds;
 	int price;
@@ -33,24 +34,6 @@ public class Snack implements Manageable {
 			return true;
 		if (kinds.equals(kwd))
 			return true;
-		if (kwd.equals(""+quantity))
-			return true;
 		return false;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void setKinds(String kinds) {
-		this.kinds = kinds;
-	}
-	
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 }

@@ -4,33 +4,32 @@ import mgr.Manageable;
 
 import java.util.Scanner;
 
-
-public class Snack implements Manageable {
-    // 에스프레소 커피 3800 20
+public class NonMember implements Manageable {
+    // 김성철 01055789968
     String name;
-    String kind;
-    int price;
-    int quantity;
+    String phoneNumber;
 
     @Override
     public void read(Scanner scan) {
         name = scan.next();
-        kind = scan.next();
-        price = scan.nextInt();
-        quantity = scan.nextInt();
+        phoneNumber = scan.next();
     }
 
     @Override
     public void print() {
-        System.out.printf("이름: %s / 종류: %s / 가격: %d / 수량: %d\n",
-                name, kind, price, quantity);
+        printUserType();
+        System.out.printf("%s 전화번호: %s\n", name, phoneNumber);
+    }
+
+    public void printUserType() {
+        System.out.print("[비회원] ");
     }
 
     @Override
     public boolean matches(String kwd) {
         if (name.contains(kwd))
             return true;
-        if (kind.equals(kwd))
+        if (("" + phoneNumber).contains(kwd))
             return true;
         return false;
     }

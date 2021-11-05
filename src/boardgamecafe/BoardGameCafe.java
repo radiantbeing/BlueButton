@@ -28,14 +28,14 @@ public class BoardGameCafe extends Manager {
 		
 		userMgr.readAll("customer.txt", new Factory() {
 			public Manageable create() {
-				return new User();
+				return new Customer();
 			}
 		});
 		
 		// 회원가입한 유저와 일반유저 객체를 User하나로 통합하고 싶은데 아시는분 있으면 수정 부탁드립니다 ㅠㅠ
 		rgUserMgr.readAll("registeredCustomer.txt", new Factory() {
 			public Manageable create() {
-				return new RegisteredUser();
+				return new NonCustomer();
 			}
 		});
 		

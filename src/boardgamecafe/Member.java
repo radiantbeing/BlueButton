@@ -3,6 +3,7 @@ package boardgamecafe;
 import java.util.Scanner;
 
 public class Member extends NonMember {
+    // 이름 전화번호 비밀번호 포인트(결제 금액의 5%)
     // 서팔광 01017634965 3645 4154
     String password;
     int point;

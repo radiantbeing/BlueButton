@@ -5,6 +5,7 @@ import mgr.Manageable;
 import java.util.Scanner;
 
 public class NonMember implements Manageable {
+    // 이름 전화번호
     // 김성철 01055789968
     String name;
     String phoneNumber;

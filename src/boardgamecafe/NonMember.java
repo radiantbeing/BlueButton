@@ -2,6 +2,7 @@ package boardgamecafe;
 
 import mgr.Manageable;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NonMember implements Manageable {
@@ -9,6 +10,7 @@ public class NonMember implements Manageable {
     // 김성철 01055789968
     String name;
     String phoneNumber;
+    ArrayList<Snack> snacksList = new ArrayList<>();//임시 snackList
 
     @Override
     public void read(Scanner scan) {
@@ -33,5 +35,9 @@ public class NonMember implements Manageable {
         if (("" + phoneNumber).contains(kwd))
             return true;
         return false;
+    }
+
+    public void addSnackList(Snack snack){
+        snacksList.add(snack);
     }
 }

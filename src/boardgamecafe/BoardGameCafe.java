@@ -43,19 +43,17 @@ public class BoardGameCafe extends Manager {
 
     void openMenu() {
         int menuNum = 0;
-        while (true) {
+        Loop1:while (true) {
             System.out.println("(1) 게임 출력 (2) 회원 출력 (3) 비회원 출력 " +
                     "(4) 간식 출력 (기타) 종료");
             System.out.print(">> ");
             menuNum = scan.nextInt();
-            if (menuNum < 1 || menuNum > 4)
-                break;
             switch (menuNum) {
                 case 1: gameMgr.printAll(); break;
                 case 2: memberMgr.printAll(); break;
                 case 3: nonMemberMgr.printAll(); break;
                 case 4: snackMgr.printAll(); break;
-                default: break;
+                default: break Loop1;
             }
         }
     }

@@ -1,2 +1,2 @@
 # BlueButton
-OOJava team project.
+Object Oriented Programming Team

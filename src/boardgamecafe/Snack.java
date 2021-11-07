@@ -22,7 +22,7 @@ public class Snack implements Manageable {
 
     @Override
     public void print() {
-        System.out.printf("이름: %s / 종류: %s / 가격: %d / 수량: %d\n",
+        System.out.printf("이름: %s 종류: %s 가격: %d 수량: %d\n",
                 name, kind, price, quantity);
     }
 

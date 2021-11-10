@@ -60,6 +60,11 @@ public class NonMember implements Manageable {
         System.out.printf("\t잔여시간: %d\n", remainingTime);
     }
 
+    //남은시간을 얻을때 쓰는 메소드
+    public int getRemainingTime(){
+        return remainingTime;
+    }
+
     class Timer extends Thread {
         public void run() {
             while (true) {

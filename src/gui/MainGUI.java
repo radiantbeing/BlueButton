@@ -5,8 +5,11 @@ import java.awt.*;
 
 public class MainGUI extends JFrame {
     void run() {
-        RoomViewWindow roomViewWindow = new RoomViewWindow();
-        roomViewWindow.createAndShowGUI();
+//        RoomViewWindow roomViewWindow = new RoomViewWindow();
+//        roomViewWindow.createAndShowGUI();
+
+        LogInWindow logInWindow = new LogInWindow();
+        logInWindow.createAndShowGUI();
         // TestWindow test = new TestWindow();
         // test.createAndShowGUI();
     }

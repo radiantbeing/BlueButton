@@ -1,12 +1,12 @@
 package gui;
 
 public class MainGUI {
-    BaseFrame frame = new BaseFrame();
     // Create Windows
     static RoomViewWindow roomViewWindow = new RoomViewWindow();
     static LogInWindow logInWindow = new LogInWindow();
 
     void run() {
+        BaseFrame frame = new BaseFrame();
         frame.createAndShowGUI();
         BaseFrame.centerPanel.add(roomViewWindow);
     }

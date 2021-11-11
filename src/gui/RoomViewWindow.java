@@ -56,7 +56,7 @@ public class RoomViewWindow extends Template {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                changeWindow(new TestWindow());
+                changeWindow(new LogInWindow());
             }
         });
     }

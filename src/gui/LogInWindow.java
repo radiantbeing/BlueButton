@@ -3,27 +3,26 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
 public class LogInWindow extends Template {
-    JPanel memberPanel = new JPanel();
-    JPanel nonMemberPanel = new JPanel();
-    JLabel explainLabel = new JLabel();
-    JButton signupButton;
+
     @Override
-    void addComponentsToPane() {
-        primaryPanel.setLayout(null);
-        memberLoginWindow();
-        nonmemberLoginWindow();
-        textWindow();
-        buttonComponent();
-        primaryPanel.add(memberPanel);
-        primaryPanel.add(nonMemberPanel);
-        primaryPanel.add(explainLabel);
-        primaryPanel.add(signupButton);
+    void addComponents() {
+        JPanel memberPanel = new JPanel();
+        JPanel nonMemberPanel = new JPanel();
+        JLabel explainLabel = new JLabel();
+        JButton signupButton = new JButton();
+        setLayout(null);
+        memberLoginWindow(memberPanel);
+        nonmemberLoginWindow(nonMemberPanel);
+        textWindow(explainLabel);
+        buttonComponent(signupButton);
+        add(memberPanel);
+        add(nonMemberPanel);
+        add(explainLabel);
+        add(signupButton);
     }
 
-    void memberLoginWindow(){
+    void memberLoginWindow(JPanel memberPanel){
         //about memberPanel
         memberPanel.setLayout(null);
         memberPanel.setBackground(Color.white);
@@ -72,7 +71,7 @@ public class LogInWindow extends Template {
         memberPanel.add(logInButton);
     }
 
-    void nonmemberLoginWindow(){
+    void nonmemberLoginWindow(JPanel nonMemberPanel){
         //about nonmemberPanel
         nonMemberPanel.setLayout(null);
         nonMemberPanel.setBackground(Color.white);
@@ -122,15 +121,15 @@ public class LogInWindow extends Template {
         nonMemberPanel.add(logInButton);
     }
 
-    void textWindow(){
-        explainLabel = new JLabel("Membership benefits: You can earn 5% of the payment amount.");
+    void textWindow(JLabel explainLabel){
+        explainLabel.setText("Membership benefits: You can earn 5% of the payment amount.");
         explainLabel.setForeground(Color.white);
         explainLabel.setFont(new Font("맑은고딕",Font.BOLD, 30));
         explainLabel.setBounds(100,500,1000,50);
     }
 
-    void buttonComponent(){
-        signupButton = new JButton("Sign Up");
+    void buttonComponent(JButton signupButton){
+        signupButton.setText("Sign Up");
         signupButton.setBounds(710,580,300,40);
         signupButton.setBackground(Color.WHITE);
         signupButton.setFont(new Font("맑은고딕", Font.BOLD, 18));
@@ -139,7 +138,4 @@ public class LogInWindow extends Template {
         signupButton.setFocusPainted(false);
     }
 
-    public static void main(String[]args){
-        new LogInWindow().createAndShowGUI();
-    }
 }

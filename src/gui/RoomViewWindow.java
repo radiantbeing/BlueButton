@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RoomViewWindow extends Template {
-    Color primaryColor = new Color(69,116,203);
-    Color secondaryColor = new Color(48, 87, 232);
+    Color mainColor = new Color(69,116,203);
 
     @Override
     void addComponents() {
@@ -21,7 +20,6 @@ public class RoomViewWindow extends Template {
         add(roomViewPanel);
         roomViewPanel.setBounds(150,70,1000,500);
         roomViewPanel.setBackground(Color.WHITE);
-        roomViewPanel.setBorder(BorderFactory.createLineBorder(secondaryColor, 1));
         roomViewPanel.setLayout(new GridLayout(2, 5));
 
         // About roomObjectPanel
@@ -29,11 +27,11 @@ public class RoomViewWindow extends Template {
         for (int i = 0; i < 10; i++) {
             JPanel roomPanel = new JPanel(null);
             roomPanel.setPreferredSize(new Dimension(200, 250));
-            roomPanel.setBorder(new LineBorder(primaryColor, 1));
+            roomPanel.setBorder(new LineBorder(mainColor, 1));
 
             JLabel roomNumberLabel = new JLabel("" + (i + 1));
             roomNumberLabel.setFont(new Font("맑은고딕", Font.PLAIN, 20));
-            roomNumberLabel.setForeground(primaryColor);
+            roomNumberLabel.setForeground(mainColor);
             roomNumberLabel.setBounds(95,75,100,100);
             roomPanel.add(roomNumberLabel);
 

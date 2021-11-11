@@ -9,13 +9,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RoomViewWindow extends Template {
+    Color primaryColor = new Color(69,116,203);
+    Color secondaryColor = new Color(48, 87, 232);
     @Override
-    void addComponentsToPane() {
-        primaryPanel.setLayout(null);
+    void addComponents() {
+        setLayout(null);
 
         // About roomViewPanel
         JPanel roomViewPanel = new JPanel();
-        primaryPanel.add(roomViewPanel);
+        add(roomViewPanel);
         roomViewPanel.setBounds(150,70,1000,500);
         roomViewPanel.setBackground(Color.WHITE);
         roomViewPanel.setBorder(BorderFactory.createLineBorder(secondaryColor, 1));
@@ -42,7 +44,7 @@ public class RoomViewWindow extends Template {
 
         // About loginButton
         JButton loginButton = new JButton();
-        primaryPanel.add(loginButton);
+        add(loginButton);
         loginButton.setText("LOGIN");
         loginButton.setBounds(150,580,1000,40);
         loginButton.setBackground(Color.WHITE);
@@ -54,8 +56,7 @@ public class RoomViewWindow extends Template {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                // new LogInWindow().createAndShowGUI();
+                changeWindow(new TestWindow());
             }
         });
     }

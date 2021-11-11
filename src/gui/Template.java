@@ -10,7 +10,9 @@ import java.awt.*;
     3. void addComponentsToPane()를 @Override하여 구현합니다.
     4. primaryPanel이 수업에서 배운 contentPane과 같은 역할을 하기 때문에
         Components들을 primaryPanel에 add해주시면 됩니다.
-    사용 예시는 TestWindow 클래스를 참고해주세요.
+
+    * 사용 예시는 TestWindow 클래스를 참고해주세요.
+    * primaryPanel의 크기는 1280*720입니다.
  */
 
 public abstract class Template extends JFrame {

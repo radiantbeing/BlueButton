@@ -7,6 +7,8 @@ public class MainGUI extends JFrame {
     void run() {
         RoomViewWindow roomViewWindow = new RoomViewWindow();
         roomViewWindow.createAndShowGUI();
+        // TestWindow test = new TestWindow();
+        // test.createAndShowGUI();
     }
 
     public static void main(String[] args) {

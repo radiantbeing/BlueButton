@@ -9,34 +9,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RoomViewWindow extends Template {
-    JPanel roomViewPanel = new JPanel();
-
     @Override
     void addComponentsToPane() {
-        Container contentPane = getContentPane();
-
-        // About topPanel
-        contentPane.add(topPanel, BorderLayout.PAGE_START);
-        topPanel.setLayout(null);
-        topPanel.setPreferredSize(new Dimension(1280, 80));
-        topPanel.setBackground(Color.WHITE);
-        topPanel.setForeground(Color.WHITE);
-        topPanel.setBorder(BorderFactory.createMatteBorder(0,0,1,0,secondaryColor));
-
-        // About topLabel
-        topPanel.add(topLabel, FlowLayout.LEFT);
-        topLabel.setFont(new Font("맑은고딕", Font.BOLD, 30));
-        topLabel.setForeground(primaryColor);
-        topLabel.setBounds(20, 12, 400, 50);
-
-        // About centerPanel
-        contentPane.add(centerPanel, BorderLayout.CENTER);
-        centerPanel.setPreferredSize(new Dimension(1280, 720));
-        centerPanel.setBackground(primaryColor);
-        centerPanel.setLayout(null);
+        primaryPanel.setLayout(null);
 
         // About roomViewPanel
-        centerPanel.add(roomViewPanel);
+        JPanel roomViewPanel = new JPanel();
+        primaryPanel.add(roomViewPanel);
         roomViewPanel.setBounds(150,70,1000,500);
         roomViewPanel.setBackground(Color.WHITE);
         roomViewPanel.setBorder(BorderFactory.createLineBorder(secondaryColor, 1));
@@ -63,7 +42,7 @@ public class RoomViewWindow extends Template {
 
         // About loginButton
         JButton loginButton = new JButton();
-        centerPanel.add(loginButton);
+        primaryPanel.add(loginButton);
         loginButton.setText("LOGIN");
         loginButton.setBounds(150,580,1000,40);
         loginButton.setBackground(Color.WHITE);

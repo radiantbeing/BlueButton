@@ -9,6 +9,7 @@ public class BaseFrame extends JFrame {
     static JPanel centerPanel = new JPanel();
 
     public void createAndShowGUI() {
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1296, 839));
         setLocation(300, 100);

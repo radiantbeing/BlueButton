@@ -4,17 +4,17 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class RoomViewWindow {
-    JPanel topPanel = new JPanel();
-    JLabel topLabel = new JLabel("BLUEBUTTON");
-    JPanel centerPanel = new JPanel();
+public class RoomViewWindow extends Template {
     JPanel roomViewPanel = new JPanel();
-    Color primaryColor = new Color(69,116,203);
-    Color secondaryColor = new Color(48, 87, 232);
 
-    void launchWindow(Container contentPane) {
+    @Override
+    void addComponentsToPane() {
+        Container contentPane = getContentPane();
+
         // About topPanel
         contentPane.add(topPanel, BorderLayout.PAGE_START);
         topPanel.setLayout(null);
@@ -61,6 +61,7 @@ public class RoomViewWindow {
             roomViewPanel.add(rPanel);
         }
 
+        // About loginButton
         JButton loginButton = new JButton();
         centerPanel.add(loginButton);
         loginButton.setText("LOGIN");
@@ -70,5 +71,13 @@ public class RoomViewWindow {
         loginButton.setForeground(new Color(69,116,203));
         loginButton.setBorderPainted(false);
         loginButton.setFocusPainted(false);
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                // new LogInWindow().createAndShowGUI();
+            }
+        });
     }
 }

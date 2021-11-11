@@ -6,13 +6,11 @@ import java.awt.*;
 public class BaseFrame extends JFrame {
     JPanel topPanel = new JPanel();
     JLabel topLabel = new JLabel("BLUEBUTTON");
-
     static JPanel centerPanel = new JPanel();
-    Color primaryColor = new Color(69,116,203);
 
     public void createAndShowGUI() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(1296, 839)); // contentPane의 size는 1280*800
+        setPreferredSize(new Dimension(1296, 839));
         setLocation(300, 100);
         setTitle("BLUEBUTTON");
         setInitialComponents();
@@ -33,7 +31,7 @@ public class BaseFrame extends JFrame {
         // About topLabel
         topPanel.add(topLabel, FlowLayout.LEFT);
         topLabel.setFont(new Font("맑은고딕", Font.BOLD, 30));
-        topLabel.setForeground(primaryColor);
+        topLabel.setForeground(new Color(69,116,203));
         topLabel.setBounds(20, 15, 400, 50);
 
         // About centerPanel

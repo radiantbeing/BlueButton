@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LogInWindow extends Template {
+    String phoneNumber;
+    String name;
+    String password;
 
     @Override
     void addComponents() {

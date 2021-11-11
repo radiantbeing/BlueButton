@@ -10,8 +10,6 @@ public class LogInWindow extends Template {
     JPanel nonMemberPanel = new JPanel();
     JLabel explainLabel = new JLabel();
     JButton signupButton;
-    JButton signInButton;
-
     @Override
     void addComponentsToPane() {
         primaryPanel.setLayout(null);
@@ -23,7 +21,6 @@ public class LogInWindow extends Template {
         primaryPanel.add(nonMemberPanel);
         primaryPanel.add(explainLabel);
         primaryPanel.add(signupButton);
-        primaryPanel.add(signInButton);
     }
 
     void memberLoginWindow(){
@@ -34,7 +31,7 @@ public class LogInWindow extends Template {
         memberPanel.setBounds(100,90,300,400);
 
         //Member Label
-        JLabel memberNameLabel = new JLabel("회원");
+        JLabel memberNameLabel = new JLabel("Member");
 
         memberNameLabel.setForeground(new Color(48, 87, 232));
         memberNameLabel.setFont(new Font("맑은고딕",Font.BOLD, 20));
@@ -44,8 +41,8 @@ public class LogInWindow extends Template {
         //member ID Label
         JLabel memberIdLabel = new JLabel("ID");
         memberIdLabel.setForeground(new Color(48, 87, 232));
-        memberIdLabel.setFont(new Font("맑은고딕",Font.BOLD, 30));
-        memberIdLabel.setBounds(40,120,100,50);
+        memberIdLabel.setFont(new Font("맑은고딕",Font.BOLD, 15));
+        memberIdLabel.setBounds(20,120,100,50);
         memberPanel.add(memberIdLabel);
 
         JTextField memberIdTextField = new JTextField(60);
@@ -55,13 +52,24 @@ public class LogInWindow extends Template {
         //member PW Label
         JLabel memberPWLabel = new JLabel("PW");
         memberPWLabel.setForeground(new Color(48, 87, 232));
-        memberPWLabel.setFont(new Font("맑은고딕",Font.BOLD, 30));
+        memberPWLabel.setFont(new Font("맑은고딕",Font.BOLD, 15));
         memberPWLabel.setBounds(20,200,100,50);
         memberPanel.add(memberPWLabel);
 
         JTextField memberPWTextField = new JTextField(40);
         memberPWTextField.setBounds(80,210,200,30);
         memberPanel.add(memberPWTextField);
+
+        //login button
+        JButton logInButton = new JButton("Log in");
+        logInButton.setBounds(30,300,250,40);
+        logInButton.setBackground(Color.WHITE);
+        logInButton.setFont(new Font("맑은고딕", Font.BOLD, 18));
+        logInButton.setForeground(new Color(69,116,203));
+        logInButton.setBorderPainted(false);
+        logInButton.setFocusPainted(false);
+
+        memberPanel.add(logInButton);
     }
 
     void nonmemberLoginWindow(){
@@ -72,18 +80,18 @@ public class LogInWindow extends Template {
         nonMemberPanel.setBounds(710,90,300,400);
 
         //nonMember Label
-        JLabel nonMemberNameLabel = new JLabel("비회원");
+        JLabel nonMemberNameLabel = new JLabel("None Member");
 
         nonMemberNameLabel.setForeground(new Color(48, 87, 232));
         nonMemberNameLabel.setFont(new Font("맑은고딕",Font.BOLD, 20));
-        nonMemberNameLabel.setBounds(40,10,100,100);
+        nonMemberNameLabel.setBounds(40,10,200,100);
 
         nonMemberPanel.add(nonMemberNameLabel);
 
         //nonmember ID Label
-        JLabel nonMemberIdLabel = new JLabel("이름");
+        JLabel nonMemberIdLabel = new JLabel("Name");
         nonMemberIdLabel.setForeground(new Color(48, 87, 232));
-        nonMemberIdLabel.setFont(new Font("맑은고딕",Font.BOLD, 30));
+        nonMemberIdLabel.setFont(new Font("맑은고딕",Font.BOLD, 15));
         nonMemberIdLabel.setBounds(20,120,100,50);
         nonMemberPanel.add(nonMemberIdLabel);
 
@@ -92,15 +100,26 @@ public class LogInWindow extends Template {
         nonMemberPanel.add(nonMemberIdTextField);
 
         //nonmember PW Label
-        JLabel nonMemberPWLabel = new JLabel("전화번호");
+        JLabel nonMemberPWLabel = new JLabel("Phone");
         nonMemberPWLabel.setForeground(new Color(48, 87, 232));
-        nonMemberPWLabel.setFont(new Font("맑은고딕",Font.BOLD, 30));
+        nonMemberPWLabel.setFont(new Font("맑은고딕",Font.BOLD, 15));
         nonMemberPWLabel.setBounds(20,200,100,50);
         nonMemberPanel.add(nonMemberPWLabel);
 
         JTextField nonMemberPWTextField = new JTextField(40);
         nonMemberPWTextField.setBounds(80,210,200,30);
         nonMemberPanel.add(nonMemberPWTextField);
+
+        //login button
+        JButton logInButton = new JButton("Log in");
+        logInButton.setBounds(30,300,250,40);
+        logInButton.setBackground(Color.WHITE);
+        logInButton.setFont(new Font("맑은고딕", Font.BOLD, 18));
+        logInButton.setForeground(new Color(69,116,203));
+        logInButton.setBorderPainted(false);
+        logInButton.setFocusPainted(false);
+
+        nonMemberPanel.add(logInButton);
     }
 
     void textWindow(){
@@ -112,20 +131,12 @@ public class LogInWindow extends Template {
 
     void buttonComponent(){
         signupButton = new JButton("Sign Up");
-        signupButton.setBounds(100,580,300,40);
+        signupButton.setBounds(710,580,300,40);
         signupButton.setBackground(Color.WHITE);
         signupButton.setFont(new Font("맑은고딕", Font.BOLD, 18));
         signupButton.setForeground(new Color(69,116,203));
         signupButton.setBorderPainted(false);
         signupButton.setFocusPainted(false);
-
-        signInButton = new JButton("Sign In");
-        signInButton.setBounds(710,580,300,40);
-        signInButton.setBackground(Color.WHITE);
-        signInButton.setFont(new Font("맑은고딕", Font.BOLD, 18));
-        signInButton.setForeground(new Color(69,116,203));
-        signInButton.setBorderPainted(false);
-        signInButton.setFocusPainted(false);
     }
 
     public static void main(String[]args){

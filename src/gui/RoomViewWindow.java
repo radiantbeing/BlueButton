@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class RoomViewWindow extends Template {
     Color primaryColor = new Color(69,116,203);
     Color secondaryColor = new Color(48, 87, 232);
+
     @Override
     void addComponents() {
         setLayout(null);
@@ -56,7 +57,7 @@ public class RoomViewWindow extends Template {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                changeWindow(new LogInWindow());
+                MainGUI.changeWindow(MainGUI.logInWindow);
             }
         });
     }

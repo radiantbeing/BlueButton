@@ -5,12 +5,13 @@ import java.awt.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class LogInWindow extends JPanel {
+public class LogInWindow extends JFrame {
     JLabel topLabel = new JLabel("Log-In");
     JPanel memberPanel = new JPanel();
     JPanel nonMemberPanel = new JPanel();
     void createComponent(){
         setSize(new Dimension(800, 600));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
         topLabel.setBackground(new Color(48, 87, 232));

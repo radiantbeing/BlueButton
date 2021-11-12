@@ -4,7 +4,8 @@ public class MainGUI {
     // Create Windows
     static RoomViewWindow roomViewWindow = new RoomViewWindow();
     static LogInWindow logInWindow = new LogInWindow();
-
+    static AdminLoginWindow adminLoginWindow = new AdminLoginWindow();
+    
     void run() {
         BaseFrame frame = new BaseFrame();
         frame.createAndShowGUI();

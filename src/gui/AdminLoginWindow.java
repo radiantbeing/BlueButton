@@ -74,7 +74,7 @@ public class AdminLoginWindow extends Template{
 		prevBtn.setBorderPainted(false);
 		prevBtn.setBounds(150, 620, 150, 50);
 		
-		// if you click this button, go to roomViewWindow
+		// if you click this button, go to roomViewWindow.
 		prevBtn.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {

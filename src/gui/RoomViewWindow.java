@@ -58,5 +58,23 @@ public class RoomViewWindow extends Template {
                 MainGUI.changeWindow(MainGUI.logInWindow);
             }
         });
+        
+        // if this button click, go to adminMenu
+        JButton adminButton = new JButton("AdminMenu");
+        adminButton.setBorderPainted(false);
+        adminButton.setFocusPainted(false);
+        adminButton.setForeground(new Color(69, 116, 203));
+        adminButton.setBackground(Color.WHITE);
+        adminButton.setFont(new Font("맑은고딕", Font.BOLD, 15));
+        adminButton.setBounds(1000, 30, 150, 30);
+        add(adminButton);
+        
+        adminButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainGUI.changeWindow(MainGUI.adminLoginWindow);
+			}
+        });
     }
 }

@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LogInWindow extends Template {
     String phoneNumber;
@@ -14,15 +16,17 @@ public class LogInWindow extends Template {
         JPanel nonMemberPanel = new JPanel();
         JLabel explainLabel = new JLabel();
         JButton signupButton = new JButton();
+        JButton prevButton = new JButton();
         setLayout(null);
         memberLoginWindow(memberPanel);
         nonmemberLoginWindow(nonMemberPanel);
         textWindow(explainLabel);
-        buttonComponent(signupButton);
+        buttonComponent(signupButton, prevButton);
         add(memberPanel);
         add(nonMemberPanel);
         add(explainLabel);
         add(signupButton);
+        add(prevButton);
     }
 
     void memberLoginWindow(JPanel memberPanel){
@@ -131,7 +135,21 @@ public class LogInWindow extends Template {
         explainLabel.setBounds(100,500,1000,50);
     }
 
-    void buttonComponent(JButton signupButton){
+    void buttonComponent(JButton signupButton, JButton prevButton){
+        prevButton.setText("Prev");
+        prevButton.setBounds(100,580,300,40);
+        prevButton.setBackground(Color.WHITE);
+        prevButton.setFont(new Font("맑은고딕", Font.BOLD, 18));
+        prevButton.setForeground(new Color(69,116,203));
+        prevButton.setBorderPainted(false);
+        prevButton.setFocusPainted(false);
+        prevButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.roomViewWindow);
+            }
+        });
+
         signupButton.setText("Sign Up");
         signupButton.setBounds(710,580,300,40);
         signupButton.setBackground(Color.WHITE);

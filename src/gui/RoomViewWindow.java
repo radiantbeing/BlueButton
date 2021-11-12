@@ -59,7 +59,7 @@ public class RoomViewWindow extends Template {
             }
         });
         
-        // if this button click, go to adminMenu
+        // if this button click, go to adminMenu.
         JButton adminButton = new JButton("AdminMenu");
         adminButton.setBorderPainted(false);
         adminButton.setFocusPainted(false);

@@ -12,7 +12,7 @@ public class BaseFrame extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1296, 839));
-        setLocation(300, 100);
+        setLocation(0, 0);
         setTitle("BLUEBUTTON");
         setInitialComponents();
         pack();

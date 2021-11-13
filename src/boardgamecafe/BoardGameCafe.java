@@ -46,6 +46,7 @@ public class BoardGameCafe extends Manager {
         		return new Admin();
         	}
         });
+        
         // 방정보 추가
         for(int i = 0 ; i < MAX_ROOM_NUMBER; i++) {
         	Room r = new Room();

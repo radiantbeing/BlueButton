@@ -10,6 +10,7 @@ public class Room implements Manageable{
 	boolean use = false;				// false = 현재 사용중이 아님(예약 가능), true = 현재 사용중(예약 불가)
 	int person = 0;
 	int roomNumber = 0;
+	
 	@Override
 	public void print() {
 		System.out.printf("[%d번방] ", roomNumber++);

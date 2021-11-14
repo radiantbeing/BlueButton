@@ -5,8 +5,8 @@ import java.util.Scanner;
 import mgr.Manageable;
 
 public class Admin implements Manageable{
-	String id;
-	String pwd;
+	public String id;
+	public String pwd;
 	@Override
 	public void print() {
 		System.out.printf("ID: %s/nPassword: %s",id,pwd);

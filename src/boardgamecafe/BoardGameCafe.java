@@ -12,7 +12,7 @@ public class BoardGameCafe extends Manager {
     static Manager snackMgr = new Manager();
     static Manager nonMemberMgr = new Manager();
     static Manager memberMgr = new Manager();
-    static Manager adminMgr = new Manager();
+    public static Manager adminMgr = new Manager();
     static Manager roomMgr = new Manager();
     final static int MAX_ROOM_NUMBER = 10;
     Administrator ad = new Administrator();
@@ -53,7 +53,7 @@ public class BoardGameCafe extends Manager {
         	r.roomNumber = i;
         	roomMgr.getList().add(r);
         }
-        openMenu();
+        // openMenu();      <- 이게 남아있으면 gui가 작동하지 않습니다
     }
 
     void openMenu() {

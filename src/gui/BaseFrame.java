@@ -6,13 +6,12 @@ import java.awt.*;
 public class BaseFrame extends JFrame {
     JPanel topPanel = new JPanel();
     JLabel topLabel = new JLabel("BLUEBUTTON");
-    static JPanel centerPanel = new JPanel();
+    JPanel centerPanel = new JPanel();
 
     public void createAndShowGUI() {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1296, 839));
-        setLocation(0, 0);
         setTitle("BLUEBUTTON");
         setInitialComponents();
         pack();

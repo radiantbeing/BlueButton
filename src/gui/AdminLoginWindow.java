@@ -8,12 +8,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import boardgamecafe.Admin;
+import boardgamecafe.Administrator;
+import boardgamecafe.BoardGameCafe;
+import mgr.Manageable;
+
 public class AdminLoginWindow extends Template{
 	private static final long serialVersionUID = 1L;
-	
+	private static Administrator adm = new Administrator();
 	@Override
 	void addComponents() {
 		JPanel adminLoginPanel = new JPanel();
@@ -41,11 +47,11 @@ public class AdminLoginWindow extends Template{
 		adminIdLabel.setForeground(new Color(48, 87, 232));
 		adminIdLabel.setBounds(20, 120, 100, 50);
 		adminLoginPanel.add(adminIdLabel);
-		
-		JTextField idField = new JTextField(60);
-		idField.setBounds(80, 140, 200, 30);
-		adminLoginPanel.add(idField);
-		
+
+		JTextField adminIdField = new JTextField(60);
+		adminIdField.setBounds(80, 140, 200, 30);
+		adminLoginPanel.add(adminIdField);
+
 		JLabel adminPwdLabel = new JLabel("PW");
 		adminPwdLabel.setFont(new Font("맑은고딕", Font.BOLD, 15));
 		adminPwdLabel.setForeground(new Color(48, 87, 232));
@@ -64,6 +70,26 @@ public class AdminLoginWindow extends Template{
 		adminLoginBtn.setFont(new Font("맑은고딕", Font.BOLD, 18));
 		adminLoginBtn.setBounds(30, 300, 250, 40);
 		adminLoginPanel.add(adminLoginBtn);
+
+		adminLoginBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String adminId = adminIdField.getText();
+				String adminPwd = adminPwdField.getText();
+				
+				for(Manageable ad : BoardGameCafe.adminMgr.mList) {
+					Admin admin = (Admin)ad;
+					if(admin.id.equals(adminId) && admin.pwd.equals(adminPwd)) {
+						JOptionPane.showMessageDialog(null, "로그인 성공!");
+						adm.run();
+						return;
+					}
+				}
+				
+				JOptionPane.showMessageDialog(null, "로그인 실패!");
+			}
+		});
 		
 		// About prevBtn
 		JButton prevBtn = new JButton("prev");
@@ -72,7 +98,7 @@ public class AdminLoginWindow extends Template{
 		prevBtn.setFont(new Font("맑은고딕", Font.BOLD, 18));
 		prevBtn.setFocusPainted(false);
 		prevBtn.setBorderPainted(false);
-		prevBtn.setBounds(150, 620, 150, 50);
+		prevBtn.setBounds(100,580,300,40);
 		
 		// if you click this button, go to roomViewWindow.
 		prevBtn.addActionListener(new ActionListener() {		

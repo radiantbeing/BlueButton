@@ -6,7 +6,11 @@ public class Administrator{
 	// 좌석 관리, 보드게임 관리(수량, 상태), 식음료 관리, 회원 관리(회원, 비회원, 포인트), 이용시간 조회
 	Scanner scan = new Scanner(System.in);
 	
-	public void adminMenu() {
+	public void run() {
+		adminMenu();
+	}
+	
+	private void adminMenu() {
     	int num = 0;    	
 		while(true) {
 			// 좌석 관리, 보드게임 관리(수량, 상태), 식음료 관리, 회원 관리(회원, 비회원, 포인트), 이용시간 조회

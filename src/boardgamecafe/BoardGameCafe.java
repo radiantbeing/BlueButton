@@ -51,7 +51,7 @@ public class BoardGameCafe extends Manager {
         for(int i = 0 ; i < MAX_ROOM_NUMBER; i++) {
         	Room r = new Room();
         	r.roomNumber = i;
-        	roomMgr.mList.add(r);
+        	roomMgr.getList().add(r);
         }
         openMenu();
     }

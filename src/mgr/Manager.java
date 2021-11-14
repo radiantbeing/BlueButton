@@ -70,5 +70,9 @@ public class Manager {
         return filein;
     }
 
+    public ArrayList<Manageable> getList(){
+        return mList;
+    }
+
 
 }

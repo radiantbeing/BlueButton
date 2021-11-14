@@ -54,7 +54,7 @@ public class Administrator{
 			code = scan.nextInt();
 			if(code == -1)
 				break;
-			if(code > BoardGameCafe.gameMgr.mList.size()) {
+			if(code > BoardGameCafe.gameMgr.getList().size()) {
 				System.out.println("다시 입력해 주세요 -> 존재하지 않습니다.");
 				continue;
 			}
@@ -76,14 +76,14 @@ public class Administrator{
 			code = scan.nextInt();
 			if(code == -1)
 				break;
-			if(code > BoardGameCafe.gameMgr.mList.size()) {
+			if(code > BoardGameCafe.gameMgr.getList().size()) {
 				System.out.println("다시 입력해 주세요 -> 존재하지 않습니다.");
 				continue;
 			}
-			BoardGameCafe.gameMgr.mList.remove(code);
-			for(int i = 0; i < BoardGameCafe.gameMgr.mList.size(); i++) {
+			BoardGameCafe.gameMgr.getList().remove(code);
+			for(int i = 0; i < BoardGameCafe.gameMgr.getList().size(); i++) {
 				if(i >= code) {
-					Game g = (Game)BoardGameCafe.gameMgr.mList.get(i);
+					Game g = (Game)BoardGameCafe.gameMgr.getList().get(i);
 					g.code--;
 				}
 			}
@@ -93,9 +93,9 @@ public class Administrator{
 	private void addGame() {
 		Game g = new Game();
 	    
-		int lastNum = BoardGameCafe.gameMgr.mList.size() - 1;
-	    Game lastGame = (Game)BoardGameCafe.gameMgr.mList.get(lastNum);
-	    
+		int lastNum = BoardGameCafe.gameMgr.getList().size() - 1;
+	    Game lastGame = (Game)BoardGameCafe.gameMgr.getList().get(lastNum);
+
 		System.out.println("추가하고 싶으신 게임을 형식에 맞춰서 정확히 기입해 주세요");
 		System.out.println("게임이름 장르 난이도 관리상태 (위치, 관리번호는 자동으로 입력됩니다)");
 		
@@ -117,7 +117,7 @@ public class Administrator{
 			locationColumn += 1;
 			g.location = (char)locationRow + ("" + locationColumn);
 		}
-		BoardGameCafe.gameMgr.mList.add(g);
+		BoardGameCafe.gameMgr.getList().add(g);
 	}
 	
 	private void changeGameInfo(String kwd, Game g) {
@@ -212,7 +212,7 @@ public class Administrator{
 			System.out.println("탈퇴 취소! 처음 화면으로 돌아갑니다");
 			return;
 		}
-		BoardGameCafe.memberMgr.mList.remove(m);
+		BoardGameCafe.memberMgr.getList().remove(m);
 		System.out.println("탈퇴 완료!");
 	}
 	
@@ -278,7 +278,7 @@ public class Administrator{
 		s.kind = scan.next();
 		s.price = scan.nextInt();
 		s.quantity = scan.nextInt();
-		BoardGameCafe.snackMgr.mList.add(s);
+		BoardGameCafe.snackMgr.getList().add(s);
 	}
 
 	private void deleteSnack() {
@@ -293,7 +293,7 @@ public class Administrator{
 				System.out.println("다시 입력해 주세요 -> 존재하지 않습니다.");
 				continue;
 			}
-			BoardGameCafe.snackMgr.mList.remove(s);
+			BoardGameCafe.snackMgr.getList().remove(s);
 		}
 	}
 
@@ -388,7 +388,7 @@ public class Administrator{
 					System.out.println("다시 입력해주세요");
 					break;
 				}
-				Room r = (Room)BoardGameCafe.roomMgr.mList.get(roomNumber - 1);
+				Room r = (Room)BoardGameCafe.roomMgr.getList().get(roomNumber - 1);
 				if(r.reserve == false && r.use == false) {
 					r.reserve = true;
 					System.out.println("선택 완료");
@@ -411,7 +411,7 @@ public class Administrator{
 				System.out.println("다시 입력해주세요");
 				break;
 			}
-			Room r = (Room)BoardGameCafe.roomMgr.mList.get(roomNumber - 1);
+			Room r = (Room)BoardGameCafe.roomMgr.getList().get(roomNumber - 1);
 			if(r.reserve == true && r.use == false) {
 				r.reserve = false;
 				System.out.println("취소 완료");

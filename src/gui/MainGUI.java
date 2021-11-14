@@ -1,6 +1,7 @@
 package gui;
 
 public class MainGUI {
+    static BoardGameCafe boardgamecafe = new BoardGameCafe();
     // Create BaseFrame
     static BaseFrame bFrame = new BaseFrame();
     // Create Windows
@@ -9,6 +10,7 @@ public class MainGUI {
     static AdminLoginWindow adminLoginWindow = new AdminLoginWindow();
     
     void run() {
+        boardgamecafe.run();                        // 이거 없으면 모든 기능이 동작하지 않습니다...
         bFrame.createAndShowGUI();
         bFrame.centerPanel.add(roomViewWindow);
     }

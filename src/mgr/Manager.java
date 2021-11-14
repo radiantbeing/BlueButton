@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // 코드는 최대한 교재 6장의 Manager클래스 만들기와 유사하게 만들었습니다.
+/*
+    제발읽어주세요!!!!
+    매니저 객체 생성후에 바로 mList로 접근 하시계 코드를짜셔서 ㅜㅜㅜ
+    mList가 public이 아니라서 바로 접근하시면 오류가 나게됩니다.
+    getList()메소드 만들어 놨으니까 mList사용하실 일이 있으면 꼭!꼭!꼭 이 메소드 사용해주세요!!!!!
+ */
 public class Manager {
     ArrayList<Manageable> mList = new ArrayList<>();
 

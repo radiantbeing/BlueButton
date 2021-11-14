@@ -78,7 +78,7 @@ public class AdminLoginWindow extends Template{
 				String adminId = adminIdField.getText();
 				String adminPwd = adminPwdField.getText();
 				
-				for(Manageable ad : BoardGameCafe.adminMgr.mList) {
+				for(Manageable ad : BoardGameCafe.adminMgr.getList()) {
 					Admin admin = (Admin)ad;
 					if(admin.id.equals(adminId) && admin.pwd.equals(adminPwd)) {
 						JOptionPane.showMessageDialog(null, "로그인 성공!");

@@ -1,5 +1,7 @@
 package gui;
 
+import boardgamecafe.BoardGameCafe;
+
 public class MainGUI {
     static BoardGameCafe boardgamecafe = new BoardGameCafe();
     // Create BaseFrame

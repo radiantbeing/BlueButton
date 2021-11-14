@@ -20,7 +20,7 @@ public class Member extends NonMember {
     @Override
     public void print() {
         super.print();
-        System.out.printf("\t비밀번호:%s 포인트:%d\n", password, point);
+        System.out.printf("\t비밀번호:%s |포인트:%d\n", password, point);
     }
 
     @Override

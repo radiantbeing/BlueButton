@@ -22,7 +22,7 @@ public class NonMember implements Manageable {
     @Override
     public void print() {
         printUserType();
-        System.out.printf("%s 전화번호: %s\n", name, phoneNumber);
+        System.out.printf("%s |전화번호: %s\n", name, phoneNumber);
         printRemainingTime();
     }
 

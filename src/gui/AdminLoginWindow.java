@@ -86,7 +86,6 @@ public class AdminLoginWindow extends Template{
 						return;
 					}
 				}
-				
 				JOptionPane.showMessageDialog(null, "로그인 실패!");
 			}
 		});

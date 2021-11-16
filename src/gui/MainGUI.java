@@ -10,6 +10,7 @@ public class MainGUI {
     static RoomViewWindow roomViewWindow = new RoomViewWindow();
     static LogInWindow logInWindow = new LogInWindow();
     static AdminLoginWindow adminLoginWindow = new AdminLoginWindow();
+    static SignUpWindow signUpWindow = new SignUpWindow();
     
     void run() {
         boardgamecafe.run();                        // 이거 없으면 모든 기능이 동작하지 않습니다...

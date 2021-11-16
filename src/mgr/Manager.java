@@ -1,6 +1,9 @@
 package mgr;
 
+import boardgamecafe.Member;
+
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,6 +27,18 @@ public class Manager {
             m.read(filein);
             mList.add(m);
         }
+    }
+
+    //해당 파일읠 FileWriter return
+    public FileWriter openfileWriter(String fileName){
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(new File(fileName), true);//true로 파일을 이어쓸 수 있습니다.
+        } catch (IOException e) {
+            System.out.println("해당 파일이 존재하지 않음.");
+            e.printStackTrace();
+        }
+        return fileWriter;
     }
 
     public void printAll() {
@@ -65,7 +80,8 @@ public class Manager {
         return result;
     }
 
-    Scanner openfile(String filename) {
+    //파일 이름을 가진 Scanner return
+    public Scanner openfile(String filename) {
         Scanner filein = null;
         try {
             filein = new Scanner(new File(filename));
@@ -78,6 +94,10 @@ public class Manager {
 
     public ArrayList<Manageable> getList(){
         return mList;
+    }
+
+    public void addList(Manageable m){
+        mList.add(m);
     }
 
 

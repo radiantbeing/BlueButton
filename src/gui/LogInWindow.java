@@ -1,14 +1,20 @@
 package gui;
 
+import boardgamecafe.BoardGameCafe;
+import boardgamecafe.Member;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LogInWindow extends Template {
     String phoneNumber;
     String name;
     String password;
+    String id;
 
     @Override
     void addComponents() {
@@ -74,6 +80,21 @@ public class LogInWindow extends Template {
         logInButton.setForeground(new Color(69,116,203));
         logInButton.setBorderPainted(false);
         logInButton.setFocusPainted(false);
+        logInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton button = (JButton) e.getSource();
+                id = memberIdTextField.getText();
+                Member m = (Member) BoardGameCafe.memberMgr.find(id);
+                // 잘못된 아이디 입력시
+                if (m == null){
+                    JOptionPane.showMessageDialog(null, "Wrong Id");
+                    memberPWTextField.setText("");
+                    memberIdTextField.setText("");
+                }
+
+            }
+        });
 
         memberPanel.add(logInButton);
     }
@@ -125,6 +146,7 @@ public class LogInWindow extends Template {
         logInButton.setBorderPainted(false);
         logInButton.setFocusPainted(false);
 
+
         nonMemberPanel.add(logInButton);
     }
 
@@ -157,6 +179,13 @@ public class LogInWindow extends Template {
         signupButton.setForeground(new Color(69,116,203));
         signupButton.setBorderPainted(false);
         signupButton.setFocusPainted(false);
+
+        signupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.signUpWindow);
+            }
+        });
     }
 
 }

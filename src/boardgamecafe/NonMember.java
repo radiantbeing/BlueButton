@@ -19,6 +19,11 @@ public class NonMember implements Manageable {
         phoneNumber = scan.next();
     }
 
+    public void read(String name, String phoneNumber){
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public void print() {
         printUserType();

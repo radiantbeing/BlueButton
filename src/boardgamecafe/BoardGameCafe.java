@@ -10,8 +10,8 @@ public class BoardGameCafe extends Manager {
     Scanner scan = new Scanner(System.in);    
     static Manager gameMgr = new Manager();
     static Manager snackMgr = new Manager();
-    static Manager nonMemberMgr = new Manager();
-    static Manager memberMgr = new Manager();
+    public static Manager nonMemberMgr = new Manager();
+    public static Manager memberMgr = new Manager();
     public static Manager adminMgr = new Manager();
     static Manager roomMgr = new Manager();
     final static int MAX_ROOM_NUMBER = 10;

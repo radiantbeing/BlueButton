@@ -13,7 +13,8 @@ import java.awt.*;
     ex2. label.setBounds(x, y, width, height);
 
     2. 라벨의 BOLD 처리 여부 및 크기 지정
-    ex. label.setFontAttribute(true, 18);
+    ex1. label.setFontAttribute(18);
+    ex2. label.setFontAttribute(18, true);
  */
 
 public class BasicLabel extends JLabel {
@@ -27,7 +28,12 @@ public class BasicLabel extends JLabel {
         setFont(new Font("NanumGothic", Font.PLAIN, 10));
         setText(phrase);
     }
-    void setFontAttribute(boolean bold, int size) {
+
+    void setFontAttribute(int size) {
+        setFont(new Font("NanumGothic", Font.PLAIN, size));
+    }
+
+    void setFontAttribute(int size, boolean bold) {
         if (bold) {
             setFont(new Font("NanumGothic", Font.BOLD, size));
         } else {

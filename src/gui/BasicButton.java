@@ -12,7 +12,8 @@ import java.awt.*;
     ex2. button.setBounds(x, y, width, height);
 
     2. 폰트의 BOLD 처리 여부 및 크기 지정
-    ex. button.setFontAttribute(true, 18);
+    ex. button.setFontAttribute(18);
+    ex. button.setFontAttribute(18, true);
  */
 
 public class BasicButton extends JButton {
@@ -33,7 +34,11 @@ public class BasicButton extends JButton {
         setText(phrase);
     }
 
-    void setFontAttribute(boolean bold, int size) {
+    void setFontAttribute(int size) {
+        setFont(new Font("NanumGothic", Font.PLAIN, size));
+    }
+
+    void setFontAttribute(int size, boolean bold) {
         if (bold) {
             setFont(new Font("NanumGothic", Font.BOLD, size));
         } else {

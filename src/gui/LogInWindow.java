@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class LogInWindow extends Template {
     String phoneNumber;
@@ -85,14 +87,21 @@ public class LogInWindow extends Template {
             public void actionPerformed(ActionEvent e) {
                 id = memberIdTextField.getText();
                 Member m = (Member) BoardGameCafe.memberMgr.find(id);
-                // 잘못된 아이디 입력시
-                if (m == null){
-                    JOptionPane.showMessageDialog(null, "Wrong Id");
+                password = memberPWTextField.getText();
+                if (m == null){// 잘못된 아이디 입력시
+                    JOptionPane.showMessageDialog(null, "ID doesn't exist");
                     memberPWTextField.setText("");
                     memberIdTextField.setText("");
+                    return;
                 }
-                else{ //로그인 성공
+                
+                if (m.matches(password)){ //로그인 성공
                     JOptionPane.showMessageDialog(null, "Login Complete");
+                    //후에 좌석선택, 시간선택으로 넘어가야함
+                }
+                else{//다른 비밀번호
+                    JOptionPane.showMessageDialog(null, "Wrong Password");
+                    memberPWTextField.setText("");
                 }
             }
         });

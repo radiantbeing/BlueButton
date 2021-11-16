@@ -17,11 +17,11 @@ public class LogInWindow extends Template {
 
     @Override
     void addComponents() {
-        JPanel memberPanel = new JPanel();
-        JPanel nonMemberPanel = new JPanel();
-        JLabel explainLabel = new JLabel();
-        JButton signupButton = new JButton();
-        JButton prevButton = new JButton();
+        JPanel memberPanel = new BasicPanel();
+        JPanel nonMemberPanel = new BasicPanel();
+        BasicLabel explainLabel = new BasicLabel();
+        BasicButton signupButton = new BasicButton();
+        BasicButton prevButton = new BasicButton();
         setLayout(null);
         memberLoginWindow(memberPanel);
         nonmemberLoginWindow(nonMemberPanel);
@@ -37,22 +37,18 @@ public class LogInWindow extends Template {
     void memberLoginWindow(JPanel memberPanel){
         //about memberPanel
         memberPanel.setLayout(null);
-        memberPanel.setBackground(new Color(41, 42, 45));
         memberPanel.setPreferredSize(new Dimension(500,500));
         memberPanel.setBounds(100,90,300,400);
 
         //Member Label
-        JLabel memberNameLabel = new JLabel("회원");
-
-        memberNameLabel.setForeground(Color.WHITE);
-        memberNameLabel.setFont(new Font("NanumGothic",Font.BOLD, 20));
+        BasicLabel memberNameLabel = new BasicLabel("회원");
+        memberNameLabel.setFontAttribute(true, 20);
         memberNameLabel.setBounds(40,10,100,100);
         memberPanel.add(memberNameLabel);
 
         //member ID Label
-        JLabel memberIdLabel = new JLabel("전화번호");
-        memberIdLabel.setForeground(Color.WHITE);
-        memberIdLabel.setFont(new Font("NanumGothic",Font.BOLD, 15));
+        BasicLabel memberIdLabel = new BasicLabel("전화번호");
+        memberIdLabel.setFontAttribute(true, 15);
         memberIdLabel.setBounds(30,120,100,50);
         memberPanel.add(memberIdLabel);
 
@@ -61,9 +57,8 @@ public class LogInWindow extends Template {
         memberPanel.add(memberIdTextField);
 
         //member PW Label
-        JLabel memberPWLabel = new JLabel("비밀번호");
-        memberPWLabel.setForeground(Color.WHITE);
-        memberPWLabel.setFont(new Font("NanumGothic",Font.BOLD, 15));
+        BasicLabel memberPWLabel = new BasicLabel("비밀번호");
+        memberPWLabel.setFontAttribute(true, 15);
         memberPWLabel.setBounds(30,200,100,50);
         memberPanel.add(memberPWLabel);
 
@@ -72,13 +67,9 @@ public class LogInWindow extends Template {
         memberPanel.add(memberPWTextField);
 
         //login button
-        JButton logInButton = new JButton("로그인");
+        BasicButton logInButton = new BasicButton("로그인");
         logInButton.setBounds(30,300,250,40);
-        logInButton.setBackground(new Color(0, 120, 242));
-        logInButton.setFont(new Font("NanumGothic", Font.BOLD, 18));
-        logInButton.setForeground(Color.WHITE);
-        logInButton.setBorderPainted(false);
-        logInButton.setFocusPainted(false);
+        logInButton.setFontAttribute(true, 18);
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -109,23 +100,19 @@ public class LogInWindow extends Template {
     void nonmemberLoginWindow(JPanel nonMemberPanel){
         //about nonmemberPanel
         nonMemberPanel.setLayout(null);
-        nonMemberPanel.setBackground(new Color(41, 42, 45));
         nonMemberPanel.setPreferredSize(new Dimension(500,500));
         nonMemberPanel.setBounds(710,90,300,400);
 
         //nonMember Label
-        JLabel nonMemberNameLabel = new JLabel("비회원");
-
-        nonMemberNameLabel.setForeground(Color.WHITE);
-        nonMemberNameLabel.setFont(new Font("NanumGothic",Font.BOLD, 20));
+        BasicLabel nonMemberNameLabel = new BasicLabel("비회원");
+        nonMemberNameLabel.setFontAttribute(true, 20);
         nonMemberNameLabel.setBounds(40,10,200,100);
 
         nonMemberPanel.add(nonMemberNameLabel);
 
         //nonmember ID Label
-        JLabel nonMemberIdLabel = new JLabel("이름");
-        nonMemberIdLabel.setForeground(Color.WHITE);
-        nonMemberIdLabel.setFont(new Font("NanumGothic",Font.BOLD, 15));
+        BasicLabel nonMemberIdLabel = new BasicLabel("이름");
+        nonMemberIdLabel.setFontAttribute(true, 15);
         nonMemberIdLabel.setBounds(40,120,100,50);
         nonMemberPanel.add(nonMemberIdLabel);
 
@@ -134,9 +121,8 @@ public class LogInWindow extends Template {
         nonMemberPanel.add(nonMemberIdTextField);
 
         //nonmember PW Label
-        JLabel nonMemberPWLabel = new JLabel("전화번호");
-        nonMemberPWLabel.setForeground(Color.WHITE);
-        nonMemberPWLabel.setFont(new Font("NanumGothic",Font.BOLD, 15));
+        BasicLabel nonMemberPWLabel = new BasicLabel("전화번호");
+        nonMemberPWLabel.setFontAttribute(true, 15);
         nonMemberPWLabel.setBounds(30,200,100,50);
         nonMemberPanel.add(nonMemberPWLabel);
 
@@ -145,13 +131,9 @@ public class LogInWindow extends Template {
         nonMemberPanel.add(nonMemberPWTextField);
 
         //login button
-        JButton logInButton = new JButton("로그인");
+        BasicButton logInButton = new BasicButton("로그인");
         logInButton.setBounds(30,300,250,40);
-        logInButton.setBackground(new Color(0, 120, 242));
-        logInButton.setFont(new Font("NanumGothic", Font.BOLD, 18));
-        logInButton.setForeground(Color.WHITE);
-        logInButton.setBorderPainted(false);
-        logInButton.setFocusPainted(false);
+        logInButton.setFontAttribute(true, 18);
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -180,21 +162,16 @@ public class LogInWindow extends Template {
         nonMemberPanel.add(logInButton);
     }
 
-    void textWindow(JLabel explainLabel){
+    void textWindow(BasicLabel explainLabel){
         explainLabel.setText("회원 혜택");
-        explainLabel.setForeground(Color.white);
-        explainLabel.setFont(new Font("NanumGothic",Font.BOLD, 20));
+        explainLabel.setFontAttribute(true, 20);
         explainLabel.setBounds(100,500,1000,50);
     }
 
-    void buttonComponent(JButton signupButton, JButton prevButton){
+    void buttonComponent(BasicButton signupButton, BasicButton prevButton){
         prevButton.setText("이전");
         prevButton.setBounds(100,580,300,40);
-        prevButton.setBackground(new Color(0, 120, 242));
-        prevButton.setFont(new Font("NanumGothic", Font.BOLD, 18));
-        prevButton.setForeground(Color.WHITE);
-        prevButton.setBorderPainted(false);
-        prevButton.setFocusPainted(false);
+        prevButton.setFontAttribute(true, 18);
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

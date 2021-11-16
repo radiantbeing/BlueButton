@@ -19,8 +19,8 @@ public class SignUpWindow extends Template {
     @Override
     void addComponents() {
         setLayout(null);
-        JPanel signUpPanel = new JPanel();
-        JButton cancleButton = new JButton();
+        JPanel signUpPanel = new BasicPanel();
+        BasicButton cancleButton = new BasicButton();
         setSignupComponenet(signUpPanel);
         setButtonComponent(cancleButton);
         add(signUpPanel);
@@ -29,8 +29,6 @@ public class SignUpWindow extends Template {
 
     void setSignupComponenet(JPanel signUpPanel) {
         signUpPanel.setLayout(null);
-        signUpPanel.setBackground(new Color(41, 42, 45));
-        signUpPanel.setPreferredSize(new Dimension(500, 800));
         signUpPanel.setBounds(500, 90, 300, 400);
 
         //Member Label
@@ -75,13 +73,9 @@ public class SignUpWindow extends Template {
         signUpPanel.add(memberPWTextField);
 
         //Signup button
-        JButton signUpButton = new JButton("회원가입");
+        BasicButton signUpButton = new BasicButton("회원가입");
         signUpButton.setBounds(30, 340, 250, 40);
-        signUpButton.setBackground(new Color(0, 120, 242));
-        signUpButton.setFont(new Font("NanumGothic", Font.BOLD, 18));
-        signUpButton.setForeground(Color.WHITE);
-        signUpButton.setBorderPainted(false);
-        signUpButton.setFocusPainted(false);
+        signUpButton.setFontAttribute(true, 18);
         signUpPanel.add(signUpButton);
 
         signUpButton.addActionListener(new ActionListener() {
@@ -106,14 +100,10 @@ public class SignUpWindow extends Template {
         });
     }
 
-    void setButtonComponent(JButton cancleButton) {
+    void setButtonComponent(BasicButton cancleButton) {
         cancleButton.setText("취소");
         cancleButton.setBounds(100, 580, 300, 40);
-        cancleButton.setBackground(new Color(0, 120, 242));
-        cancleButton.setFont(new Font("NanumGothic", Font.BOLD, 18));
-        cancleButton.setForeground(Color.WHITE);
-        cancleButton.setBorderPainted(false);
-        cancleButton.setFocusPainted(false);
+        cancleButton.setFontAttribute(true, 18);
 
         cancleButton.addActionListener(new ActionListener() {
             @Override

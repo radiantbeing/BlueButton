@@ -33,18 +33,18 @@ public class AdminLoginWindow extends Template{
 		// About loginPanel
 		adminLoginPanel.setLayout(null);
 		adminLoginPanel.setPreferredSize(new Dimension(500, 500));
-		adminLoginPanel.setBackground(Color.WHITE);
+		adminLoginPanel.setBackground(new Color(41, 42, 45));
 		adminLoginPanel.setBounds(490, 90, 300, 400);
 		
-		JLabel adminLabel = new JLabel("Admin Login");
-		adminLabel.setForeground(new Color(48, 87, 232));
-		adminLabel.setFont(new Font("맑은고딕", Font.BOLD, 30));
+		JLabel adminLabel = new JLabel("관리자 로그인");
+		adminLabel.setForeground(Color.WHITE);
+		adminLabel.setFont(new Font("NanumGothic", Font.BOLD, 30));
 		adminLabel.setBounds(40, 10, 300, 100);
 		adminLoginPanel.add(adminLabel);
 		
 		JLabel adminIdLabel = new JLabel("ID");
-		adminIdLabel.setFont(new Font("맑은고딕", Font.BOLD, 15));
-		adminIdLabel.setForeground(new Color(48, 87, 232));
+		adminIdLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
+		adminIdLabel.setForeground(Color.WHITE);
 		adminIdLabel.setBounds(20, 120, 100, 50);
 		adminLoginPanel.add(adminIdLabel);
 
@@ -53,8 +53,8 @@ public class AdminLoginWindow extends Template{
 		adminLoginPanel.add(adminIdField);
 
 		JLabel adminPwdLabel = new JLabel("PW");
-		adminPwdLabel.setFont(new Font("맑은고딕", Font.BOLD, 15));
-		adminPwdLabel.setForeground(new Color(48, 87, 232));
+		adminPwdLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
+		adminPwdLabel.setForeground(Color.WHITE);
 		adminPwdLabel.setBounds(20, 200, 100, 50);
 		adminLoginPanel.add(adminPwdLabel);
 		
@@ -62,12 +62,12 @@ public class AdminLoginWindow extends Template{
 		adminPwdField.setBounds(80, 210, 200, 30);
 		adminLoginPanel.add(adminPwdField);
 		
-		JButton adminLoginBtn = new JButton("Log in");
+		JButton adminLoginBtn = new JButton("로그인");
 		adminLoginBtn.setBorderPainted(false);
 		adminLoginBtn.setFocusPainted(false);
-		adminLoginBtn.setBackground(Color.WHITE);
-		adminLoginBtn.setForeground(new Color(48, 87, 232));
-		adminLoginBtn.setFont(new Font("맑은고딕", Font.BOLD, 18));
+		adminLoginBtn.setBackground(new Color(0, 120, 242));
+		adminLoginBtn.setForeground(Color.WHITE);
+		adminLoginBtn.setFont(new Font("NanumGothic", Font.BOLD, 18));
 		adminLoginBtn.setBounds(30, 300, 250, 40);
 		adminLoginPanel.add(adminLoginBtn);
 
@@ -91,10 +91,10 @@ public class AdminLoginWindow extends Template{
 		});
 		
 		// About prevBtn
-		JButton prevBtn = new JButton("prev");
-		prevBtn.setBackground(Color.WHITE);
-		prevBtn.setForeground(new Color(48, 87, 232));
-		prevBtn.setFont(new Font("맑은고딕", Font.BOLD, 18));
+		JButton prevBtn = new JButton("이전");
+		prevBtn.setBackground(new Color(0, 120, 242));
+		prevBtn.setForeground(Color.WHITE);
+		prevBtn.setFont(new Font("NanumGothic", Font.BOLD, 18));
 		prevBtn.setFocusPainted(false);
 		prevBtn.setBorderPainted(false);
 		prevBtn.setBounds(100,580,300,40);

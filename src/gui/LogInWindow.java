@@ -83,7 +83,6 @@ public class LogInWindow extends Template {
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton button = (JButton) e.getSource();
                 id = memberIdTextField.getText();
                 Member m = (Member) BoardGameCafe.memberMgr.find(id);
                 // 잘못된 아이디 입력시
@@ -92,7 +91,9 @@ public class LogInWindow extends Template {
                     memberPWTextField.setText("");
                     memberIdTextField.setText("");
                 }
-
+                else{ //로그인 성공
+                    JOptionPane.showMessageDialog(null, "Login Complete");
+                }
             }
         });
 

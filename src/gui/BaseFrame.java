@@ -32,7 +32,7 @@ public class BaseFrame extends JFrame {
 
         // About topLabel
         topPanel.add(topLabel, FlowLayout.LEFT);
-        topLabel.setFont(new Font("NanumGothic", Font.BOLD, 30));
+        topLabel.setFont(new Font("NanumGothic", Font.PLAIN, 30));
         topLabel.setForeground(new Color(0, 120, 242));
         topLabel.setBounds(20, 15, 400, 50);
 

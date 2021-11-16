@@ -13,9 +13,10 @@ public class MainGUI {
     static SignUpWindow signUpWindow = new SignUpWindow();
     
     void run() {
-        boardgamecafe.run();                        // 이거 없으면 모든 기능이 동작하지 않습니다...
+        boardgamecafe.run(); // 이거 없으면 모든 기능이 동작하지 않습니다...
         bFrame.createAndShowGUI();
         bFrame.centerPanel.add(roomViewWindow);
+        // bFrame.centerPanel.add(new TestWindow());
     }
 
     static void changeWindow(Template window) {

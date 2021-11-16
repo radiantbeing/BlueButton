@@ -160,7 +160,7 @@ public class LogInWindow extends Template {
             @Override
             public void actionPerformed(ActionEvent e) {
                 name = nonMemberIdTextField.getText();
-                NonMember m = (NonMember) BoardGameCafe.memberMgr.find(name);
+                NonMember m = (NonMember) BoardGameCafe.nonMemberMgr.find(name);
                 phoneNumber = nonMemberPWTextField.getText();
                 if (m == null){// 잘못된 아이디 입력시
                     JOptionPane.showMessageDialog(null, "Name doesn't exist");

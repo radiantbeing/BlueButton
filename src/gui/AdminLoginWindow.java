@@ -1,8 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -33,13 +31,12 @@ public class AdminLoginWindow extends Template{
 
 		BasicLabel adminLabel = new BasicLabel("관리자 로그인");
 		adminLabel.setForeground(Color.WHITE);
-		adminLabel.setFont(new Font("NanumGothic", Font.BOLD, 30));
+		adminLabel.setFontAttribute(20, true);
 		adminLabel.setBounds(40, 10, 300, 100);
 		adminLoginPanel.add(adminLabel);
 
 		BasicLabel adminIdLabel = new BasicLabel("ID");
-		adminIdLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
-		adminIdLabel.setForeground(Color.WHITE);
+		adminIdLabel.setFontAttribute(15);
 		adminIdLabel.setBounds(20, 120, 100, 50);
 		adminLoginPanel.add(adminIdLabel);
 
@@ -48,8 +45,7 @@ public class AdminLoginWindow extends Template{
 		adminLoginPanel.add(adminIdField);
 
 		BasicLabel adminPwdLabel = new BasicLabel("PW");
-		adminPwdLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
-		adminPwdLabel.setForeground(Color.WHITE);
+		adminPwdLabel.setFontAttribute( 15);
 		adminPwdLabel.setBounds(20, 200, 100, 50);
 		adminLoginPanel.add(adminPwdLabel);
 		
@@ -58,7 +54,7 @@ public class AdminLoginWindow extends Template{
 		adminLoginPanel.add(adminPwdField);
 
 		BasicButton adminLoginBtn = new BasicButton("로그인");
-		adminLoginBtn.setFontAttribute(true, 18);
+		adminLoginBtn.setFontAttribute( 18);
 		adminLoginBtn.setBounds(30, 300, 250, 40);
 		adminLoginPanel.add(adminLoginBtn);
 
@@ -83,7 +79,7 @@ public class AdminLoginWindow extends Template{
 		
 		// About prevBtn
 		BasicButton prevBtn = new BasicButton("이전");
-		prevBtn.setFontAttribute(true, 18);
+		prevBtn.setFontAttribute( 18);
 		prevBtn.setBounds(100,580,300,40);
 		
 		// if you click this button, go to roomViewWindow.

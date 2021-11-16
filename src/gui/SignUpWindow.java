@@ -75,7 +75,7 @@ public class SignUpWindow extends Template {
         //Signup button
         BasicButton signUpButton = new BasicButton("회원가입");
         signUpButton.setBounds(30, 340, 250, 40);
-        signUpButton.setFontAttribute(true, 18);
+        signUpButton.setFontAttribute(18, true);
         signUpPanel.add(signUpButton);
 
         signUpButton.addActionListener(new ActionListener() {
@@ -103,7 +103,7 @@ public class SignUpWindow extends Template {
     void setButtonComponent(BasicButton cancleButton) {
         cancleButton.setText("취소");
         cancleButton.setBounds(100, 580, 300, 40);
-        cancleButton.setFontAttribute(true, 18);
+        cancleButton.setFontAttribute(18, true);
 
         cancleButton.addActionListener(new ActionListener() {
             @Override

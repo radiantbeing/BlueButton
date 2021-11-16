@@ -44,7 +44,7 @@ public class RoomViewWindow extends Template {
         BasicButton loginButton = new BasicButton("로그인");
         add(loginButton);
         loginButton.setBounds(150, 580, 1000, 40);
-        loginButton.setFontAttribute(true, 18);
+        loginButton.setFontAttribute( 18);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +54,7 @@ public class RoomViewWindow extends Template {
 
         // if this button click, go to adminMenu.
         BasicButton adminButton = new BasicButton("관리자");
-        adminButton.setFontAttribute(true, 15);
+        adminButton.setFontAttribute(15);
         adminButton.setBounds(1000, 30, 150, 30);
         add(adminButton);
         adminButton.addActionListener(new ActionListener() {

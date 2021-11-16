@@ -42,13 +42,13 @@ public class LogInWindow extends Template {
 
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원");
-        memberNameLabel.setFontAttribute(true, 20);
+        memberNameLabel.setFontAttribute(20, true);
         memberNameLabel.setBounds(40,10,100,100);
         memberPanel.add(memberNameLabel);
 
         //member ID Label
         BasicLabel memberIdLabel = new BasicLabel("전화번호");
-        memberIdLabel.setFontAttribute(true, 15);
+        memberIdLabel.setFontAttribute(15);
         memberIdLabel.setBounds(30,120,100,50);
         memberPanel.add(memberIdLabel);
 
@@ -58,7 +58,7 @@ public class LogInWindow extends Template {
 
         //member PW Label
         BasicLabel memberPWLabel = new BasicLabel("비밀번호");
-        memberPWLabel.setFontAttribute(true, 15);
+        memberPWLabel.setFontAttribute(15);
         memberPWLabel.setBounds(30,200,100,50);
         memberPanel.add(memberPWLabel);
 
@@ -69,7 +69,7 @@ public class LogInWindow extends Template {
         //login button
         BasicButton logInButton = new BasicButton("로그인");
         logInButton.setBounds(30,300,250,40);
-        logInButton.setFontAttribute(true, 18);
+        logInButton.setFontAttribute(18);
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,14 +105,14 @@ public class LogInWindow extends Template {
 
         //nonMember Label
         BasicLabel nonMemberNameLabel = new BasicLabel("비회원");
-        nonMemberNameLabel.setFontAttribute(true, 20);
+        nonMemberNameLabel.setFontAttribute(20, true);
         nonMemberNameLabel.setBounds(40,10,200,100);
 
         nonMemberPanel.add(nonMemberNameLabel);
 
         //nonmember ID Label
         BasicLabel nonMemberIdLabel = new BasicLabel("이름");
-        nonMemberIdLabel.setFontAttribute(true, 15);
+        nonMemberIdLabel.setFontAttribute( 15);
         nonMemberIdLabel.setBounds(40,120,100,50);
         nonMemberPanel.add(nonMemberIdLabel);
 
@@ -122,7 +122,7 @@ public class LogInWindow extends Template {
 
         //nonmember PW Label
         BasicLabel nonMemberPWLabel = new BasicLabel("전화번호");
-        nonMemberPWLabel.setFontAttribute(true, 15);
+        nonMemberPWLabel.setFontAttribute( 15);
         nonMemberPWLabel.setBounds(30,200,100,50);
         nonMemberPanel.add(nonMemberPWLabel);
 
@@ -133,7 +133,7 @@ public class LogInWindow extends Template {
         //login button
         BasicButton logInButton = new BasicButton("로그인");
         logInButton.setBounds(30,300,250,40);
-        logInButton.setFontAttribute(true, 18);
+        logInButton.setFontAttribute(18);
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -164,14 +164,14 @@ public class LogInWindow extends Template {
 
     void textWindow(BasicLabel explainLabel){
         explainLabel.setText("회원 혜택");
-        explainLabel.setFontAttribute(true, 20);
+        explainLabel.setFontAttribute(20, true);
         explainLabel.setBounds(100,500,1000,50);
     }
 
     void buttonComponent(BasicButton signupButton, BasicButton prevButton){
         prevButton.setText("이전");
         prevButton.setBounds(100,580,300,40);
-        prevButton.setFontAttribute(true, 18);
+        prevButton.setFontAttribute(18);
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -181,11 +181,7 @@ public class LogInWindow extends Template {
 
         signupButton.setText("회원가입");
         signupButton.setBounds(710,580,300,40);
-        signupButton.setBackground(new Color(0, 120, 242));
-        signupButton.setFont(new Font("NanumGothic", Font.BOLD, 18));
-        signupButton.setForeground(Color.WHITE);
-        signupButton.setBorderPainted(false);
-        signupButton.setFocusPainted(false);
+        signupButton.setFontAttribute(18);
 
         signupButton.addActionListener(new ActionListener() {
             @Override

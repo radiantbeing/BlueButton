@@ -29,7 +29,9 @@ public class Manager {
         }
     }
 
-    //해당 파일읠 FileWriter return
+    /*해당 파일에 대한 FileWriter return
+      이 메소드를 호출하고 FileWriter로 받으신뒤 .write()를 하시면 됩니다.
+     */
     public FileWriter openfileWriter(String fileName){
         FileWriter fileWriter = null;
         try {

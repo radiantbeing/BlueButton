@@ -17,6 +17,7 @@ public class Member extends NonMember {
         point = scan.nextInt();
     }
 
+    // 파일을 추가하면서 수동으로 입력을 해야하는 경우가 생겨서 read를 오버로딩
     public void read(String name, String phoneNumber, String password){
         super.read(name, phoneNumber);
         this.password = password;

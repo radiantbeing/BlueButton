@@ -19,6 +19,7 @@ public class NonMember implements Manageable {
         phoneNumber = scan.next();
     }
 
+    // 파일을 추가하면서 수동으로 입력을 해야하는 경우가 생겨서 read를 오버로딩
     public void read(String name, String phoneNumber){
         this.name = name;
         this.phoneNumber = phoneNumber;

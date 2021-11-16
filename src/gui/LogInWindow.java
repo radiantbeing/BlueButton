@@ -2,6 +2,7 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
+import boardgamecafe.NonMember;
 
 import javax.swing.*;
 import java.awt.*;
@@ -155,6 +156,29 @@ public class LogInWindow extends Template {
         logInButton.setForeground(new Color(69,116,203));
         logInButton.setBorderPainted(false);
         logInButton.setFocusPainted(false);
+        logInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                name = nonMemberIdTextField.getText();
+                NonMember m = (NonMember) BoardGameCafe.memberMgr.find(name);
+                phoneNumber = nonMemberPWTextField.getText();
+                if (m == null){// 잘못된 아이디 입력시
+                    JOptionPane.showMessageDialog(null, "Name doesn't exist");
+                    nonMemberIdTextField.setText("");
+                    nonMemberPWTextField.setText("");
+                    return;
+                }
+
+                if (m.matches(password)){ //로그인 성공
+                    JOptionPane.showMessageDialog(null, "You can't get Member Benefit");
+                    //후에 좌석선택, 시간선택으로 넘어가야함
+                }
+                else{//다른 비밀번호
+                    JOptionPane.showMessageDialog(null, "Wrong Phone Number");
+                    nonMemberPWTextField.setText("");
+                }
+            }
+        });
 
 
         nonMemberPanel.add(logInButton);
@@ -197,5 +221,4 @@ public class LogInWindow extends Template {
             }
         });
     }
-
 }

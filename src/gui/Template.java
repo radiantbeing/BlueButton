@@ -17,7 +17,7 @@ import java.awt.*;
 public abstract class Template extends JPanel {
     public Template() {
         setPreferredSize(new Dimension(1280, 720));
-        setBackground(new Color(69,116,203));
+        setBackground(new Color(30, 31, 33));
         addComponents();
     }
 

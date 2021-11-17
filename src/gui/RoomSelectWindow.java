@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class RoomSelectWindow extends Template {
+    String roomNum;
     void addComponents() {
         setLayout(null);
         JPanel roomViewPanel = new JPanel();
@@ -45,11 +46,13 @@ public class RoomSelectWindow extends Template {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() % 2 != 0) { //클릭시
+                        roomNum = roomNumberLabel.getText();
                         roomPanel.setBackground(new Color(121, 117, 117));
                         nextButton.setBackground(new Color(0, 120, 242));
                         nextButton.setEnabled(true);
                     }
                     else {//재클릭시
+                        MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
                         roomPanel.setBackground(new Color(41, 42, 45));
                         nextButton.setBackground(new Color(121, 117, 117));
                         nextButton.setEnabled(false);
@@ -73,6 +76,7 @@ public class RoomSelectWindow extends Template {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
                 MainGUI.changeWindow(MainGUI.timeSelectWindow);
             }
         });

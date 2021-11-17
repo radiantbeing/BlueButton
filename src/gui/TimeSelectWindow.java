@@ -42,7 +42,7 @@ public class TimeSelectWindow extends Template {
             public void actionPerformed(ActionEvent e) {
                 nextButton.setEnabled(false);
                 nextButton.setBackground(new Color(121, 117, 117));
-                MainGUI.changeWindow(MainGUI.logInWindow);
+                MainGUI.changeWindow(MainGUI.roomSelectWindow);
             }
         });
         timeSelectPanel.add(prevButton);

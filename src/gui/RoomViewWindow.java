@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RoomViewWindow extends Template {
+    static ArrayList<JPanel> roomPanelArrayList = new ArrayList<>();
+
     @Override
     void addComponents() {
         // Initialize
@@ -21,7 +23,7 @@ public class RoomViewWindow extends Template {
         roomViewPanel.setLayout(new GridLayout(2, 5));
 
         // About roomObjectPanel
-        ArrayList<JPanel> roomPanelArrayList = new ArrayList<>();
+
         for (int i = 0; i < 10; i++) {
             JPanel roomPanel = new JPanel(null);
             roomPanel.setPreferredSize(new Dimension(200, 250));
@@ -65,5 +67,13 @@ public class RoomViewWindow extends Template {
         });
     }
 
-
+    void changeRoomInfo(String roomNum, boolean flag){
+        JPanel jPanel = roomPanelArrayList.get(Integer.parseInt(roomNum)-1);
+        if (flag){//방이 이용중일때
+            jPanel.setBackground(new Color(121, 117, 117));
+            return;
+        }
+        //이용시간이 끝나거나 이용중이 아니면
+        jPanel.setBackground(new Color(41, 42, 45));
+    }
 }

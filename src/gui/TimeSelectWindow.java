@@ -1,5 +1,7 @@
 package gui;
 
+import boardgamecafe.BoardGameCafe;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +30,17 @@ public class TimeSelectWindow extends Template {
         headLine.setFontAttribute(30);
         headLine.setBounds(500, 5, 200, 100);
         timeSelectPanel.add(headLine);
+
+        BasicButton prevButton = new BasicButton("뒤로");
+        prevButton.setFontAttribute(20);
+        prevButton.setBounds(30,550,150,40);
+        prevButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.logInWindow);
+            }
+        });
+        timeSelectPanel.add(prevButton);
     }
 
     void generateButtons(BasicButton[] basicButtons, JPanel timeSelectPanel) {
@@ -57,7 +70,7 @@ public class TimeSelectWindow extends Template {
             try {
                 buttonGroup.add(basicButtons[i]);
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
             timeSelectPanel.add(basicButtons[i]);
         }
@@ -83,7 +96,7 @@ public class TimeSelectWindow extends Template {
             try {
                 buttonGroup.add(basicButtons[i]);
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
             timeSelectPanel.add(basicButtons[i]);
         }

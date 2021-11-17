@@ -94,6 +94,8 @@ public class LogInWindow extends Template {
                     JOptionPane.showMessageDialog(null, "Wrong Password");
                     memberPWTextField.setText("");
                 }
+                memberPWTextField.setText("");
+                memberIdTextField.setText("");
             }
         });
 
@@ -153,6 +155,8 @@ public class LogInWindow extends Template {
                 registerNonMember(nonMemberIdTextField, nonMemberPWTextField);
                 JOptionPane.showMessageDialog(null, "Login Complete");
                 MainGUI.changeWindow(MainGUI.timeSelectWindow);
+                nonMemberIdTextField.setText("");
+                nonMemberPWTextField.setText("");
             }
         });
 

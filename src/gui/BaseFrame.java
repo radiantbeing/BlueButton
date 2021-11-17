@@ -17,6 +17,7 @@ public class BaseFrame extends JFrame {
         setTitle("BLUEBUTTON");
         setInitialComponents();
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

@@ -76,7 +76,7 @@ public class LogInWindow extends Template {
                 id = memberIdTextField.getText();
                 Member m = (Member) BoardGameCafe.memberMgr.find(id);
                 password = memberPWTextField.getText();
-                if (m == null){// 잘못된 아이디 입력시
+                if (m == null || id.equals("")){// 잘못된 아이디 입력시
                     JOptionPane.showMessageDialog(null, "ID doesn't exist");
                     memberPWTextField.setText("");
                     memberIdTextField.setText("");
@@ -85,6 +85,7 @@ public class LogInWindow extends Template {
                 
                 if (m.matches(password)){ //로그인 성공
                     JOptionPane.showMessageDialog(null, "Login Complete");
+                    MainGUI.changeWindow(MainGUI.timeSelectWindow);
                     //후에 좌석선택, 시간선택으로 넘어가야함
                 }
                 else{//다른 비밀번호
@@ -137,27 +138,28 @@ public class LogInWindow extends Template {
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.timeSelectWindow);
                 name = nonMemberIdTextField.getText();
                 NonMember m = (NonMember) BoardGameCafe.nonMemberMgr.find(name);
                 phoneNumber = nonMemberPWTextField.getText();
-                if (m == null){// 잘못된 아이디 입력시
-                    JOptionPane.showMessageDialog(null, "Name doesn't exist");
-                    nonMemberIdTextField.setText("");
-                    nonMemberPWTextField.setText("");
-                    return;
-                }
+//                if (m == null || name.equals("")){// 잘못된 아이디 입력시
+//                    JOptionPane.showMessageDialog(null, "Name doesn't exist");
+//                    nonMemberIdTextField.setText("");
+//                    nonMemberPWTextField.setText("");
+//                    return;
+//                }
 
-                if (m.matches(password)){ //로그인 성공
-                    JOptionPane.showMessageDialog(null, "You can't get Member Benefit");
-                    //후에 좌석선택, 시간선택으로 넘어가야함
-                }
-                else{//다른 비밀번호
-                    JOptionPane.showMessageDialog(null, "Wrong Phone Number");
-                    nonMemberPWTextField.setText("");
-                }
+//                if (m.matches(password)){ //로그인 성공
+//                    JOptionPane.showMessageDialog(null, "You can't get Member Benefit");
+//                    MainGUI.changeWindow(MainGUI.timeSelectWindow);//다음화면 바로 확인하기위해
+//                    //후에 좌석선택, 시간선택으로 넘어가야함
+//                }
+//                else{//다른 비밀번호
+//                    JOptionPane.showMessageDialog(null, "Wrong Phone Number");
+//                    nonMemberPWTextField.setText("");
+//                }
             }
         });
-
 
         nonMemberPanel.add(logInButton);
     }

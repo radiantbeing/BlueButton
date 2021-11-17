@@ -1,5 +1,7 @@
 package boardgamecafe;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Administrator{
@@ -95,6 +97,7 @@ public class Administrator{
 	}
 	
 	private void addGame() {
+		FileWriter writer = BoardGameCafe.gameMgr.openfileWriter("boardgame.txt");
 		Game g = new Game();
 	    
 		int lastNum = BoardGameCafe.gameMgr.getList().size() - 1;
@@ -122,6 +125,15 @@ public class Administrator{
 			g.location = (char)locationRow + ("" + locationColumn);
 		}
 		BoardGameCafe.gameMgr.getList().add(g);
+		
+		try {
+			writer.write("\n"+g.code+" "+g.name+" "+g.location+" "
+							+g.genre+" "+g.difficulty+" "+g.condition);
+			writer.close();
+		} catch(IOException e) {
+			System.out.println("파일 쓰기 오류");
+			System.exit(0);
+		}
 	}
 	
 	private void changeGameInfo(String kwd, Game g) {
@@ -276,13 +288,23 @@ public class Administrator{
 	}
 
 	private void addSnack() {
+		FileWriter writer = BoardGameCafe.snackMgr.openfileWriter("snack.txt");
 		Snack s = new Snack();
+		
 		System.out.println("추가할 메뉴 이름과 종류 가격 수량을 기입해주세요");
 		s.name = scan.next();
 		s.kind = scan.next();
 		s.price = scan.nextInt();
 		s.quantity = scan.nextInt();
+		
 		BoardGameCafe.snackMgr.getList().add(s);
+		try {
+			writer.write("\n"+ s.name +" "+ s.kind + " " + s.price + " " + s.quantity);
+			writer.close();
+		} catch(IOException e) {
+			System.out.println("파일쓰기 오류");
+			System.exit(0);
+		}
 	}
 
 	private void deleteSnack() {

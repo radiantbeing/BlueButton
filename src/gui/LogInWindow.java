@@ -87,7 +87,7 @@ public class LogInWindow extends Template {
                 
                 if (m.matches(password)){ //로그인 성공
                     JOptionPane.showMessageDialog(null, "Login Complete");
-                    MainGUI.changeWindow(MainGUI.timeSelectWindow);
+                    MainGUI.changeWindow(MainGUI.roomSelectWindow);
                     //후에 좌석선택, 시간선택으로 넘어가야함
                 }
                 else{//다른 비밀번호
@@ -154,7 +154,7 @@ public class LogInWindow extends Template {
                 //입력이 제대로 될때-> 파일이 입력이 된다.
                 registerNonMember(nonMemberIdTextField, nonMemberPWTextField);
                 JOptionPane.showMessageDialog(null, "Login Complete");
-                MainGUI.changeWindow(MainGUI.timeSelectWindow);
+                MainGUI.changeWindow(MainGUI.roomSelectWindow);
                 nonMemberIdTextField.setText("");
                 nonMemberPWTextField.setText("");
             }
@@ -164,7 +164,7 @@ public class LogInWindow extends Template {
     }
 
     void textWindow(BasicLabel explainLabel){
-        explainLabel.setText("회원 혜택");
+        explainLabel.setText("회원 혜택: 결제금액의 5% 적립가능, 회원 등급에 따른 할인부여");
         explainLabel.setFontAttribute(20, true);
         explainLabel.setBounds(100,500,1000,50);
     }

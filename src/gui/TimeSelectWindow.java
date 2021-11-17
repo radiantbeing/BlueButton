@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class TimeSelectWindow extends Template {
     String hour;
     int price;
+
     @Override
     void addComponents() {
         setLayout(null);
@@ -35,12 +36,12 @@ public class TimeSelectWindow extends Template {
         //뒤로가기 버튼
         BasicButton prevButton = new BasicButton("뒤로");
         prevButton.setFontAttribute(20);
-        prevButton.setBounds(30,550,150,40);
+        prevButton.setBounds(30, 550, 150, 40);
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 nextButton.setEnabled(false);
-                nextButton.setBackground(new Color(121,117,117));
+                nextButton.setBackground(new Color(121, 117, 117));
                 MainGUI.changeWindow(MainGUI.logInWindow);
             }
         });
@@ -49,14 +50,14 @@ public class TimeSelectWindow extends Template {
         //다음 화변버튼
         nextButton.setFontAttribute(20);
         nextButton.setEnabled(false);
-        nextButton.setBounds(930,550,150,40);
-        nextButton.setBackground(new Color(121,117,117));
+        nextButton.setBounds(930, 550, 150, 40);
+        nextButton.setBackground(new Color(121, 117, 117));
         timeSelectPanel.add(nextButton);
 
     }
 
     void generateButtons(BasicButton[] basicButtons, JPanel timeSelectPanel, BasicButton nextButton) {
-        String[] buttonStr = {"1H", "2H", "3H","4H"};
+        String[] buttonStr = {"1H", "2H", "3H", "4H"};
         String[] timeStr = {"10000원", "15000원", "20000원", "25000원"};
         int xGap = 20;
         //상단 button4개
@@ -72,8 +73,8 @@ public class TimeSelectWindow extends Template {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     hour = buttonStr[tmp];
-                    price = Integer.parseInt(timeStr[tmp].substring(0,timeStr[tmp].length()-1));
-                    JOptionPane.showMessageDialog(null, hour+" "+price+"원으로 선택합니다.");
+                    price = Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1));
+                    JOptionPane.showMessageDialog(null, hour + " " + price + "원으로 선택합니다.");
                     nextButton.setEnabled(true);
                     nextButton.setBackground(new Color(0, 120, 242));
                 }

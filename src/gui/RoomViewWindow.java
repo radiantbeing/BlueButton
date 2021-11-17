@@ -64,4 +64,6 @@ public class RoomViewWindow extends Template {
             }
         });
     }
+
+
 }

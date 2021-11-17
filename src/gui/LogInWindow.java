@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class LogInWindow extends Template {
     String phoneNumber;
@@ -138,26 +140,19 @@ public class LogInWindow extends Template {
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.changeWindow(MainGUI.timeSelectWindow);
                 name = nonMemberIdTextField.getText();
-                NonMember m = (NonMember) BoardGameCafe.nonMemberMgr.find(name);
                 phoneNumber = nonMemberPWTextField.getText();
-//                if (m == null || name.equals("")){// 잘못된 아이디 입력시
-//                    JOptionPane.showMessageDialog(null, "Name doesn't exist");
-//                    nonMemberIdTextField.setText("");
-//                    nonMemberPWTextField.setText("");
-//                    return;
-//                }
 
-//                if (m.matches(password)){ //로그인 성공
-//                    JOptionPane.showMessageDialog(null, "You can't get Member Benefit");
-//                    MainGUI.changeWindow(MainGUI.timeSelectWindow);//다음화면 바로 확인하기위해
-//                    //후에 좌석선택, 시간선택으로 넘어가야함
-//                }
-//                else{//다른 비밀번호
-//                    JOptionPane.showMessageDialog(null, "Wrong Phone Number");
-//                    nonMemberPWTextField.setText("");
-//                }
+                if (name.equals("")){// 잘못된 아이디 입력시
+                    JOptionPane.showMessageDialog(null, "아이디를 정확히 입력하세요");
+                    nonMemberIdTextField.setText("");
+                    nonMemberPWTextField.setText("");
+                    return;
+                }
+                //입력이 제대로 될때-> 파일이 입력이 된다.
+                registerNonMember(nonMemberIdTextField, nonMemberPWTextField);
+                JOptionPane.showMessageDialog(null, "Login Complete");
+                MainGUI.changeWindow(MainGUI.timeSelectWindow);
             }
         });
 
@@ -191,5 +186,23 @@ public class LogInWindow extends Template {
                 MainGUI.changeWindow(MainGUI.signUpWindow);
             }
         });
+    }
+
+    void registerNonMember(JTextField idTextField, JTextField phoneTextField) {
+        FileWriter writer = BoardGameCafe.memberMgr.openfileWriter("non_member.txt");
+        id = idTextField.getText();
+        phoneNumber = phoneTextField.getText();
+
+        NonMember newNonMember = new NonMember();
+        newNonMember.read(id, phoneNumber);
+        BoardGameCafe.memberMgr.addList(newNonMember);
+
+        try {
+            writer.write("\n"+id + " " + phoneNumber + " ");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("파일쓰기오류");
+            System.exit(0);
+        }
     }
 }

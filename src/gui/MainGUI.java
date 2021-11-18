@@ -2,6 +2,9 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class MainGUI {
     static BoardGameCafe boardgamecafe = new BoardGameCafe();
     // Create BaseFrame
@@ -26,6 +29,12 @@ public class MainGUI {
         bFrame.centerPanel.revalidate();
         bFrame.centerPanel.repaint();
         bFrame.centerPanel.add(window);
+    }
+
+    static ImageIcon scaleImageIcon(String imgPath, int width, int height) {
+        ImageIcon icon = new ImageIcon(imgPath);
+        Image scaleImage = icon.getImage().getScaledInstance(width, height,Image.SCALE_SMOOTH);
+        return new ImageIcon(scaleImage);
     }
 
     public static void main(String[] args) {

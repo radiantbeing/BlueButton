@@ -60,11 +60,7 @@ public class RoomViewWindow extends Template {
         iconPanel.setOpaque(false);
         add(iconPanel);
 
-        ImageIcon icon = new ImageIcon("imgs/settings.png");
-        Image scaleImage = icon.getImage().getScaledInstance(28, 28,Image.SCALE_SMOOTH);
-        icon = new ImageIcon(scaleImage);
-
-        JButton adminButton = new JButton(icon);
+        JButton adminButton = new JButton(MainGUI.scaleImageIcon("imgs/settings.png", 28, 28));
         adminButton.setBorderPainted(false);
         adminButton.setContentAreaFilled(false);
         adminButton.setFocusPainted(false);
@@ -78,6 +74,8 @@ public class RoomViewWindow extends Template {
             }
         });
     }
+
+
 
     void changeRoomInfo(String roomNum, boolean flag) {
         JPanel jPanel = roomPanelArrayList.get(Integer.parseInt(roomNum) - 1);

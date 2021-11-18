@@ -97,10 +97,7 @@ public class LogInWindow extends Template {
         memberPanel.add(logInButton);
 
         // About membership benefit
-        ImageIcon icon = new ImageIcon("imgs/question.png");
-        Image scaleImage = icon.getImage().getScaledInstance(28, 28,Image.SCALE_SMOOTH);
-        icon = new ImageIcon(scaleImage);
-        JButton benefitViewer = new JButton(icon);
+        JButton benefitViewer = new JButton(MainGUI.scaleImageIcon("imgs/question.png", 28, 28));
         benefitViewer.setBorderPainted(false);
         benefitViewer.setContentAreaFilled(false);
         benefitViewer.setFocusPainted(false);

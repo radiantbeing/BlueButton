@@ -29,53 +29,48 @@ public class SignUpWindow extends Template {
 
     void setSignupComponenet(JPanel signUpPanel) {
         signUpPanel.setLayout(null);
-        signUpPanel.setBounds(500, 90, 300, 400);
+        signUpPanel.setBounds(480, 90, 320, 400);
 
         //Member Label
-        JLabel memberNameLabel = new JLabel("회원가입");
-
-        memberNameLabel.setForeground(Color.WHITE);
-        memberNameLabel.setFont(new Font("NanumGothic", Font.BOLD, 20));
-        memberNameLabel.setBounds(40, 10, 300, 100);
+        BasicLabel memberNameLabel = new BasicLabel("회원가입");
+        memberNameLabel.setFontAttribute(20, true);
+        memberNameLabel.setBounds(25, 40, 120, 40);
         signUpPanel.add(memberNameLabel);
 
         //member ID Label
-        JLabel memberIdLabel = new JLabel("ID");
-        memberIdLabel.setForeground(Color.WHITE);
-        memberIdLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
-        memberIdLabel.setBounds(20, 120, 100, 50);
+        BasicLabel memberIdLabel = new BasicLabel("ID");
+        memberIdLabel.setFontAttribute(15);
+        memberIdLabel.setBounds(25, 120, 100, 50);
         signUpPanel.add(memberIdLabel);
 
         JTextField memberIdTextField = new JTextField(60);
-        memberIdTextField.setBounds(120, 130, 150, 30);
+        memberIdTextField.setBounds(120, 130, 190, 33);
         signUpPanel.add(memberIdTextField);
 
         //member Phone Label
-        JLabel memberPhoneLabel = new JLabel("전화번호");
-        memberPhoneLabel.setForeground(Color.WHITE);
-        memberPhoneLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
-        memberPhoneLabel.setBounds(20, 200, 100, 50);
+        BasicLabel memberPhoneLabel = new BasicLabel("전화번호");
+        memberPhoneLabel.setFontAttribute(15);
+        memberPhoneLabel.setBounds(25, 200, 100, 50);
         signUpPanel.add(memberPhoneLabel);
 
         JTextField memberPhoneTextField = new JTextField(40);
-        memberPhoneTextField.setBounds(120, 210, 150, 30);
+        memberPhoneTextField.setBounds(120, 210, 190, 33);
         signUpPanel.add(memberPhoneTextField);
 
         //member PW Label
-        JLabel memberPWLabel = new JLabel("비밀번호");
-        memberPWLabel.setForeground(Color.WHITE);
-        memberPWLabel.setFont(new Font("NanumGothic", Font.BOLD, 15));
-        memberPWLabel.setBounds(20, 280, 100, 50);
+        BasicLabel memberPWLabel = new BasicLabel("비밀번호");
+        memberPWLabel.setFontAttribute(15);
+        memberPWLabel.setBounds(25, 280, 100, 50);
         signUpPanel.add(memberPWLabel);
 
         JTextField memberPWTextField = new JTextField(40);
-        memberPWTextField.setBounds(120, 290, 150, 30);
+        memberPWTextField.setBounds(120, 290, 190, 33);
         signUpPanel.add(memberPWTextField);
 
         //Signup button
         BasicButton signUpButton = new BasicButton("회원가입");
-        signUpButton.setBounds(30, 340, 250, 40);
-        signUpButton.setFontAttribute(18, true);
+        signUpButton.setBounds(25, 320, 270, 40);
+        signUpButton.setFontAttribute(18);
         signUpPanel.add(signUpButton);
 
         signUpButton.addActionListener(new ActionListener() {
@@ -102,8 +97,8 @@ public class SignUpWindow extends Template {
 
     void setButtonComponent(BasicButton cancleButton) {
         cancleButton.setText("취소");
-        cancleButton.setBounds(100, 580, 300, 40);
-        cancleButton.setFontAttribute(18, true);
+        cancleButton.setBounds(160,580,320,40);
+        cancleButton.setFontAttribute(18);
 
         cancleButton.addActionListener(new ActionListener() {
             @Override

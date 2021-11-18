@@ -39,38 +39,37 @@ public class LogInWindow extends Template {
     void memberLoginWindow(JPanel memberPanel){
         //about memberPanel
         memberPanel.setLayout(null);
-        memberPanel.setPreferredSize(new Dimension(500,500));
-        memberPanel.setBounds(100,90,300,400);
+        memberPanel.setBounds(160,40,320,400);
 
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원");
         memberNameLabel.setFontAttribute(20, true);
-        memberNameLabel.setBounds(40,10,100,100);
+        memberNameLabel.setBounds(25, 40, 120, 40);
         memberPanel.add(memberNameLabel);
 
         //member ID Label
         BasicLabel memberIdLabel = new BasicLabel("전화번호");
         memberIdLabel.setFontAttribute(15);
-        memberIdLabel.setBounds(30,120,100,50);
+        memberIdLabel.setBounds(25, 120, 70, 53);
         memberPanel.add(memberIdLabel);
 
         JTextField memberIdTextField = new JTextField(60);
-        memberIdTextField.setBounds(120,130,150,30);
+        memberIdTextField.setBounds(105, 130, 190, 33);
         memberPanel.add(memberIdTextField);
 
         //member PW Label
         BasicLabel memberPWLabel = new BasicLabel("비밀번호");
         memberPWLabel.setFontAttribute(15);
-        memberPWLabel.setBounds(30,200,100,50);
+        memberPWLabel.setBounds(25, 227, 70, 53);
         memberPanel.add(memberPWLabel);
 
         JTextField memberPWTextField = new JTextField(40);
-        memberPWTextField.setBounds(120,210,150,30);
+        memberPWTextField.setBounds(105, 237, 190, 33);
         memberPanel.add(memberPWTextField);
 
         //login button
         BasicButton logInButton = new BasicButton("로그인");
-        logInButton.setBounds(30,300,250,40);
+        logInButton.setBounds(25, 320, 270, 40);
         logInButton.setFontAttribute(18);
         logInButton.addActionListener(new ActionListener() {
             @Override
@@ -105,39 +104,38 @@ public class LogInWindow extends Template {
     void nonmemberLoginWindow(JPanel nonMemberPanel){
         //about nonmemberPanel
         nonMemberPanel.setLayout(null);
-        nonMemberPanel.setPreferredSize(new Dimension(500,500));
-        nonMemberPanel.setBounds(710,90,300,400);
+        nonMemberPanel.setBounds(800,40,320,400);
 
         //nonMember Label
         BasicLabel nonMemberNameLabel = new BasicLabel("비회원");
         nonMemberNameLabel.setFontAttribute(20, true);
-        nonMemberNameLabel.setBounds(40,10,200,100);
+        nonMemberNameLabel.setBounds(25, 40, 120, 40);
 
         nonMemberPanel.add(nonMemberNameLabel);
 
         //nonmember ID Label
         BasicLabel nonMemberIdLabel = new BasicLabel("이름");
         nonMemberIdLabel.setFontAttribute( 15);
-        nonMemberIdLabel.setBounds(40,120,100,50);
+        nonMemberIdLabel.setBounds(25, 120, 70, 53);
         nonMemberPanel.add(nonMemberIdLabel);
 
         JTextField nonMemberIdTextField = new JTextField(60);
-        nonMemberIdTextField.setBounds(120,130,150,30);
+        nonMemberIdTextField.setBounds(105, 130, 190, 33);
         nonMemberPanel.add(nonMemberIdTextField);
 
         //nonmember PW Label
         BasicLabel nonMemberPWLabel = new BasicLabel("전화번호");
         nonMemberPWLabel.setFontAttribute( 15);
-        nonMemberPWLabel.setBounds(30,200,100,50);
+        nonMemberPWLabel.setBounds(25, 227, 70, 53);
         nonMemberPanel.add(nonMemberPWLabel);
 
         JTextField nonMemberPWTextField = new JTextField(40);
-        nonMemberPWTextField.setBounds(120,210,150,30);
+        nonMemberPWTextField.setBounds(105, 237, 190, 33);
         nonMemberPanel.add(nonMemberPWTextField);
 
         //login button
         BasicButton logInButton = new BasicButton("로그인");
-        logInButton.setBounds(30,300,250,40);
+        logInButton.setBounds(25, 320, 270, 40);
         logInButton.setFontAttribute(18);
         logInButton.addActionListener(new ActionListener() {
             @Override
@@ -164,14 +162,14 @@ public class LogInWindow extends Template {
     }
 
     void textWindow(BasicLabel explainLabel){
-        explainLabel.setText("회원 혜택: 결제금액의 5% 적립가능, 회원 등급에 따른 할인부여");
-        explainLabel.setFontAttribute(20, true);
-        explainLabel.setBounds(100,500,1000,50);
+        explainLabel.setText("<html>회원 혜택<br><br>결제금액의 5% 적립가능<br>회원 등급에 따른 할인부여</html>");
+        explainLabel.setFontAttribute(20, false);
+        explainLabel.setBounds(160,460,320,100);
     }
 
     void buttonComponent(BasicButton signupButton, BasicButton prevButton){
         prevButton.setText("이전");
-        prevButton.setBounds(100,580,300,40);
+        prevButton.setBounds(160,580,320,40);
         prevButton.setFontAttribute(18);
         prevButton.addActionListener(new ActionListener() {
             @Override
@@ -181,7 +179,7 @@ public class LogInWindow extends Template {
         });
 
         signupButton.setText("회원가입");
-        signupButton.setBounds(710,580,300,40);
+        signupButton.setBounds(800,580,320,40);
         signupButton.setFontAttribute(18);
 
         signupButton.addActionListener(new ActionListener() {

@@ -1,5 +1,6 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
@@ -19,11 +20,10 @@ public class RoomViewWindow extends Template {
         // About roomViewPanel
         JPanel roomViewPanel = new JPanel();
         add(roomViewPanel);
-        roomViewPanel.setBounds(150, 70, 1000, 500);
+        roomViewPanel.setBounds(160, 70, 960, 500);
         roomViewPanel.setLayout(new GridLayout(2, 5));
 
         // About roomObjectPanel
-
         for (int i = 0; i < 10; i++) {
             JPanel roomPanel = new JPanel(null);
             roomPanel.setPreferredSize(new Dimension(200, 250));
@@ -45,8 +45,8 @@ public class RoomViewWindow extends Template {
         // About loginButton
         BasicButton loginButton = new BasicButton("로그인");
         add(loginButton);
-        loginButton.setBounds(150, 580, 1000, 40);
-        loginButton.setFontAttribute( 18);
+        loginButton.setBounds(160, 580, 960, 40);
+        loginButton.setFontAttribute(18);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,10 +55,22 @@ public class RoomViewWindow extends Template {
         });
 
         // if this button click, go to adminMenu.
-        BasicButton adminButton = new BasicButton("관리자");
-        adminButton.setFontAttribute(15);
-        adminButton.setBounds(1000, 30, 150, 30);
-        add(adminButton);
+        JPanel iconPanel = new JPanel();
+        iconPanel.setBounds(1080, 15, 50, 50);
+        iconPanel.setOpaque(false);
+        add(iconPanel);
+
+        ImageIcon icon = new ImageIcon("imgs/settings.png");
+        Image scaleImage = icon.getImage().getScaledInstance(28, 28,Image.SCALE_SMOOTH);
+        icon = new ImageIcon(scaleImage);
+
+        JButton adminButton = new JButton(icon);
+        adminButton.setBorderPainted(false);
+        adminButton.setContentAreaFilled(false);
+        adminButton.setFocusPainted(false);
+        adminButton.setOpaque(false);
+        iconPanel.add(adminButton);
+
         adminButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,9 +79,9 @@ public class RoomViewWindow extends Template {
         });
     }
 
-    void changeRoomInfo(String roomNum, boolean flag){
-        JPanel jPanel = roomPanelArrayList.get(Integer.parseInt(roomNum)-1);
-        if (flag){//방이 이용중일때
+    void changeRoomInfo(String roomNum, boolean flag) {
+        JPanel jPanel = roomPanelArrayList.get(Integer.parseInt(roomNum) - 1);
+        if (flag) {//방이 이용중일때
             jPanel.setBackground(new Color(121, 117, 117));
             return;
         }

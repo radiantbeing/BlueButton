@@ -41,7 +41,7 @@ public class BaseFrame extends JFrame {
         contentPane.add(centerPanel, BorderLayout.CENTER);
         centerPanel.setBackground(new Color(30, 31, 33));
 
-        // Add NunumGothic Font Family
+        // Add NunumGothic Font
         GraphicsEnvironment ge =
                 GraphicsEnvironment.getLocalGraphicsEnvironment();
         try {

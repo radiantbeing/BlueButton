@@ -150,7 +150,6 @@ public class LogInWindow extends Template {
                     return;
                 }
                 //입력이 제대로 될때-> 파일이 입력이 된다.
-                registerNonMember(nonMemberIdTextField, nonMemberPWTextField);
                 JOptionPane.showMessageDialog(null, "Login Complete");
                 MainGUI.changeWindow(MainGUI.roomSelectWindow);
                 nonMemberIdTextField.setText("");
@@ -188,23 +187,5 @@ public class LogInWindow extends Template {
                 MainGUI.changeWindow(MainGUI.signUpWindow);
             }
         });
-    }
-
-    void registerNonMember(JTextField idTextField, JTextField phoneTextField) {
-        FileWriter writer = BoardGameCafe.memberMgr.openfileWriter("non_member.txt");
-        id = idTextField.getText();
-        phoneNumber = phoneTextField.getText();
-
-        NonMember newNonMember = new NonMember();
-        newNonMember.read(id, phoneNumber);
-        BoardGameCafe.memberMgr.addList(newNonMember);
-
-        try {
-            writer.write("\n"+id + " " + phoneNumber + " ");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("파일쓰기오류");
-            System.exit(0);
-        }
     }
 }

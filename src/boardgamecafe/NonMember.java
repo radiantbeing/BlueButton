@@ -49,6 +49,10 @@ public class NonMember implements Manageable {
         roomNumber = num;
     }
 
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
     // 이용 시간을 초 단위로 추가합니다.
     // GUI의 요금제 선택 단계에서 사용하는 메소드
     void addTime(int seconds) {

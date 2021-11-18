@@ -52,7 +52,6 @@ public class RoomSelectWindow extends Template {
                         nextButton.setEnabled(true);
                     }
                     else {//재클릭시
-                        MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
                         roomPanel.setBackground(new Color(41, 42, 45));
                         nextButton.setBackground(new Color(121, 117, 117));
                         nextButton.setEnabled(false);
@@ -81,7 +80,6 @@ public class RoomSelectWindow extends Template {
             }
         });
 
-        prevButton.setBackground(new Color(121, 117, 117));
         prevButton.setBounds(150, 580, 150, 40);
         prevButton.setEnabled(true);
         prevButton.setFontAttribute(20);

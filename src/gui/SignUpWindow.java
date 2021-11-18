@@ -34,37 +34,37 @@ public class SignUpWindow extends Template {
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원가입");
         memberNameLabel.setFontAttribute(20, true);
-        memberNameLabel.setBounds(25, 40, 120, 40);
+        memberNameLabel.setBounds(25, 40, 150, 40);
         signUpPanel.add(memberNameLabel);
 
         //member ID Label
         BasicLabel memberIdLabel = new BasicLabel("이름");
         memberIdLabel.setFontAttribute(15);
-        memberIdLabel.setBounds(25, 120, 100, 50);
+        memberIdLabel.setBounds(25, 120, 100, 32);
         signUpPanel.add(memberIdLabel);
 
         JTextField memberIdTextField = new JTextField(60);
-        memberIdTextField.setBounds(120, 130, 190, 33);
+        memberIdTextField.setBounds(105, 120, 190, 32);
         signUpPanel.add(memberIdTextField);
 
         //member Phone Label
         BasicLabel memberPhoneLabel = new BasicLabel("전화번호");
         memberPhoneLabel.setFontAttribute(15);
-        memberPhoneLabel.setBounds(25, 200, 100, 50);
+        memberPhoneLabel.setBounds(25, 184, 100, 32);
         signUpPanel.add(memberPhoneLabel);
 
         JTextField memberPhoneTextField = new JTextField(40);
-        memberPhoneTextField.setBounds(120, 210, 190, 33);
+        memberPhoneTextField.setBounds(105, 184, 190, 32);
         signUpPanel.add(memberPhoneTextField);
 
         //member PW Label
         BasicLabel memberPWLabel = new BasicLabel("비밀번호");
         memberPWLabel.setFontAttribute(15);
-        memberPWLabel.setBounds(25, 280, 100, 50);
+        memberPWLabel.setBounds(25, 248, 100, 32);
         signUpPanel.add(memberPWLabel);
 
         JTextField memberPWTextField = new JTextField(40);
-        memberPWTextField.setBounds(120, 290, 190, 33);
+        memberPWTextField.setBounds(105, 248, 190, 32);
         signUpPanel.add(memberPWTextField);
 
         //Signup button

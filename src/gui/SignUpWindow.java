@@ -34,7 +34,7 @@ public class SignUpWindow extends Template {
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원가입");
         memberNameLabel.setFontAttribute(20, true);
-        memberNameLabel.setBounds(25, 40, 150, 40);
+        memberNameLabel.setBounds(130, 40, 150, 40);
         signUpPanel.add(memberNameLabel);
 
         //member ID Label

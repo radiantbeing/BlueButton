@@ -41,7 +41,7 @@ public class LogInWindow extends Template {
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원");
         memberNameLabel.setFontAttribute(20, true);
-        memberNameLabel.setBounds(25, 40, 150, 40);
+        memberNameLabel.setBounds(135, 40, 150, 40);
         memberPanel.add(memberNameLabel);
 
         //member ID Label
@@ -103,7 +103,7 @@ public class LogInWindow extends Template {
         benefitViewer.setFocusPainted(false);
         benefitViewer.setOpaque(false);
         memberPanel.add(benefitViewer);
-        benefitViewer.setBounds(265, 40, 30, 30);
+        benefitViewer.setBounds(265, 45, 30, 30);
         benefitViewer.setToolTipText("<html>회원 혜택<br><br>-결제금액의 5% 적립가능<br>-회원 등급에 따른 할인부여</html>");
     }
 
@@ -115,8 +115,7 @@ public class LogInWindow extends Template {
         //nonMember Label
         BasicLabel nonMemberNameLabel = new BasicLabel("비회원");
         nonMemberNameLabel.setFontAttribute(20, true);
-        nonMemberNameLabel.setBounds(25, 40, 150, 40);
-
+        nonMemberNameLabel.setBounds(135, 40, 150, 40);
         nonMemberPanel.add(nonMemberNameLabel);
 
         //nonmember ID Label

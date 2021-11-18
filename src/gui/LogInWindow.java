@@ -21,17 +21,14 @@ public class LogInWindow extends Template {
     void addComponents() {
         JPanel memberPanel = new BasicPanel();
         JPanel nonMemberPanel = new BasicPanel();
-        BasicLabel explainLabel = new BasicLabel();
         BasicButton signupButton = new BasicButton();
         BasicButton prevButton = new BasicButton();
         setLayout(null);
         memberLoginWindow(memberPanel);
         nonmemberLoginWindow(nonMemberPanel);
-        textWindow(explainLabel);
         buttonComponent(signupButton, prevButton);
         add(memberPanel);
         add(nonMemberPanel);
-        add(explainLabel);
         add(signupButton);
         add(prevButton);
     }
@@ -39,12 +36,12 @@ public class LogInWindow extends Template {
     void memberLoginWindow(JPanel memberPanel){
         //about memberPanel
         memberPanel.setLayout(null);
-        memberPanel.setBounds(160,40,320,400);
+        memberPanel.setBounds(160,90,320,400);
 
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원");
         memberNameLabel.setFontAttribute(20, true);
-        memberNameLabel.setBounds(25, 40, 120, 40);
+        memberNameLabel.setBounds(25, 40, 150, 40);
         memberPanel.add(memberNameLabel);
 
         //member ID Label
@@ -97,19 +94,31 @@ public class LogInWindow extends Template {
                 memberIdTextField.setText("");
             }
         });
-
         memberPanel.add(logInButton);
+
+        // About membership benefit
+        ImageIcon icon = new ImageIcon("imgs/question.png");
+        Image scaleImage = icon.getImage().getScaledInstance(28, 28,Image.SCALE_SMOOTH);
+        icon = new ImageIcon(scaleImage);
+        JButton benefitViewer = new JButton(icon);
+        benefitViewer.setBorderPainted(false);
+        benefitViewer.setContentAreaFilled(false);
+        benefitViewer.setFocusPainted(false);
+        benefitViewer.setOpaque(false);
+        memberPanel.add(benefitViewer);
+        benefitViewer.setBounds(265, 40, 30, 30);
+        benefitViewer.setToolTipText("<html>회원 혜택<br><br>-결제금액의 5% 적립가능<br>-회원 등급에 따른 할인부여</html>");
     }
 
     void nonmemberLoginWindow(JPanel nonMemberPanel){
         //about nonmemberPanel
         nonMemberPanel.setLayout(null);
-        nonMemberPanel.setBounds(800,40,320,400);
+        nonMemberPanel.setBounds(800,90,320,400);
 
         //nonMember Label
         BasicLabel nonMemberNameLabel = new BasicLabel("비회원");
         nonMemberNameLabel.setFontAttribute(20, true);
-        nonMemberNameLabel.setBounds(25, 40, 120, 40);
+        nonMemberNameLabel.setBounds(25, 40, 150, 40);
 
         nonMemberPanel.add(nonMemberNameLabel);
 
@@ -158,12 +167,6 @@ public class LogInWindow extends Template {
         });
 
         nonMemberPanel.add(logInButton);
-    }
-
-    void textWindow(BasicLabel explainLabel){
-        explainLabel.setText("<html>회원 혜택<br><br>결제금액의 5% 적립가능<br>회원 등급에 따른 할인부여</html>");
-        explainLabel.setFontAttribute(20, false);
-        explainLabel.setBounds(160,460,320,100);
     }
 
     void buttonComponent(BasicButton signupButton, BasicButton prevButton){

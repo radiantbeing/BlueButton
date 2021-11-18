@@ -1,5 +1,6 @@
 package gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -15,13 +16,13 @@ public class BaseFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1296, 839));
         setTitle("BLUEBUTTON");
-        setInitialComponents();
+        initialize();
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    void setInitialComponents() {
+    void initialize() {
         Container contentPane = getContentPane();
 
         // About topPanel
@@ -50,5 +51,14 @@ public class BaseFrame extends JFrame {
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
+
+        // Set FrameIcon
+        Image image = null;
+        try {
+            image = ImageIO.read(new File("imgs/dice.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setIconImage(image);
     }
 }

@@ -96,7 +96,7 @@ public class RoomViewWindow extends Template {
     }
 
     // 해당 방이 예약된 방인지 여부를 반환
-    boolean checkRoomReserved(int roomNumber) {
+    static boolean checkRoomReserved(int roomNumber) {
         ArrayList<Manageable> memberList = BoardGameCafe.memberMgr.getList();
         ArrayList<Manageable> nonmemberList = BoardGameCafe.nonMemberMgr.getList();
         for (Manageable m: memberList) {

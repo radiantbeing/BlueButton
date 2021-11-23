@@ -2,14 +2,14 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
-import boardgamecafe.NonMember;
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.BasicPanel;
+import gui.template.Template;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class LogInWindow extends Template {
     String phoneNumber;
@@ -18,7 +18,7 @@ public class LogInWindow extends Template {
     String id;
 
     @Override
-    void addComponents() {
+    public void addComponents() {
         JPanel memberPanel = new BasicPanel();
         JPanel nonMemberPanel = new BasicPanel();
         BasicButton signupButton = new BasicButton();
@@ -96,7 +96,7 @@ public class LogInWindow extends Template {
         });
         memberPanel.add(logInButton);
 
-        // About membership benefit
+        // About membership benefit ToolTip
         JButton benefitViewer = new JButton(MainGUI.scaleImageIcon("imgs/question.png", 28, 28));
         benefitViewer.setBorderPainted(false);
         benefitViewer.setContentAreaFilled(false);
@@ -105,6 +105,7 @@ public class LogInWindow extends Template {
         memberPanel.add(benefitViewer);
         benefitViewer.setBounds(265, 45, 30, 30);
         benefitViewer.setToolTipText("<html>회원 혜택<br><br>-결제금액의 5% 적립가능<br>-회원 등급에 따른 할인부여</html>");
+        ToolTipManager.sharedInstance().setInitialDelay(0);
     }
 
     void nonmemberLoginWindow(JPanel nonMemberPanel){

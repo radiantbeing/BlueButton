@@ -10,13 +10,17 @@ import javax.swing.JTextField;
 import boardgamecafe.Admin;
 import boardgamecafe.Administrator;
 import boardgamecafe.BoardGameCafe;
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.BasicPanel;
+import gui.template.Template;
 import mgr.Manageable;
 
-public class AdminLoginWindow extends Template{
+public class AdminLoginWindow extends Template {
 	private static final long serialVersionUID = 1L;
 	private static Administrator adm = new Administrator();
 	@Override
-	void addComponents() {
+	public void addComponents() {
 		JPanel adminLoginPanel = new BasicPanel();
 		setLayout(null);
 		adminLoginWindow(adminLoginPanel);

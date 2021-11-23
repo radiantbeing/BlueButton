@@ -3,6 +3,9 @@ package gui;
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
 import boardgamecafe.NonMember;
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.Template;
 import mgr.Manageable;
 
 import javax.swing.*;
@@ -17,7 +20,7 @@ public class RoomViewWindow extends Template {
     static ArrayList<JPanel> roomPanelArrayList = new ArrayList<>();
 
     @Override
-    void addComponents() {
+    public void addComponents() {
         // Initialize
         setLayout(null);
 

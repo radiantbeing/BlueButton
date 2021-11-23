@@ -1,6 +1,7 @@
 package gui;
 
 import boardgamecafe.BoardGameCafe;
+import gui.template.Template;
 
 import javax.swing.*;
 import java.awt.*;

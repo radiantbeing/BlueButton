@@ -1,5 +1,9 @@
 package gui;
 
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.Template;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -11,7 +15,7 @@ import java.util.ArrayList;
 
 public class RoomSelectWindow extends Template {
     String roomNum;
-    void addComponents() {
+    public void addComponents() {
         setLayout(null);
         JPanel roomViewPanel = new JPanel();
         BasicButton nextButton = new BasicButton("다음");

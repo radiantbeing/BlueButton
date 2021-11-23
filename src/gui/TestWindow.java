@@ -1,5 +1,10 @@
 package gui;
 
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.BasicPanel;
+import gui.template.Template;
+
 /*
     실행시켜 보고 싶으시면 MainGUI 클래스의 코드 중
     bFrame.centerPanel.add(roomViewWindow);
@@ -11,7 +16,7 @@ package gui;
 */
 public class TestWindow extends Template {
     @Override
-    void addComponents()
+    public void addComponents()
     {
         // Initialize
         setLayout(null);

@@ -2,9 +2,12 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.BasicPanel;
+import gui.template.Template;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
@@ -17,7 +20,7 @@ public class SignUpWindow extends Template {
     String phoneNumber;
 
     @Override
-    void addComponents() {
+    public void addComponents() {
         setLayout(null);
         JPanel signUpPanel = new BasicPanel();
         BasicButton cancleButton = new BasicButton();

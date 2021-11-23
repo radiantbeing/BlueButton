@@ -1,6 +1,9 @@
 package gui;
 
-import boardgamecafe.BoardGameCafe;
+import gui.template.BasicButton;
+import gui.template.BasicLabel;
+import gui.template.BasicPanel;
+import gui.template.Template;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +15,7 @@ public class TimeSelectWindow extends Template {
     int price;
 
     @Override
-    void addComponents() {
+    public void addComponents() {
         setLayout(null);
         JPanel timeSelectPanel = new BasicPanel();
         BasicButton[] basicButtons = new BasicButton[8];

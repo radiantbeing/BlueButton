@@ -2,6 +2,7 @@ package boardgamecafe;
 
 import java.util.Scanner;
 
+import gui.MainGUI;
 import mgr.Factory;
 import mgr.Manageable;
 import mgr.Manager;
@@ -54,6 +55,8 @@ public class BoardGameCafe extends Manager {
         	roomMgr.getList().add(r);
         }
         // openMenu();      <- 이게 남아있으면 gui가 작동하지 않습니다
+        MainGUI.gui = new MainGUI();
+        MainGUI.gui.run();
     }
 
     void openMenu() {

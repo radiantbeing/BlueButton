@@ -23,7 +23,6 @@ public class RoomViewWindow extends Template {
     public void addComponents() {
         // Initialize
         setLayout(null);
-
         // About roomViewPanel
         JPanel roomViewPanel = new JPanel();
         add(roomViewPanel);

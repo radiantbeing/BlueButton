@@ -2,11 +2,13 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 import gui.template.Template;
+import mgr.Manageable;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainGUI {
+    public static MainGUI gui;
     static BoardGameCafe boardgamecafe = new BoardGameCafe();
     // Create BaseFrame
     static BaseFrame bFrame = new BaseFrame();
@@ -17,9 +19,8 @@ public class MainGUI {
     static SignUpWindow signUpWindow = new SignUpWindow();
     static TimeSelectWindow timeSelectWindow = new TimeSelectWindow();
     static RoomSelectWindow roomSelectWindow = new RoomSelectWindow();
-    
-    void run() {
-        boardgamecafe.run(); // 이거 없으면 모든 기능이 동작하지 않습니다...
+
+    public void run() {
         bFrame.createAndShowGUI();
         bFrame.centerPanel.add(roomViewWindow);
         // bFrame.centerPanel.add(new TestWindow());
@@ -36,11 +37,6 @@ public class MainGUI {
         ImageIcon icon = new ImageIcon(imgPath);
         Image scaleImage = icon.getImage().getScaledInstance(width, height,Image.SCALE_SMOOTH);
         return new ImageIcon(scaleImage);
-    }
-
-    public static void main(String[] args) {
-        MainGUI main = new MainGUI();
-        main.run();
     }
 
 }

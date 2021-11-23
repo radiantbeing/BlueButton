@@ -1,4 +1,4 @@
-package gui;
+package gui.template;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +34,7 @@ public class BasicButton extends JButton {
         setText(phrase);
     }
 
-    void setFontAttribute(int size) {
+    public void setFontAttribute(int size) {
         setFont(new Font("NanumGothic", Font.PLAIN, size));
     }
 

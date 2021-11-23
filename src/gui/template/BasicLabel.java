@@ -1,4 +1,4 @@
-package gui;
+package gui.template;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,11 +29,11 @@ public class BasicLabel extends JLabel {
         setText(phrase);
     }
 
-    void setFontAttribute(int size) {
+    public void setFontAttribute(int size) {
         setFont(new Font("NanumGothic", Font.PLAIN, size));
     }
 
-    void setFontAttribute(int size, boolean bold) {
+    public void setFontAttribute(int size, boolean bold) {
         if (bold) {
             setFont(new Font("NanumGothic", Font.BOLD, size));
         } else {

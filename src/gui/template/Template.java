@@ -1,4 +1,4 @@
-package gui;
+package gui.template;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,5 +21,5 @@ public abstract class Template extends JPanel {
         addComponents();
     }
 
-    abstract void addComponents();
+    public abstract void addComponents();
 }

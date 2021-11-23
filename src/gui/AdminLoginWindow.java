@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -69,15 +71,24 @@ public class AdminLoginWindow extends Template {
 				String adminId = adminIdField.getText();
 				String adminPwd = adminPwdField.getText();
 				
-				for(Manageable ad : BoardGameCafe.adminMgr.getList()) {
-					Admin admin = (Admin)ad;
-					if(admin.id.equals(adminId) && admin.pwd.equals(adminPwd)) {
-						JOptionPane.showMessageDialog(null, "로그인 성공!");
-						adm.run();
-						return;
-					}
+				Admin admin = (Admin) BoardGameCafe.adminMgr.find(adminId);
+				if(admin == null || adminId.equals("")) {
+					JOptionPane.showMessageDialog(null, "관리자 아이디가 일치하지 않습니다.");
+					adminIdField.setText("");
+					adminPwdField.setText("");
+					return;
 				}
-				JOptionPane.showMessageDialog(null, "로그인 실패!");
+				
+				if(admin.matches(adminPwd)) {
+					JOptionPane.showMessageDialog(null, "로그인 성공!");
+					adm.run();
+					return;
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "관리자 비밀번호가 일치하지 않습니다!");
+					adminPwdField.setText("");
+					return;
+				}
 			}
 		});
 		

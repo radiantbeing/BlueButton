@@ -35,4 +35,20 @@ public class Snack implements Manageable {
             return true;
         return false;
     }
+    
+    public String getName() {
+    	return this.name;
+    }
+    
+    public String getKind() {
+    	return this.kind;
+    }
+    
+    public int getPrice() {
+    	return this.price;
+    }
+    
+    public int getQuantity() {
+    	return this.quantity;
+    }
 }

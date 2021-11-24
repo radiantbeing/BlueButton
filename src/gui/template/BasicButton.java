@@ -38,7 +38,7 @@ public class BasicButton extends JButton {
         setFont(new Font("NanumGothic", Font.PLAIN, size));
     }
 
-    void setFontAttribute(int size, boolean bold) {
+    public void setFontAttribute(int size, boolean bold) {
         if (bold) {
             setFont(new Font("NanumGothic", Font.BOLD, size));
         } else {

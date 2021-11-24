@@ -19,6 +19,7 @@ public class MainGUI {
     static SignUpWindow signUpWindow = new SignUpWindow();
     static TimeSelectWindow timeSelectWindow = new TimeSelectWindow();
     static RoomSelectWindow roomSelectWindow = new RoomSelectWindow();
+    static SnackOrderWindow snackOrderWindow = new SnackOrderWindow();
 
     public void run() {
         bFrame.createAndShowGUI();

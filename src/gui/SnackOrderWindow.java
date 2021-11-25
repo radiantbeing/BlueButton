@@ -6,26 +6,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import boardgamecafe.BoardGameCafe;
+import boardgamecafe.Order;
 import boardgamecafe.Snack;
 import gui.template.BasicButton;
+import gui.template.BasicLabel;
 import gui.template.BasicPanel;
 import gui.template.Template;
 import mgr.Manageable;
 
 public class SnackOrderWindow extends Template{
 	BasicPanel snackOptionPanel, orderListPanel;
+	BasicLabel orderListTitle, orderListLabel;
 	ArrayList<BasicPanel> nonCoffeePanel, snackPanel, coffeePanel;
+	ArrayList<Order> orderList;
 	@Override
 	public void addComponents() {
 		nonCoffeePanel = new ArrayList<>();
 		snackOptionPanel = new BasicPanel();
 		coffeePanel = new ArrayList<>();
 		snackPanel = new ArrayList<>();
+		orderListPanel = new BasicPanel();
+		orderListLabel = new BasicLabel("<html>");
+		orderListTitle = new BasicLabel("<현재 주문 내역>");
+		orderList = new ArrayList<>();
 		setLayout(null);
 		setCoffeePanel(coffeePanel);
 		setNoncoffeePanel(nonCoffeePanel);
@@ -67,12 +78,95 @@ public class SnackOrderWindow extends Template{
 				}
 			});
 		}
-		
+		BasicButton prevButton = new BasicButton("이전");
+		prevButton.setBounds(150, 580, 150, 40);
+        prevButton.setFontAttribute(20);
+        
+        prevButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainGUI.changeWindow(MainGUI.roomViewWindow);
+			}
+		});
+		add(prevButton);
 		add(snackOptionPanel);
 	}
 	
 	private void setOrderListPanel(BasicPanel orderPanel) {
-		// 오른쪽 아래 주문현황 패널 넣을 예정
+		// 주문 내역 패널
+		orderPanel.setLayout(null);
+		orderPanel.setBounds(880, 260, 300, 300);
+		
+		// 주문 내역 버튼
+		BasicButton orderButton = new BasicButton("주문하기");
+		orderButton.setBounds(0, 250, 150, 50);
+		orderButton.setBackground(new Color(41, 42, 45));
+		orderButton.setFontAttribute(16, true);
+		
+		orderButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(orderList.size() == 0) {
+					JOptionPane.showMessageDialog(null, "주문내역이 존재하지 않습니다.");
+					return;
+				}
+				
+				Order od = orderList.get(0);
+				JOptionPane.showMessageDialog(null,
+					String.format("<html>%s 외 %d개가 주문됩니다"
+						+"<br>총액 : %5d원",
+							od.orderedMenu, orderList.size(), 
+								calcTotalPrice(orderList, orderList.size())));
+				orderList.clear();
+				orderListLabel.setText("<html>");
+			}
+
+			private int calcTotalPrice(ArrayList<Order> orderList, int totalCount) {
+				int sum = 0;
+				for(Order od : orderList) {
+					sum += od.orderedCount * od.totalPrice;
+				}
+				return sum;
+			}			
+		});
+		
+		BasicButton deleteButton = new BasicButton("전체삭제");
+		deleteButton.setBounds(150, 250, 150, 50);
+		deleteButton.setBackground(new Color(41, 42, 45));
+		deleteButton.setFontAttribute(16, true);
+		
+		deleteButton.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				orderListLabel.setText("<html>");
+				orderList.clear();
+			}
+		});
+		
+		orderPanel.add(orderButton);
+		orderPanel.add(deleteButton);
+		
+		// 주문 내역 라벨
+		orderListTitle.setBounds(0, 0, 300, 50);
+		orderListTitle.setFontAttribute(20, true);
+		orderListTitle.setHorizontalAlignment(JLabel.CENTER);
+		
+		orderListLabel.setBounds(0, 50, 300, 200);
+		orderListLabel.setFontAttribute(14, true);
+		orderListLabel.setHorizontalAlignment(JLabel.LEFT);
+		
+		JScrollPane scroll = new JScrollPane(orderListLabel,
+				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setBounds(0, 50, 300, 200);
+		scroll.setBorder(BorderFactory.createEmptyBorder());
+		scroll.getViewport().setBackground(new Color(41,42,45));
+		
+		orderPanel.add(scroll);
+		orderPanel.add(orderListTitle);
+		
+		add(orderPanel);
 	}
 	
 	private void setCoffeePanel(ArrayList<BasicPanel> coffeePanel) {
@@ -115,7 +209,7 @@ public class SnackOrderWindow extends Template{
 		for(int i = 0; i <= panelCount; i++) {
 			BasicPanel panel = new BasicPanel();
 			panel.setLayout(null);
-			panel.setBounds(160, 100, 640, 480);
+			panel.setBounds(160, 100, 640, 460);
 			ArrayList<BasicButton> indexBtnList = makeIndexBtnList(menuPanel, panelCount);
 			for(BasicButton btn : indexBtnList) {
 				panel.add(btn);
@@ -130,7 +224,7 @@ public class SnackOrderWindow extends Template{
 		for(int i = 0; i <= panelCount; i++) {
 			String index = "" + (i + 1);
 			BasicButton tmp = new BasicButton(index);
-			tmp.setBounds(xGap + (40 * i), 440, 40, 40);
+			tmp.setBounds(xGap + (40 * i), 420, 40, 40);
 			tmp.setBackground(new Color(41,42,45));
 			tmp.setFontAttribute(10, false);
 			tmp.setHorizontalAlignment(JLabel.CENTER);
@@ -201,10 +295,24 @@ public class SnackOrderWindow extends Template{
 			menuBtn.setIcon(img3);
 			menuBtn.setBackground(new Color(41, 42, 45));
 			menuBtn.setFontAttribute(20, true);
+			menuBtn.addActionListener(new ActionListener() {	
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Order od = new Order(name,1,price);
+					addOrder(od);
+					int i = orderList.size();
+					String tmp = String.format("<br>[%d] %-8s\t %2d  %5d원",
+								i, od.orderedMenu, od.orderedCount, od.totalPrice);
+					orderListLabel.setText(orderListLabel.getText() + tmp);
+				}
+				private void addOrder(Order od) {
+					orderList.add(od);
+				}
+			});
 			menuBtnList.add(menuBtn);
 		}
 		return menuBtnList;
-	}
+	}		
 	
 	private void panelVisibleSet(ArrayList<BasicPanel> visiblePanel, 
 				ArrayList<BasicPanel> nonVisiblePanel1, 

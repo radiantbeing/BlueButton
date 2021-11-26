@@ -42,7 +42,7 @@ public class GameSelectWindow extends Template {
         addRow(model);
 
         scrolledTable = new JScrollPane(table);    //스크롤 될 수 있도록 JScrollPane 적용
-        scrolledTable.setBounds(20, 20, 1200, 300);
+        scrolledTable.setBounds(20, 10, 700, 650);
         scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));//너무 붙어있어서 가장자리 띄움(padding)
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -51,8 +51,7 @@ public class GameSelectWindow extends Template {
                 int selectedRow = table.getSelectedRow();
                 String cell = (String) table.getValueAt(selectedRow,0);
                 Game game = (Game)BoardGameCafe.gameMgr.find(cell);
-                ImageIcon imageIcon = MainGUI.scaleImageIcon("imgs/games/"+fileNameList.get(fileNameList.indexOf(game.name+".png"))
-                        ,400,400);
+                ImageIcon imageIcon = getMatchedImage(game.name, 300);
                 imageLabel.setIcon(imageIcon);
             }
         });
@@ -80,7 +79,13 @@ public class GameSelectWindow extends Template {
     }
 
     void setImageLabel(JLabel imageLabel) {
-        imageLabel.setBounds(new Rectangle(100, 350, 300, 300));
+        imageLabel.setBounds(new Rectangle(800, 200, 300, 300));
         imageLabel.setOpaque(false);
+    }
+
+    //이름고 매치되는 이미지 반환
+    ImageIcon getMatchedImage(String gameName, int size){
+        return MainGUI.scaleImageIcon("imgs/games/"+
+                fileNameList.get(fileNameList.indexOf(gameName+".png")), size, size);
     }
 }

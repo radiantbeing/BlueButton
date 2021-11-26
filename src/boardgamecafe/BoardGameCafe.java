@@ -9,7 +9,7 @@ import mgr.Manager;
 
 public class BoardGameCafe extends Manager {
     Scanner scan = new Scanner(System.in);    
-    static Manager gameMgr = new Manager();
+    public static Manager gameMgr = new Manager();
     public static Manager snackMgr = new Manager();
     public static Manager nonMemberMgr = new Manager();
     public static Manager memberMgr = new Manager();

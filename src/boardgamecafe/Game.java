@@ -22,12 +22,12 @@ public class Game implements Manageable {
     K행에 30개의 게임이 보관되면, 그 다음에 추가되는 게임은 L0 부터 보관되는 식입니다.
      */
 
-    int code;
-    String name;
-    String location;
-    String genre;
-    String difficulty;
-    String condition;
+    public int code;
+    public String name;
+    public String location;
+    public String genre;
+    public String difficulty;
+    public String condition;
 
     @Override
     public void read(Scanner scan) {

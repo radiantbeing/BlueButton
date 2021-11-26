@@ -20,7 +20,7 @@ public class MainGUI {
     static TimeSelectWindow timeSelectWindow = new TimeSelectWindow();
     static RoomSelectWindow roomSelectWindow = new RoomSelectWindow();
     static SnackOrderWindow snackOrderWindow = new SnackOrderWindow();
-
+    static GameSelectWindow gameSelectWindow = new GameSelectWindow();
     public void run() {
         bFrame.createAndShowGUI();
         bFrame.centerPanel.add(roomViewWindow);

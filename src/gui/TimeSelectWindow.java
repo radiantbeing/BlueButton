@@ -84,6 +84,13 @@ public class TimeSelectWindow extends Template {
             });
             timeSelectPanel.add(basicButtons[i]);
         }
+
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.gameSelectWindow);
+            }
+        });
     }
 
 }

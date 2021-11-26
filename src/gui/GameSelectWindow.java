@@ -51,7 +51,7 @@ public class GameSelectWindow extends Template {
                 int selectedRow = table.getSelectedRow();
                 String cell = (String) table.getValueAt(selectedRow,0);
                 Game game = (Game)BoardGameCafe.gameMgr.find(cell);
-                ImageIcon imageIcon = MainGUI.scaleImageIcon(fileNameList.get(fileNameList.indexOf(game.name+".png"))
+                ImageIcon imageIcon = MainGUI.scaleImageIcon("imgs/games/"+fileNameList.get(fileNameList.indexOf(game.name+".png"))
                         ,400,400);
                 imageLabel.setIcon(imageIcon);
             }

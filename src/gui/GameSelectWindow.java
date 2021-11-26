@@ -73,7 +73,6 @@ public class GameSelectWindow extends Template {
         File folder = new File("imgs/games/");
         String[] filenames = folder.list();
         for (String str : filenames) {
-            System.out.println(str);
             fileNameList.add(str);
         }
     }

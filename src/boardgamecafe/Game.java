@@ -47,10 +47,10 @@ public class Game implements Manageable {
 
     @Override
     public boolean matches(String kwd) {
-        if (code == Integer.parseInt(kwd))
-            return true;
         if (name.contains(kwd))
             return true;
+//        if (code == Integer.parseInt(kwd))
+//            return true;
         if (location.equals(kwd))
             return true;
         if (genre.contains(kwd))

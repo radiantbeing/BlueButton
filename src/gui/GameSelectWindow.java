@@ -15,24 +15,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSelectWindow extends Template {
-    private JLabel imageLabel = new JLabel();
-    private JTextField[] fields = new JTextField[6];
-    private JScrollPane scrolledTable;
-    private JTable table;
-    List<String> fileList = new ArrayList<>();
+    ArrayList<String> fileNameList;
+    JLabel imageLabel;
+    JTextField[] fields;
+    JScrollPane scrolledTable;
+    JTable table;
+
     @Override
     public void addComponents() {
-//        setLayout(null);
-//        addFileName();
-//        setTable();
-//        setImageLabel(imageLabel);
-//        add(scrolledTable);
-//        add(imageLabel);
-        File folder = new File("imgs/games");
-        String[]filenames=folder.list();
-        for (String str : filenames) {
-            fileList.add(str);
-        }
+        fields = new JTextField[6];
+        imageLabel = new JLabel();
+        setLayout(null);
+        addFileName();
+        setTable();
+        setImageLabel(imageLabel);
+        add(scrolledTable);
+        add(imageLabel);
     }
 
     void setTable() {
@@ -44,37 +42,45 @@ public class GameSelectWindow extends Template {
         addRow(model);
 
         scrolledTable = new JScrollPane(table);    //스크롤 될 수 있도록 JScrollPane 적용
-        scrolledTable.setBounds(20,20,1200,300);
+        scrolledTable.setBounds(20, 20, 1200, 300);
         scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));//너무 붙어있어서 가장자리 띄움(padding)
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                imageLabel.setOpaque(true);
                 int selectedRow = table.getSelectedRow();
-                imageLabel.setIcon(MainGUI.scaleImageIcon(fileList.get(selectedRow),300,300));
+                String cell = (String) table.getValueAt(selectedRow,0);
+                Game game = (Game)BoardGameCafe.gameMgr.find(cell);
+                ImageIcon imageIcon = MainGUI.scaleImageIcon(fileNameList.get(fileNameList.indexOf(game.name+".png"))
+                        ,400,400);
+                imageLabel.setIcon(imageIcon);
             }
         });
     }
 
-    void addRow(DefaultTableModel model){
-        Object [] row;
-        for(int i=0;i<BoardGameCafe.gameMgr.getList().size();i+=3){
-            Game g = (Game)BoardGameCafe.gameMgr.getList().get(i);
-            row = new Object[] {new String(g.name), new String(g.difficulty),
-                    new String(g.genre),new String("3")};
+    void addRow(DefaultTableModel model) {
+        Object[] row;
+        for (int i = 0; i < BoardGameCafe.gameMgr.getList().size(); i += 3) {
+            Game g = (Game) BoardGameCafe.gameMgr.getList().get(i);
+
+            row = new Object[]{new String(g.name), new String(g.difficulty),
+                    new String(g.genre), new String("3")};
             model.addRow(row);
         }
     }
 
-    void addFileName(){
+    void addFileName() {
+        fileNameList = new ArrayList<>();
         File folder = new File("imgs/games/");
-        String[]filenames=folder.list();
+        String[] filenames = folder.list();
         for (String str : filenames) {
-            fileList.add(str);
+            System.out.println(str);
+            fileNameList.add(str);
         }
     }
 
-    void setImageLabel(JLabel imageLabel){
-        imageLabel.setBounds(new Rectangle(300,300,300,300));
-        imageLabel.setOpaque(true);
+    void setImageLabel(JLabel imageLabel) {
+        imageLabel.setBounds(new Rectangle(100, 350, 300, 300));
+        imageLabel.setOpaque(false);
     }
 }

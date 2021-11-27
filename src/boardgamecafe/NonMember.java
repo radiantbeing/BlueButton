@@ -2,6 +2,7 @@ package boardgamecafe;
 
 import mgr.Manageable;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NonMember implements Manageable {
@@ -13,6 +14,7 @@ public class NonMember implements Manageable {
     int remainingTime;
     Game playingGame;
     Timer timer;
+    ArrayList<Snack> orderList;
 
     @Override
     public void read(Scanner scan) {
@@ -20,8 +22,12 @@ public class NonMember implements Manageable {
         phoneNumber = scan.next();
     }
 
+    void addOrder(Snack snack){
+        orderList.add(snack);
+    }
+
     // 파일을 추가하면서 수동으로 입력을 해야하는 경우가 생겨서 read를 오버로딩
-    public void read(String name, String phoneNumber){
+    public void read(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
@@ -72,11 +78,13 @@ public class NonMember implements Manageable {
     }
 
     //남은시간을 얻을때 쓰는 메소드
-    public int getRemainingTime(){
+    public int getRemainingTime() {
         return remainingTime;
     }
 
-    public void setPlayingGame(Game game) {playingGame = game;}
+    public void setPlayingGame(Game game) {
+        playingGame = game;
+    }
 
     class Timer extends Thread {
         public void run() {
@@ -84,7 +92,7 @@ public class NonMember implements Manageable {
                 try {
                     sleep(1000);
                     remainingTime--;
-                    if (remainingTime <= 0){
+                    if (remainingTime <= 0) {
                         remainingTime = 0;
                     }
                 } catch (InterruptedException e) {

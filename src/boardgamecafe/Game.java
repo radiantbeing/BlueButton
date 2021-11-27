@@ -49,8 +49,8 @@ public class Game implements Manageable {
     public boolean matches(String kwd) {
         if (name.contains(kwd))
             return true;
-//        if (code == Integer.parseInt(kwd))
-//            return true;
+        if (kwd.length() < 4 && code == Integer.parseInt(kwd))
+            return true;
         if (location.equals(kwd))
             return true;
         if (genre.contains(kwd))

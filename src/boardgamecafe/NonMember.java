@@ -11,6 +11,7 @@ public class NonMember implements Manageable {
     // 게임 방은 1, 2, 3, ..., 9, 10의 숫자로 구분
     int roomNumber;
     int remainingTime;
+    Game playingGame;
     Timer timer;
 
     @Override
@@ -74,6 +75,8 @@ public class NonMember implements Manageable {
     public int getRemainingTime(){
         return remainingTime;
     }
+
+    public void setPlayingGame(Game game) {playingGame = game;}
 
     class Timer extends Thread {
         public void run() {

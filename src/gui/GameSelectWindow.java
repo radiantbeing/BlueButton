@@ -2,6 +2,8 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Game;
+import gui.template.BasicButton;
+import gui.template.BasicPanel;
 import gui.template.Template;
 import mgr.Manageable;
 
@@ -10,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -17,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSelectWindow extends Template {
+    Game selectedGame;
     ArrayList<String> fileNameList;
     JLabel imageLabel;
     JTextField[] fields;
@@ -32,7 +37,42 @@ public class GameSelectWindow extends Template {
         setTable();
         setImageLabel(imageLabel);
         add(scrolledTable);
-        add(imageLabel);
+
+
+        // About RightTop Panel
+        BasicPanel rightTopPanel = new BasicPanel();
+        rightTopPanel.setLayout(null);
+        rightTopPanel.setBounds(800,90,320,120);
+        add(rightTopPanel);
+
+        rightTopPanel.add(imageLabel);
+
+        // About RightBottom Panel
+        BasicPanel rightBottomPanel = new BasicPanel();
+        rightBottomPanel.setLayout(null);
+        rightBottomPanel.setBounds(800,220,320,250);
+        add(rightBottomPanel);
+
+        // About Prev Button
+        BasicButton prevButton = new BasicButton("이전");
+        prevButton.setBounds(160,580,320,40);
+        add(prevButton);
+        prevButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.timeSelectWindow);
+            }
+        });
+        // About Next Button
+        BasicButton nextButton = new BasicButton("다음");
+        nextButton.setBounds(800,580,320,40);
+        add(nextButton);
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.snackOrderWindow);
+            }
+        });
     }
 
     void setTable() {
@@ -52,7 +92,7 @@ public class GameSelectWindow extends Template {
         addRow(model);
 
         scrolledTable = new JScrollPane(table);    //스크롤 될 수 있도록 JScrollPane 적용
-        scrolledTable.setBounds(20, 10, 700, 650);
+        scrolledTable.setBounds(160, 70, 320, 400);
         scrolledTable.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));//너무 붙어있어서 가장자리 띄움(padding)
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -61,10 +101,12 @@ public class GameSelectWindow extends Template {
                 int selectedRow = table.getSelectedRow();
                 String cell = (String) table.getValueAt(selectedRow,0);
                 Game game = (Game)BoardGameCafe.gameMgr.find(cell);
-                ImageIcon imageIcon = getMatchedImage(game.name, 300);
+                ImageIcon imageIcon = getMatchedImage(game.name, 100);
                 imageLabel.setIcon(imageIcon);
             }
         });
+
+
     }
 
     void addRow(DefaultTableModel model) {
@@ -88,7 +130,7 @@ public class GameSelectWindow extends Template {
     }
 
     void setImageLabel(JLabel imageLabel) {
-        imageLabel.setBounds(new Rectangle(800, 200, 300, 300));
+        imageLabel.setBounds(10,10,100,100);
         imageLabel.setOpaque(false);
     }
 

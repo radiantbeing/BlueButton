@@ -35,7 +35,7 @@ public class AdminLoginWindow extends Template {
 		adminLoginPanel.setLayout(null);
 		adminLoginPanel.setBounds(480, 90, 320, 400);
 
-		BasicLabel adminLabel = new BasicLabel("관리자 로그인");
+		BasicLabel adminLabel = new BasicLabel("관리자 로그인11");
 		adminLabel.setForeground(Color.WHITE);
 		adminLabel.setFontAttribute(20, true);
 		adminLabel.setBounds(100, 40, 150, 40);

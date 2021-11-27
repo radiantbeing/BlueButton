@@ -22,7 +22,7 @@ public class BasicButton extends JButton {
         setFocusPainted(false);
         setBackground(new Color(0, 120, 242));
         setForeground(Color.WHITE);
-        setFont(new Font("NanumGothic", Font.PLAIN, 10));
+        setFont(new Font("NanumGothic", Font.PLAIN, 18));
     }
 
     public BasicButton(String phrase) {
@@ -30,7 +30,7 @@ public class BasicButton extends JButton {
         setFocusPainted(false);
         setBackground(new Color(0, 120, 242));
         setForeground(Color.WHITE);
-        setFont(new Font("NanumGothic", Font.PLAIN, 10));
+        setFont(new Font("NanumGothic", Font.PLAIN, 18));
         setText(phrase);
     }
 

@@ -7,6 +7,8 @@ import mgr.Manageable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,10 +36,18 @@ public class GameSelectWindow extends Template {
     }
 
     void setTable() {
-        String header[] = {"이름", "난이도", "종류", "갯수"};
+        String header[] = {"이름", "난이도", "종류", "남은 개수"};
         DefaultTableModel model = new DefaultTableModel(header, 0);    //header추가, 행은 0개 지정
 
         table = new JTable(model);
+
+        // Table sorter
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(sorter);
+        // Column Dragging 비허용
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+
+        table.getTableHeader().setReorderingAllowed(false);
         table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         addRow(model);
 

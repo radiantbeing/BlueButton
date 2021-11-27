@@ -16,8 +16,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class RoomSelectWindow extends Template {
-    int roomNum;
+    static int roomNum;
     Room selectedRoom;
+
     public void addComponents() {
         setLayout(null);
         JPanel roomViewPanel = new JPanel();

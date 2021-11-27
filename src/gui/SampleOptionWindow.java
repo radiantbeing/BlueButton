@@ -19,6 +19,7 @@ public class SampleOptionWindow extends Template {
         basicPanel = new BasicPanel();
         setMenu();
         setLayout(null);
+        addButton();
         add(basicPanel);
     }
 
@@ -116,5 +117,12 @@ public class SampleOptionWindow extends Template {
         foodPanel.add(foodLabel);
         foodPanel.add(foodButton);
         basicPanel.add(foodPanel);
+    }
+
+    void addButton(){
+        BasicButton payButton = new BasicButton("결제");
+        payButton.setBounds(new Rectangle(1000,600,200,40));
+        payButton.setEnabled(false);
+        basicPanel.add(payButton);
     }
 }

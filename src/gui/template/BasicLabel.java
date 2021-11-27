@@ -20,13 +20,20 @@ import java.awt.*;
 public class BasicLabel extends JLabel {
     public BasicLabel() {
         setForeground(Color.WHITE);
-        setFont(new Font("NanumGothic", Font.PLAIN, 10));
+        setFont(new Font("NanumGothic", Font.PLAIN, 15));
     }
 
-    public BasicLabel(String phrase) {
+    public BasicLabel(String text) {
         setForeground(Color.WHITE);
-        setFont(new Font("NanumGothic", Font.PLAIN, 10));
-        setText(phrase);
+        setFont(new Font("NanumGothic", Font.PLAIN, 15));
+        setText(text);
+    }
+
+    public BasicLabel(String text, int alignment) {
+        super(text, alignment);
+        setForeground(Color.WHITE);
+        setFont(new Font("NanumGothic", Font.PLAIN, 15));
+        setText(text);
     }
 
     public void setFontAttribute(int size) {

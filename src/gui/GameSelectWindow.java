@@ -38,7 +38,6 @@ public class GameSelectWindow extends Template {
         setImageLabel(imageLabel);
         add(scrolledTable);
 
-
         // About RightTop Panel
         BasicPanel rightTopPanel = new BasicPanel();
         rightTopPanel.setLayout(null);

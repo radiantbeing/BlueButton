@@ -21,6 +21,7 @@ public class MainGUI {
     static RoomSelectWindow roomSelectWindow = new RoomSelectWindow();
     static SnackOrderWindow snackOrderWindow = new SnackOrderWindow();
     static GameSelectWindow gameSelectWindow = new GameSelectWindow();
+    static SampleOptionWindow sampleOptionWindow = new SampleOptionWindow();
     public void run() {
         bFrame.createAndShowGUI();
         bFrame.centerPanel.add(roomViewWindow);

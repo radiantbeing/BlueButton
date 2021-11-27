@@ -1,5 +1,7 @@
 package boardgamecafe;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import gui.MainGUI;
@@ -14,8 +16,9 @@ public class BoardGameCafe extends Manager {
     public static Manager nonMemberMgr = new Manager();
     public static Manager memberMgr = new Manager();
     public static Manager adminMgr = new Manager();
-    static Manager roomMgr = new Manager();
+    public static Manager roomMgr = new Manager();
     final static int MAX_ROOM_NUMBER = 10;
+    public static Map<Room,Manageable> roomAndUserInfo = new HashMap<>();//사용하고있는 방, 사용자를 한번에 저장하기 위해서 map을 사용합니다.
     Administrator ad = new Administrator();
 
     public void run() {
@@ -51,7 +54,7 @@ public class BoardGameCafe extends Manager {
         // 방정보 추가
         for(int i = 0 ; i < MAX_ROOM_NUMBER; i++) {
         	Room r = new Room();
-        	r.roomNumber = i;
+        	r.setRoomNumber(i);
         	roomMgr.getList().add(r);
         }
         // openMenu();      <- 이게 남아있으면 gui가 작동하지 않습니다

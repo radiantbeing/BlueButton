@@ -2,10 +2,12 @@ package gui;
 
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
+import boardgamecafe.NonMember;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.BasicPanel;
 import gui.template.Template;
+import mgr.Manageable;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,8 +17,9 @@ public class LogInWindow extends Template {
     String phoneNumber;
     String name;
     String password;
-    String id;
-
+    static Member nowLoginMember = null;
+    static NonMember nowLoginNonMember = null;
+    static boolean flag = true;
     @Override
     public void addComponents() {
         JPanel memberPanel = new BasicPanel();
@@ -71,10 +74,10 @@ public class LogInWindow extends Template {
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                id = memberIdTextField.getText();
-                Member m = (Member) BoardGameCafe.memberMgr.find(id);
+                phoneNumber = memberIdTextField.getText();
+                Member m = (Member) BoardGameCafe.memberMgr.find(phoneNumber);
                 password = memberPWTextField.getText();
-                if (m == null || id.equals("")){// 잘못된 아이디 입력시
+                if (m == null || phoneNumber.equals("")){// 잘못된 아이디 입력시
                     JOptionPane.showMessageDialog(null, "ID doesn't exist");
                     memberPWTextField.setText("");
                     memberIdTextField.setText("");
@@ -83,6 +86,8 @@ public class LogInWindow extends Template {
                 
                 if (m.matches(password)){ //로그인 성공
                     JOptionPane.showMessageDialog(null, "Login Complete");
+                    nowLoginMember = m;
+                    flag = true;
                     MainGUI.changeWindow(MainGUI.roomSelectWindow);
                     //후에 좌석선택, 시간선택으로 넘어가야함
                 }
@@ -157,6 +162,7 @@ public class LogInWindow extends Template {
                 }
                 //입력이 제대로 될때-> 파일이 입력이 된다.
                 JOptionPane.showMessageDialog(null, "Login Complete");
+                flag = false;
                 MainGUI.changeWindow(MainGUI.roomSelectWindow);
                 nonMemberIdTextField.setText("");
                 nonMemberPWTextField.setText("");
@@ -187,5 +193,12 @@ public class LogInWindow extends Template {
                 MainGUI.changeWindow(MainGUI.signUpWindow);
             }
         });
+    }
+
+    static Manageable getNowLoginMember(){
+        if (flag){
+            return nowLoginMember;
+        }
+        return nowLoginNonMember;
     }
 }

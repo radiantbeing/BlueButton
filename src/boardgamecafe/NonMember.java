@@ -55,13 +55,13 @@ public class NonMember implements Manageable {
 
     // 이용 시간을 초 단위로 추가합니다.
     // GUI의 요금제 선택 단계에서 사용하는 메소드
-    void addTime(int seconds) {
+    public void addTime(int seconds) {
         remainingTime += seconds;
     }
 
     // 잔여 시간을 계산하기 위한 Timer를 시작합니다.
     // GUI의 결제 단계에서 사용하는 메소드
-    void startTimer() {
+    public void startTimer() {
         timer = new Timer();
         timer.start();
     }

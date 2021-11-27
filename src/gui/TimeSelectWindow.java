@@ -1,9 +1,11 @@
 package gui;
 
+import boardgamecafe.Member;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.BasicPanel;
 import gui.template.Template;
+import mgr.Manageable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,6 +90,8 @@ public class TimeSelectWindow extends Template {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Member m = (Member)LogInWindow.getNowLoginMember();//멤버가올지 논멤버가 올지 구별이안가는데,,,일단은 Member라고 가정
+                m.addTime(Integer.parseInt(hour)*3600);
                 MainGUI.changeWindow(MainGUI.gameSelectWindow);
             }
         });

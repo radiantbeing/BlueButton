@@ -123,8 +123,8 @@ public class RoomViewWindow extends Template {
     }
 
 
-    void changeRoomInfo(String roomNum, boolean flag) {
-        JPanel jPanel = roomPanelArrayList.get(Integer.parseInt(roomNum) - 1);
+    void changeRoomInfo(int roomNum, boolean flag) {
+        JPanel jPanel = roomPanelArrayList.get(roomNum - 1);
         if (flag) {//방이 이용중일때
             jPanel.setBackground(new Color(121, 117, 117));
             return;

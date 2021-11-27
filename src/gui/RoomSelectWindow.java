@@ -1,5 +1,7 @@
 package gui;
 
+import boardgamecafe.BoardGameCafe;
+import boardgamecafe.Room;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.Template;
@@ -14,7 +16,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class RoomSelectWindow extends Template {
-    String roomNum;
+    int roomNum;
+    Room selectedRoom;
     public void addComponents() {
         setLayout(null);
         JPanel roomViewPanel = new JPanel();
@@ -56,7 +59,7 @@ public class RoomSelectWindow extends Template {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() % 2 != 0) { //클릭시
-                        roomNum = roomNumberLabel.getText();
+                        roomNum = Integer.parseInt(roomNumberLabel.getText());
                         roomPanel.setBackground(new Color(121, 117, 117));
                         nextButton.setBackground(new Color(0, 120, 242));
                         nextButton.setEnabled(true);
@@ -86,6 +89,9 @@ public class RoomSelectWindow extends Template {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
+                selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum-1);
+                selectedRoom.setUse();
+                BoardGameCafe.roomAndUserInfo.put(selectedRoom, LogInWindow.getNowLoginMember());//로그인한 상태에서 정보저장
                 MainGUI.changeWindow(MainGUI.timeSelectWindow);
             }
         });

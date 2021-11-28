@@ -89,7 +89,7 @@ public class SnackSelectWindow extends Template{
         prevButton.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainGUI.changeWindow(MainGUI.roomViewWindow);
+				MainGUI.changeWindow(MainGUI.sampleOtionWindow);
 			}
 		});
 		add(prevButton);

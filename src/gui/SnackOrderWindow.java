@@ -8,12 +8,15 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 import boardgamecafe.BoardGameCafe;
+import boardgamecafe.NonMember;
 import boardgamecafe.Order;
 import boardgamecafe.Snack;
 import gui.template.BasicButton;
@@ -22,11 +25,12 @@ import gui.template.BasicPanel;
 import gui.template.Template;
 import mgr.Manageable;
 
-public class SnackOrderWindow extends Template{
+public class SnackSelectWindow extends Template{
+	private static final long serialVersionUID = 1L;
 	BasicPanel snackOptionPanel, orderListPanel;
 	BasicLabel orderListTitle, orderListLabel;
 	ArrayList<BasicPanel> nonCoffeePanel, snackPanel, coffeePanel;
-	ArrayList<Order> orderList;
+	static ArrayList<Order> orderList;
 	@Override
 	public void addComponents() {
 		nonCoffeePanel = new ArrayList<>();
@@ -82,11 +86,10 @@ public class SnackOrderWindow extends Template{
 		prevButton.setBounds(150, 580, 150, 40);
         prevButton.setFontAttribute(20);
         
-        prevButton.addActionListener(new ActionListener() {
-			
+        prevButton.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
+				MainGUI.changeWindow(MainGUI.roomViewWindow);
 			}
 		});
 		add(prevButton);
@@ -110,23 +113,25 @@ public class SnackOrderWindow extends Template{
 				if(orderList.size() == 0) {
 					JOptionPane.showMessageDialog(null, "주문내역이 존재하지 않습니다.");
 					return;
-				}
-				
+				}			
 				Order od = orderList.get(0);
 				JOptionPane.showMessageDialog(null,
 					String.format("<html>%s 외 %d개가 주문됩니다"
 						+"<br>총액 : %5d원",
 							od.orderedMenu, orderList.size(), 
 								calcTotalPrice(orderList, orderList.size())));
+				NonMember m = (NonMember) LogInWindow.getNowLoginMember();
+				for(Order od1 : orderList) {
+					m.orderList.add(od1);
+				}
 				orderList.clear();
 				orderListLabel.setText("<html>");
-				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
 			}
 
 			private int calcTotalPrice(ArrayList<Order> orderList, int totalCount) {
 				int sum = 0;
 				for(Order od : orderList) {
-					sum += od.orderedCount * od.totalPrice;
+					sum += od.totalPrice;
 				}
 				return sum;
 			}			
@@ -281,8 +286,8 @@ public class SnackOrderWindow extends Template{
 		for(Manageable m : menuList) {
 			Snack snack = (Snack)m;
 			ImageIcon img1, img3 = null;
-			String name = snack.getName();
-			int price = snack.getPrice();
+			String name = snack.name;
+			int price = snack.price;
 			try {
 				img1 = new ImageIcon("imgs/snack/"+ name +".jpg");
 			} catch(NullPointerException e) {
@@ -299,22 +304,13 @@ public class SnackOrderWindow extends Template{
 			menuBtn.addActionListener(new ActionListener() {	
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Order od = new Order(name,1,price);
-					addOrder(od);
-					int i = orderList.size();
-					String tmp = String.format("<br>[%d] %-8s\t %2d  %5d원",
-								i, od.orderedMenu, od.orderedCount, od.totalPrice);
-					orderListLabel.setText(orderListLabel.getText() + tmp);
-				}
-				private void addOrder(Order od) {
-					orderList.add(od);
+					new SnackCountDialog(name, price);
 				}
 			});
 			menuBtnList.add(menuBtn);
 		}
 		return menuBtnList;
-	}		
-	
+	}			
 	private void panelVisibleSet(ArrayList<BasicPanel> visiblePanel, 
 				ArrayList<BasicPanel> nonVisiblePanel1, 
 				ArrayList<BasicPanel> nonVisiblePanel2, int index) {
@@ -329,4 +325,55 @@ public class SnackOrderWindow extends Template{
 		}
 		visiblePanel.get(index).setVisible(true);
 	}
+	class SnackCountDialog extends JFrame {
+		private static final long serialVersionUID = 1L;
+		BasicPanel countPanel;
+		BasicButton okBtn;
+		JTextField countField;
+		String name;
+		int inputCount, price;
+		
+		public SnackCountDialog(String name, int price) {
+			setLayout(null);
+			setBounds(450, 250, 300, 50);
+			setUndecorated(true);
+			setVisible(true);
+			this.name = name;
+			this.price = price;
+			addComponentToPane();
+		}
+
+		private void addComponentToPane() {
+			// TODO Auto-generated method stub
+			countPanel = new BasicPanel();
+			countPanel.setLayout(null);
+			countPanel.setSize(300, 100);
+			
+			countField = new JTextField("1");
+			countField.setBounds(0, 10, 200, 30);
+			
+			okBtn = new BasicButton("확인");
+			okBtn.setBounds(200, 0, 100, 50);
+			okBtn.setFontAttribute(12, true);
+			okBtn.addActionListener(new ActionListener() {			
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					inputCount = Integer.parseInt(countField.getText());
+					Snack s = (Snack) BoardGameCafe.snackMgr.find(name);
+					Order od = new Order(name, inputCount, s.price);
+					orderList.add(od);
+					String text = String.format("<br>[%d] %-8s\t %2d개 %6d원", 
+								orderList.size(), od.orderedMenu, od.orderedCount, od.totalPrice);
+					orderListLabel.setText(orderListLabel.getText() + text);
+					dispose();
+				}
+			});
+			countPanel.add(countField);
+			countPanel.add(okBtn);
+			
+			add(countPanel);
+		}
+	}
 }
+
+

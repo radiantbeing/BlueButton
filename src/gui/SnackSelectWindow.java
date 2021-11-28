@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -89,7 +90,7 @@ public class SnackSelectWindow extends Template{
         prevButton.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainGUI.changeWindow(MainGUI.sampleOtionWindow);
+				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
 			}
 		});
 		add(prevButton);
@@ -122,6 +123,8 @@ public class SnackSelectWindow extends Template{
 								calcTotalPrice(orderList, orderList.size())));
 				NonMember m = (NonMember) LogInWindow.getNowLoginMember();
 				for(Order od1 : orderList) {
+					Snack snack = (Snack)BoardGameCafe.snackMgr.find(od1.orderedMenu);
+					snack.quantity -= od1.orderedCount;
 					m.orderList.add(od1);
 				}
 				orderList.clear();
@@ -329,13 +332,14 @@ public class SnackSelectWindow extends Template{
 		private static final long serialVersionUID = 1L;
 		BasicPanel countPanel;
 		BasicButton okBtn;
+		BasicLabel label;
 		JTextField countField;
 		String name;
 		int inputCount, price;
 		
 		public SnackCountDialog(String name, int price) {
 			setLayout(null);
-			setBounds(450, 250, 300, 50);
+			setBounds(450, 250, 300, 100);
 			setUndecorated(true);
 			setVisible(true);
 			this.name = name;
@@ -349,17 +353,30 @@ public class SnackSelectWindow extends Template{
 			countPanel.setLayout(null);
 			countPanel.setSize(300, 100);
 			
+			label = new BasicLabel("주문을 원치않으시면 0 입력후 확인");
+			label.setBounds(0, 0, 300, 50);
+			label.setFontAttribute(14, true);
+			
 			countField = new JTextField("1");
-			countField.setBounds(0, 10, 200, 30);
+			countField.setFont(new Font("NanumGothic", Font.PLAIN, 14));
+			countField.setBounds(0, 50, 200, 50);
 			
 			okBtn = new BasicButton("확인");
-			okBtn.setBounds(200, 0, 100, 50);
+			okBtn.setBounds(200, 50, 100, 50);
 			okBtn.setFontAttribute(12, true);
 			okBtn.addActionListener(new ActionListener() {			
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					inputCount = Integer.parseInt(countField.getText());
+					if(inputCount == 0) {
+						dispose();
+						return;
+					}
 					Snack s = (Snack) BoardGameCafe.snackMgr.find(name);
+					if(s.quantity < inputCount) {
+						JOptionPane.showMessageDialog(null, "현재 주문이 불가능 합니다(수량 부족)");
+						return;
+					}
 					Order od = new Order(name, inputCount, s.price);
 					orderList.add(od);
 					String text = String.format("<br>[%d] %-8s\t %2d개 %6d원", 
@@ -368,6 +385,7 @@ public class SnackSelectWindow extends Template{
 					dispose();
 				}
 			});
+			countPanel.add(label);
 			countPanel.add(countField);
 			countPanel.add(okBtn);
 			

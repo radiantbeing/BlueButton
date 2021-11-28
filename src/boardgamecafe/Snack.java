@@ -8,10 +8,10 @@ import java.util.Scanner;
 public class Snack implements Manageable {
     // 이름 종류 가격 수량
     // 에스프레소 커피 3800 20
-    String name;
-    String kind;
-    int price;
-    int quantity;
+    public String name;
+    public String kind;
+    public int price;
+    public int quantity;
 
     @Override
     public void read(Scanner scan) {
@@ -36,19 +36,4 @@ public class Snack implements Manageable {
         return false;
     }
     
-    public String getName() {
-    	return this.name;
-    }
-    
-    public String getKind() {
-    	return this.kind;
-    }
-    
-    public int getPrice() {
-    	return this.price;
-    }
-    
-    public int getQuantity() {
-    	return this.quantity;
-    }
 }

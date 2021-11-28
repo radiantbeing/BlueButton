@@ -72,7 +72,7 @@ public class SampleOptionWindow extends Template {
         timeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.changeWindow(MainGUI.roomSelectWindow);
+                MainGUI.changeWindow(MainGUI.timeSelectWindow);
             }
         });
         timeLabel.setIcon(MainGUI.scaleImageIcon("imgs/menu/clock.png",100,100));
@@ -91,7 +91,7 @@ public class SampleOptionWindow extends Template {
         gameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.changeWindow(MainGUI.roomSelectWindow);
+                MainGUI.changeWindow(MainGUI.gameSelectWindow);
             }
         });
         gameLabel.setIcon(MainGUI.scaleImageIcon("imgs/menu/boardgame.png",100,100));
@@ -110,7 +110,7 @@ public class SampleOptionWindow extends Template {
         foodButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.changeWindow(MainGUI.roomSelectWindow);
+                MainGUI.changeWindow(MainGUI.snackOrderWindow);
             }
         });
         foodLabel.setIcon(MainGUI.scaleImageIcon("imgs/menu/food.png",100,100));

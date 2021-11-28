@@ -22,8 +22,8 @@ public class RoomSelectWindow extends Template {
     public void addComponents() {
         setLayout(null);
         JPanel roomViewPanel = new JPanel();
-        BasicButton nextButton = new BasicButton("다음");
-        BasicButton prevButton = new BasicButton("이전");
+        BasicButton nextButton = new BasicButton("확인");
+        BasicButton prevButton = new BasicButton("메뉴");
         setButton(nextButton, prevButton);
         generateSelectPanel(roomViewPanel, nextButton);
         add(roomViewPanel);
@@ -93,7 +93,7 @@ public class RoomSelectWindow extends Template {
                 selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum-1);
                 selectedRoom.setUse();
                 BoardGameCafe.roomAndUserInfo.put(selectedRoom, LogInWindow.getNowLoginMember());//로그인한 상태에서 정보저장
-                MainGUI.changeWindow(MainGUI.timeSelectWindow);
+                JOptionPane.showMessageDialog(null, "방이 선택되었습니다.");
             }
         });
 
@@ -104,7 +104,7 @@ public class RoomSelectWindow extends Template {
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.changeWindow(MainGUI.logInWindow);
+                MainGUI.changeWindow(MainGUI.sampleOptionWindow);
             }
         });
     }

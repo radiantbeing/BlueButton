@@ -23,13 +23,12 @@ public class TimeSelectWindow extends Template {
         setLayout(null);
         JPanel timeSelectPanel = new BasicPanel();
         BasicButton[] basicButtons = new BasicButton[8];
-        BasicButton nextButton = new BasicButton("다음");
-        setTimeComponents(timeSelectPanel, nextButton);
-        generateButtons(basicButtons, timeSelectPanel, nextButton);
+        setTimeComponents(timeSelectPanel);
+        generateButtons(basicButtons, timeSelectPanel);
         add(timeSelectPanel);
     }
 
-    void setTimeComponents(JPanel timeSelectPanel, BasicButton nextButton) {
+    void setTimeComponents(JPanel timeSelectPanel) {
         // mainPanel
         timeSelectPanel.setLayout(null);
         timeSelectPanel.setBounds(90, 60, 1100, 600);
@@ -41,29 +40,26 @@ public class TimeSelectWindow extends Template {
         timeSelectPanel.add(headLine);
 
         //뒤로가기 버튼
-        BasicButton prevButton = new BasicButton("뒤로");
+        BasicButton prevButton = new BasicButton("메뉴");
         prevButton.setFontAttribute(20);
         prevButton.setBounds(30, 550, 150, 40);
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nextButton.setEnabled(false);
-                nextButton.setBackground(new Color(121, 117, 117));
-                MainGUI.changeWindow(MainGUI.roomSelectWindow);
+                NonMember m = (NonMember) LogInWindow.getNowLoginMember();
+                try{//여기서 null 오류가  발생하는데 후에 수정예정
+                    m.addTime(Integer.parseInt(hour.substring(0,1))*3600);
+                }catch (Exception a){
+                    MainGUI.changeWindow(MainGUI.sampleOptionWindow);
+                }
+                MainGUI.changeWindow(MainGUI.sampleOptionWindow);
             }
         });
         timeSelectPanel.add(prevButton);
 
-        //다음 화변버튼
-        nextButton.setFontAttribute(20);
-        nextButton.setEnabled(false);
-        nextButton.setBounds(930, 550, 150, 40);
-        nextButton.setBackground(new Color(121, 117, 117));
-        timeSelectPanel.add(nextButton);
-
     }
 
-    void generateButtons(BasicButton[] basicButtons, JPanel timeSelectPanel, BasicButton nextButton) {
+    void generateButtons(BasicButton[] basicButtons, JPanel timeSelectPanel) {
         String[] buttonStr = {"1H", "2H", "3H", "4H"};
         String[] timeStr = {"10000원", "15000원", "20000원", "25000원"};
         int xGap = 20;
@@ -82,21 +78,10 @@ public class TimeSelectWindow extends Template {
                     hour = buttonStr[tmp];
                     price = Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1));
                     JOptionPane.showMessageDialog(null, hour + " " + price + "원으로 선택합니다.");
-                    nextButton.setEnabled(true);
-                    nextButton.setBackground(new Color(0, 120, 242));
                 }
             });
             timeSelectPanel.add(basicButtons[i]);
         }
-
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                NonMember m = (NonMember) LogInWindow.getNowLoginMember();//멤버가올지 논멤버가 올지 구별이안가는데,,,일단은 Member라고 가정
-                m.addTime(Integer.parseInt(hour.substring(0,1))*3600);
-                MainGUI.changeWindow(MainGUI.gameSelectWindow);
-            }
-        });
     }
 
 }

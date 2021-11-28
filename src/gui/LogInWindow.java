@@ -17,8 +17,8 @@ public class LogInWindow extends Template {
     String phoneNumber;
     String name;
     String password;
-    static Member nowLoginMember = null;
-    static NonMember nowLoginNonMember = null;
+    static Member nowLoginMember;
+    static NonMember nowLoginNonMember;
     static boolean flag = true;
     @Override
     public void addComponents() {
@@ -88,7 +88,7 @@ public class LogInWindow extends Template {
                     JOptionPane.showMessageDialog(null, "Login Complete");
                     nowLoginMember = m;
                     flag = true;
-                    MainGUI.changeWindow(MainGUI.roomSelectWindow);
+                    MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                     //후에 좌석선택, 시간선택으로 넘어가야함
                 }
                 else{//다른 비밀번호
@@ -163,7 +163,7 @@ public class LogInWindow extends Template {
                 //입력이 제대로 될때-> 파일이 입력이 된다.
                 JOptionPane.showMessageDialog(null, "Login Complete");
                 flag = false;
-                MainGUI.changeWindow(MainGUI.roomSelectWindow);
+                MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 nonMemberIdTextField.setText("");
                 nonMemberPWTextField.setText("");
             }
@@ -179,7 +179,7 @@ public class LogInWindow extends Template {
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.changeWindow(MainGUI.roomViewWindow);
+                MainGUI.changeWindow(MainGUI.logInWindow);
             }
         });
 

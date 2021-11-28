@@ -86,7 +86,7 @@ public class SnackOrderWindow extends Template{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainGUI.changeWindow(MainGUI.roomViewWindow);
+				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
 			}
 		});
 		add(prevButton);
@@ -120,6 +120,7 @@ public class SnackOrderWindow extends Template{
 								calcTotalPrice(orderList, orderList.size())));
 				orderList.clear();
 				orderListLabel.setText("<html>");
+				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
 			}
 
 			private int calcTotalPrice(ArrayList<Order> orderList, int totalCount) {

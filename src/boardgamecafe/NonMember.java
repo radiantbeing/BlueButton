@@ -14,7 +14,7 @@ public class NonMember implements Manageable {
     int remainingTime;
     Game playingGame;
     Timer timer;
-    ArrayList<Snack> orderList;
+    public ArrayList<Order> orderList;
 
     @Override
     public void read(Scanner scan) {
@@ -22,8 +22,8 @@ public class NonMember implements Manageable {
         phoneNumber = scan.next();
     }
 
-    void addOrder(Snack snack){
-        orderList.add(snack);
+    void addOrder(Order order){
+        orderList.add(order);
     }
 
     // 파일을 추가하면서 수동으로 입력을 해야하는 경우가 생겨서 read를 오버로딩

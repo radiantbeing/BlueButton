@@ -75,8 +75,10 @@ public class TimeSelectWindow extends Template {
             basicButtons[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                	NonMember m = (NonMember) LogInWindow.getNowLoginMember();
                     hour = buttonStr[tmp];
                     price = Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1));
+                    m.addTime(Integer.parseInt(hour.substring(0, 1)) * 3600);
                     JOptionPane.showMessageDialog(null, hour + " " + price + "원으로 선택합니다.");
                 }
             });

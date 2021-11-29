@@ -86,6 +86,14 @@ public class NonMember implements Manageable {
         playingGame = game;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String num) {
+        phoneNumber = num;
+    }
+
     class Timer extends Thread {
         public void run() {
             while (true) {

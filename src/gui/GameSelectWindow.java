@@ -48,7 +48,7 @@ public class GameSelectWindow extends Template {
         setRightBottomPanel();
 
         // About Prev Button
-        BasicButton prevButton = new BasicButton("이전");
+        BasicButton prevButton = new BasicButton("메뉴");
         prevButton.setBounds(160, 580, 320, 40);
         add(prevButton);
         prevButton.addActionListener(new ActionListener() {

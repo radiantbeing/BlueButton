@@ -34,7 +34,7 @@ public class RoomSelectWindow extends Template {
 
     void generateSelectPanel(JPanel roomViewPanel, BasicButton nextButton) {
         // About roomViewPanel
-        roomViewPanel.setBounds(150, 70, 1000, 500);
+        roomViewPanel.setBounds(160, 70, 960, 500);
         roomViewPanel.setLayout(new GridLayout(2, 5));
 
         // About roomObjectPanel
@@ -83,7 +83,7 @@ public class RoomSelectWindow extends Template {
 
     void setButton(BasicButton nextButton, BasicButton prevButton) {
         nextButton.setBackground(new Color(121, 117, 117));
-        nextButton.setBounds(1000, 580, 150, 40);
+        nextButton.setBounds(800, 580, 320, 40);
         nextButton.setEnabled(false);
         nextButton.setFontAttribute(20);
 
@@ -102,7 +102,7 @@ public class RoomSelectWindow extends Template {
             }
         });
 
-        prevButton.setBounds(150, 580, 150, 40);
+        prevButton.setBounds(160, 580, 320, 40);
         prevButton.setEnabled(true);
         prevButton.setFontAttribute(20);
 

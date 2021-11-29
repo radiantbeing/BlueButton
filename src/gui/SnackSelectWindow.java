@@ -83,8 +83,8 @@ public class SnackSelectWindow extends Template{
 				}
 			});
 		}
-		BasicButton prevButton = new BasicButton("이전");
-		prevButton.setBounds(150, 580, 150, 40);
+		BasicButton prevButton = new BasicButton("메뉴");
+		prevButton.setBounds(160, 580, 320, 40);
         prevButton.setFontAttribute(20);
         
         prevButton.addActionListener(new ActionListener() {		

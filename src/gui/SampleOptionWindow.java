@@ -136,7 +136,7 @@ public class SampleOptionWindow extends Template {
         payButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                MainGUI.changeWindow(MainGUI.mypageWindow);
+                MainGUI.changeWindow(MainGUI.myPageWindow);
             }
         });
 

@@ -171,6 +171,7 @@ public class GameSelectWindow extends Template {
         table.getTableHeader().setForeground(Color.WHITE);
         table.getTableHeader().setOpaque(false);
         table.getTableHeader().setBackground(new Color(61, 62, 65));
+        table.setDefaultEditor(Object.class, null); // Not Editable
 
         // Table sorter
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());

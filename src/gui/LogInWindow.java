@@ -20,6 +20,7 @@ public class LogInWindow extends Template {
     static Member nowLoginMember;
     static NonMember nowLoginNonMember;
     static boolean flag = true;
+
     @Override
     public void addComponents() {
         JPanel memberPanel = new BasicPanel();
@@ -36,10 +37,10 @@ public class LogInWindow extends Template {
         add(prevButton);
     }
 
-    void memberLoginWindow(JPanel memberPanel){
+    void memberLoginWindow(JPanel memberPanel) {
         //about memberPanel
         memberPanel.setLayout(null);
-        memberPanel.setBounds(160,90,320,400);
+        memberPanel.setBounds(160, 90, 320, 400);
 
         //Member Label
         BasicLabel memberNameLabel = new BasicLabel("회원");
@@ -77,21 +78,20 @@ public class LogInWindow extends Template {
                 phoneNumber = memberIdTextField.getText();
                 Member m = (Member) BoardGameCafe.memberMgr.find(phoneNumber);
                 password = memberPWTextField.getText();
-                if (m == null || phoneNumber.equals("")){ // 잘못된 전화번호 입력시
+                if (m == null || phoneNumber.equals("")) { // 잘못된 전화번호 입력시
                     JOptionPane.showMessageDialog(null, "전화번호가 존재하지 않습니다");
                     memberPWTextField.setText("");
                     memberIdTextField.setText("");
                     return;
                 }
-                
-                if (m.matches(password)){ // 로그인 성공
+
+                if (m.matches(password)) { // 로그인 성공
                     JOptionPane.showMessageDialog(null, "로그인 성공");
                     nowLoginMember = m;
                     flag = true;
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                     // 후에 좌석선택, 시간선택으로 넘어가야함
-                }
-                else{ // 다른 비밀번호
+                } else { // 다른 비밀번호
                     JOptionPane.showMessageDialog(null, "비밀번호를 정확히 입력해 주세요");
                     memberPWTextField.setText("");
                 }
@@ -113,10 +113,10 @@ public class LogInWindow extends Template {
         ToolTipManager.sharedInstance().setInitialDelay(0);
     }
 
-    void nonmemberLoginWindow(JPanel nonMemberPanel){
+    void nonmemberLoginWindow(JPanel nonMemberPanel) {
         //about nonmemberPanel
         nonMemberPanel.setLayout(null);
-        nonMemberPanel.setBounds(800,90,320,400);
+        nonMemberPanel.setBounds(800, 90, 320, 400);
 
         //nonMember Label
         BasicLabel nonMemberNameLabel = new BasicLabel("비회원");
@@ -126,7 +126,7 @@ public class LogInWindow extends Template {
 
         //nonmember ID Label
         BasicLabel nonMemberIdLabel = new BasicLabel("이름");
-        nonMemberIdLabel.setFontAttribute( 15);
+        nonMemberIdLabel.setFontAttribute(15);
         nonMemberIdLabel.setBounds(25, 120, 70, 53);
         nonMemberPanel.add(nonMemberIdLabel);
 
@@ -136,7 +136,7 @@ public class LogInWindow extends Template {
 
         //nonmember PW Label
         BasicLabel nonMemberPWLabel = new BasicLabel("전화번호");
-        nonMemberPWLabel.setFontAttribute( 15);
+        nonMemberPWLabel.setFontAttribute(15);
         nonMemberPWLabel.setBounds(25, 227, 70, 53);
         nonMemberPanel.add(nonMemberPWLabel);
 
@@ -154,7 +154,7 @@ public class LogInWindow extends Template {
                 name = nonMemberIdTextField.getText();
                 phoneNumber = nonMemberPWTextField.getText();
 
-                if (name.equals("")){// 잘못된 아이디 입력시
+                if (name.equals("")) {// 잘못된 아이디 입력시
                     JOptionPane.showMessageDialog(null, "아이디를 정확히 입력하세요");
                     nonMemberIdTextField.setText("");
                     nonMemberPWTextField.setText("");
@@ -163,6 +163,11 @@ public class LogInWindow extends Template {
                 //입력이 제대로 될때-> 파일이 입력이 된다.
                 JOptionPane.showMessageDialog(null, "로그인 성공");
                 flag = false;
+
+                nowLoginNonMember = new NonMember();
+                nowLoginNonMember.setName(name);
+                nowLoginNonMember.setPhoneNumber(phoneNumber);
+
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 nonMemberIdTextField.setText("");
                 nonMemberPWTextField.setText("");
@@ -172,9 +177,9 @@ public class LogInWindow extends Template {
         nonMemberPanel.add(logInButton);
     }
 
-    void buttonComponent(BasicButton signupButton, BasicButton prevButton){
+    void buttonComponent(BasicButton signupButton, BasicButton prevButton) {
         prevButton.setText("이전");
-        prevButton.setBounds(160,580,320,40);
+        prevButton.setBounds(160, 580, 320, 40);
         prevButton.setFontAttribute(18);
         prevButton.addActionListener(new ActionListener() {
             @Override
@@ -184,7 +189,7 @@ public class LogInWindow extends Template {
         });
 
         signupButton.setText("회원가입");
-        signupButton.setBounds(800,580,320,40);
+        signupButton.setBounds(800, 580, 320, 40);
         signupButton.setFontAttribute(18);
 
         signupButton.addActionListener(new ActionListener() {
@@ -195,8 +200,8 @@ public class LogInWindow extends Template {
         });
     }
 
-    static Manageable getNowLoginMember(){
-        if (flag){
+    static NonMember getNowLoginMember() {
+        if (flag) {
             return nowLoginMember;
         }
         return nowLoginNonMember;

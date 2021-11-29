@@ -31,18 +31,18 @@ public class TimeSelectWindow extends Template {
     void setTimeComponents(JPanel timeSelectPanel) {
         // mainPanel
         timeSelectPanel.setLayout(null);
-        timeSelectPanel.setBounds(90, 60, 1100, 600);
+        timeSelectPanel.setBounds(160, 60, 960, 460);
 
         //headLine
         BasicLabel headLine = new BasicLabel("시간선택");
         headLine.setFontAttribute(30);
-        headLine.setBounds(500, 5, 200, 100);
+        headLine.setBounds(430, 5, 200, 100);
         timeSelectPanel.add(headLine);
 
         //뒤로가기 버튼
         BasicButton prevButton = new BasicButton("메뉴");
         prevButton.setFontAttribute(20);
-        prevButton.setBounds(30, 550, 150, 40);
+        prevButton.setBounds(160,580,320,40);
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +55,7 @@ public class TimeSelectWindow extends Template {
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
             }
         });
-        timeSelectPanel.add(prevButton);
+        add(prevButton);
 
     }
 
@@ -68,8 +68,8 @@ public class TimeSelectWindow extends Template {
             basicButtons[i] = new BasicButton("<HTML><body><center>" + buttonStr[i] +
                     "<br>" + timeStr[i] + "</center></body></HTML>");
             basicButtons[i].setFontAttribute(20);
-            basicButtons[i].setBounds(10 + xGap, 200, 150, 150);
-            xGap += 300;
+            basicButtons[i].setBounds(55 + xGap, 180, 150, 150);
+            xGap += 220;
 
             int tmp = i;
             basicButtons[i].addActionListener(new ActionListener() {

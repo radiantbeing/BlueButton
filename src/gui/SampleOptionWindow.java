@@ -132,6 +132,8 @@ public class SampleOptionWindow extends Template {
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                LogInWindow.nowLoginMember = null;
+                LogInWindow.nowLoginNonMember = null;
                 MainGUI.changeWindow(MainGUI.logInWindow);
             }
         });

@@ -14,7 +14,7 @@ public class NonMember implements Manageable {
     int remainingTime;
     Game playingGame;
     Timer timer;
-    public ArrayList<Order> orderList;
+    public ArrayList<Order> orderList = new ArrayList<>();
 
     @Override
     public void read(Scanner scan) {
@@ -84,6 +84,14 @@ public class NonMember implements Manageable {
 
     public void setPlayingGame(Game game) {
         playingGame = game;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String num) {
+        phoneNumber = num;
     }
 
     class Timer extends Thread {

@@ -13,6 +13,10 @@ import java.awt.event.ActionListener;
 
 public class SampleOptionWindow extends Template {
     BasicPanel basicPanel;
+    BasicButton roomButton;
+    BasicButton timeButton;
+    BasicButton gameButton;
+    BasicButton foodButton;
 
     @Override
     public void addComponents() {
@@ -48,7 +52,7 @@ public class SampleOptionWindow extends Template {
         roomPanel.setLayout(null);
         JLabel roomLabel = new JLabel();
         roomLabel.setBounds(new Rectangle(50,0,200,200));
-        BasicButton roomButton = new BasicButton("방 선택");
+        roomButton = new BasicButton("방 선택");
         roomButton.setBounds(new Rectangle(0,200,200,40));
         roomButton.addActionListener(new ActionListener() {
             @Override
@@ -67,7 +71,7 @@ public class SampleOptionWindow extends Template {
         timePanel.setLayout(null);
         JLabel timeLabel = new JLabel();
         timeLabel.setBounds(new Rectangle(50,0,200,200));
-        BasicButton timeButton = new BasicButton("시간선택");
+        timeButton = new BasicButton("시간선택");
         timeButton.setBounds(new Rectangle(0,200,200,40));
         timeButton.addActionListener(new ActionListener() {
             @Override
@@ -86,7 +90,7 @@ public class SampleOptionWindow extends Template {
         gamePanel.setLayout(null);
         JLabel gameLabel = new JLabel();
         gameLabel.setBounds(new Rectangle(50,0,200,200));
-        BasicButton gameButton = new BasicButton("게임선택");
+        gameButton = new BasicButton("게임선택");
         gameButton.setBounds(new Rectangle(0,200,200,40));
         gameButton.addActionListener(new ActionListener() {
             @Override
@@ -105,7 +109,7 @@ public class SampleOptionWindow extends Template {
         foodPanel.setLayout(null);
         JLabel foodLabel = new JLabel();
         foodLabel.setBounds(new Rectangle(50,0,200,200));
-        BasicButton foodButton = new BasicButton("음식선택");
+        foodButton = new BasicButton("음식선택");
         foodButton.setBounds(new Rectangle(0,200,200,40));
         foodButton.addActionListener(new ActionListener() {
             @Override
@@ -138,5 +142,9 @@ public class SampleOptionWindow extends Template {
             }
         });
         add(logOutButton);
+    }
+
+    void grayScaleButton(JButton button) {
+        button.setBackground(new Color(121, 117, 117));
     }
 }

@@ -30,6 +30,7 @@ public class GameSelectWindow extends Template {
     BasicLabel conditionLabel;
     Game selectedGame;
     BasicPanel viewRecommendGamePanel;
+    BasicButton decideButton;
 
     @Override
     public void addComponents() {
@@ -57,11 +58,13 @@ public class GameSelectWindow extends Template {
             }
         });
 
-        // About Next Button
-        BasicButton nextButton = new BasicButton("결정");
-        nextButton.setBounds(800, 580, 320, 40);
-        add(nextButton);
-        nextButton.addActionListener(new ActionListener() {
+        // About Decide Button
+        decideButton = new BasicButton("결정");
+        decideButton.setBounds(800, 580, 320, 40);
+        decideButton.setBackground(new Color(121, 117, 117));
+        decideButton.setEnabled(false);
+        add(decideButton);
+        decideButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (selectedGame == null) {
@@ -196,7 +199,10 @@ public class GameSelectWindow extends Template {
             selectedGame = (Game) BoardGameCafe.gameMgr.find(cell);
             // 현재 로그인 중인 사용자에게 게임 넘겨줌
             LogInWindow.getNowLoginMember().setPlayingGame(selectedGame);
-
+            // 결정 버튼 활성화
+            decideButton.setBackground(new Color(0, 120, 242));
+            decideButton.setEnabled(true);
+            
             imageLabel.setIcon(getMatchedImage(selectedGame.name, 100));
 
             // 고유번호, 위치, 상태 라벨 텍스트 설정

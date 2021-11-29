@@ -6,6 +6,7 @@ import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.Template;
 
+import javax.sound.sampled.Line;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -61,12 +62,12 @@ public class RoomSelectWindow extends Template {
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() % 2 != 0) { //클릭시
                         roomNum = Integer.parseInt(roomNumberLabel.getText());
-                        roomPanel.setBackground(new Color(121, 117, 117));
+                        roomPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
                         nextButton.setBackground(new Color(0, 120, 242));
                         nextButton.setEnabled(true);
                     }
                     else {//재클릭시
-                        roomPanel.setBackground(new Color(41, 42, 45));
+                        roomPanel.setBorder(new LineBorder(new Color(30, 31, 33)));
                         nextButton.setBackground(new Color(121, 117, 117));
                         nextButton.setEnabled(false);
                     }

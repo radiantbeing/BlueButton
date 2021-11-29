@@ -58,15 +58,19 @@ public class GameSelectWindow extends Template {
         });
 
         // About Next Button
-        BasicButton nextButton = new BasicButton("다음");
+        BasicButton nextButton = new BasicButton("결정");
         nextButton.setBounds(800, 580, 320, 40);
         add(nextButton);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (selectedGame == null) {
+                    JOptionPane.showMessageDialog(null, "게임을 선택해주세요");
+                    return;
+                }
                 // Timer가 끝까지 흐르면 gameMgr.mList에 돌려놓는 코드 추가 예정
                 BoardGameCafe.gameMgr.getList().remove(selectedGame);
-                MainGUI.changeWindow(MainGUI.snackOrderWindow);
+                MainGUI.changeWindow(MainGUI.sampleOptionWindow);
             }
         });
     }
@@ -143,13 +147,12 @@ public class GameSelectWindow extends Template {
 
         // About viewRecommendGame Panel
         viewRecommendGamePanel = new BasicPanel();
-        viewRecommendGamePanel.setLayout(new GridLayout(2,2));
+        viewRecommendGamePanel.setLayout(new GridLayout(2, 2));
         viewRecommendGamePanel.setBackground(new Color(30, 31, 33));
-        viewRecommendGamePanel.setBounds(10,50,300,190);
+        viewRecommendGamePanel.setBounds(10, 50, 300, 190);
         rightBottomPanel.add(viewRecommendGamePanel);
 
-        }
-
+    }
 
 
     void setTable() {
@@ -191,11 +194,9 @@ public class GameSelectWindow extends Template {
             int selectedRow = table.getSelectedRow();
             String cell = (String) table.getValueAt(selectedRow, 0);
             selectedGame = (Game) BoardGameCafe.gameMgr.find(cell);
-//                try {
-//                    LogInWindow.nowLoginMember.setPlayingGame(game);
-//                } catch (NullPointerException n) {
-//                    LogInWindow.nowLoginNonMember.setPlayingGame(game);
-//                }
+            // 현재 로그인 중인 사용자에게 게임 넘겨줌
+            LogInWindow.getNowLoginMember().setPlayingGame(selectedGame);
+
             imageLabel.setIcon(getMatchedImage(selectedGame.name, 100));
 
             // 고유번호, 위치, 상태 라벨 텍스트 설정
@@ -205,8 +206,8 @@ public class GameSelectWindow extends Template {
 
             viewRecommendGamePanel.removeAll();
             ArrayList<Game> recommendGames = getRecommendGames(selectedGame);
-            for (Game g: recommendGames) {
-                JButton recommendGameButton = new JButton(g.name,getMatchedImage(g.name, 50));
+            for (Game g : recommendGames) {
+                JButton recommendGameButton = new JButton(g.name, getMatchedImage(g.name, 50));
                 recommendGameButton.setBorderPainted(false);
                 recommendGameButton.setContentAreaFilled(false);
                 recommendGameButton.setFocusPainted(false);
@@ -220,7 +221,7 @@ public class GameSelectWindow extends Template {
                     public void mouseClicked(MouseEvent e) {
                         table.setRowSelectionInterval(g.code, g.code);
                         // 선택한 Row로 스크롤 이동
-                        table.scrollRectToVisible(table.getCellRect(g.code,0,true));
+                        table.scrollRectToVisible(table.getCellRect(g.code, 0, true));
                         MyMouseAdapter.this.mouseClicked(e);
                     }
                 });
@@ -274,14 +275,14 @@ public class GameSelectWindow extends Template {
     ArrayList<Game> getRecommendGames(Game game) {
         ArrayList<Game> recommendList = new ArrayList<>();
         ArrayList<Game> returnList = new ArrayList<>();
-        for(Manageable m:BoardGameCafe.gameMgr.getList()) {
-            Game g = (Game)m;
+        for (Manageable m : BoardGameCafe.gameMgr.getList()) {
+            Game g = (Game) m;
             if (!game.name.equals(g.name) && game.genre.equals(g.genre) && !isExistGame(g, recommendList)) {
                 recommendList.add(g);
             }
         }
         Collections.shuffle(recommendList);
-        for (Game g: recommendList) {
+        for (Game g : recommendList) {
             if (returnList.size() < 4)
                 returnList.add(g);
         }
@@ -289,8 +290,8 @@ public class GameSelectWindow extends Template {
     }
 
     boolean isExistGame(Game game, ArrayList<Game> gList) {
-        for (Game o: gList) {
-            if(game.name.equals(o.name))
+        for (Game o : gList) {
+            if (game.name.equals(o.name))
                 return true;
         }
         return false;

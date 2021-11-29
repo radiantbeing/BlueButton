@@ -74,6 +74,7 @@ public class GameSelectWindow extends Template {
                 // Timer가 끝까지 흐르면 gameMgr.mList에 돌려놓는 코드 추가 예정
                 BoardGameCafe.gameMgr.getList().remove(selectedGame);
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
+                MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.gameButton);
             }
         });
     }
@@ -202,7 +203,7 @@ public class GameSelectWindow extends Template {
             // 결정 버튼 활성화
             decideButton.setBackground(new Color(0, 120, 242));
             decideButton.setEnabled(true);
-            
+
             imageLabel.setIcon(getMatchedImage(selectedGame.name, 100));
 
             // 고유번호, 위치, 상태 라벨 텍스트 설정

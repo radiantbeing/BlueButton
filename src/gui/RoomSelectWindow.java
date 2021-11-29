@@ -94,6 +94,9 @@ public class RoomSelectWindow extends Template {
                 selectedRoom.setUse();
                 BoardGameCafe.roomAndUserInfo.put(selectedRoom, LogInWindow.getNowLoginMember());//로그인한 상태에서 정보저장
                 JOptionPane.showMessageDialog(null, "방이 선택되었습니다.");
+                // SampleOptionWindow 화면으로 전환
+                MainGUI.changeWindow(MainGUI.sampleOptionWindow);
+                MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.roomButton);
             }
         });
 

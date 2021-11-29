@@ -79,6 +79,9 @@ public class TimeSelectWindow extends Template {
                     hour = buttonStr[tmp];
                     price = Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1));            
                     JOptionPane.showMessageDialog(null, hour + " " + price + "원으로 선택합니다.");
+                    // OptionWindow 화면으로 전환
+                    MainGUI.changeWindow(MainGUI.sampleOptionWindow);
+                    MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.timeButton);
                 }
             });
             timeSelectPanel.add(basicButtons[i]);

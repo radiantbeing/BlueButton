@@ -127,6 +127,10 @@ public class SnackSelectWindow extends Template{
 				}
 				orderList.clear();
 				orderListLabel.setText("<html>");
+
+				// SampleOptionWindow로 전환
+				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
+				MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.foodButton);
 			}
 
 			private int calcTotalPrice(ArrayList<Order> orderList, int totalCount) {

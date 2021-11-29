@@ -77,22 +77,22 @@ public class LogInWindow extends Template {
                 phoneNumber = memberIdTextField.getText();
                 Member m = (Member) BoardGameCafe.memberMgr.find(phoneNumber);
                 password = memberPWTextField.getText();
-                if (m == null || phoneNumber.equals("")){// 잘못된 아이디 입력시
-                    JOptionPane.showMessageDialog(null, "ID doesn't exist");
+                if (m == null || phoneNumber.equals("")){ // 잘못된 전화번호 입력시
+                    JOptionPane.showMessageDialog(null, "전화번호가 존재하지 않습니다");
                     memberPWTextField.setText("");
                     memberIdTextField.setText("");
                     return;
                 }
                 
-                if (m.matches(password)){ //로그인 성공
-                    JOptionPane.showMessageDialog(null, "Login Complete");
+                if (m.matches(password)){ // 로그인 성공
+                    JOptionPane.showMessageDialog(null, "로그인 성공");
                     nowLoginMember = m;
                     flag = true;
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
-                    //후에 좌석선택, 시간선택으로 넘어가야함
+                    // 후에 좌석선택, 시간선택으로 넘어가야함
                 }
-                else{//다른 비밀번호
-                    JOptionPane.showMessageDialog(null, "Wrong Password");
+                else{ // 다른 비밀번호
+                    JOptionPane.showMessageDialog(null, "비밀번호를 정확히 입력해 주세요");
                     memberPWTextField.setText("");
                 }
                 memberPWTextField.setText("");
@@ -161,7 +161,7 @@ public class LogInWindow extends Template {
                     return;
                 }
                 //입력이 제대로 될때-> 파일이 입력이 된다.
-                JOptionPane.showMessageDialog(null, "Login Complete");
+                JOptionPane.showMessageDialog(null, "로그인 성공");
                 flag = false;
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 nonMemberIdTextField.setText("");

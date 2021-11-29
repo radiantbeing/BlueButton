@@ -82,6 +82,7 @@ public class TimeSelectWindow extends Template {
                     // OptionWindow 화면으로 전환
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                     MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.timeButton);
+                    MainGUI.sampleOptionWindow.decideEnablePayButton();
                 }
             });
             timeSelectPanel.add(basicButtons[i]);

@@ -75,6 +75,7 @@ public class GameSelectWindow extends Template {
                 BoardGameCafe.gameMgr.getList().remove(selectedGame);
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.gameButton);
+                MainGUI.sampleOptionWindow.decideEnablePayButton();
             }
         });
     }

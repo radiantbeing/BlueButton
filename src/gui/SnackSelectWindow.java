@@ -131,6 +131,7 @@ public class SnackSelectWindow extends Template{
 				// SampleOptionWindow로 전환
 				MainGUI.changeWindow(MainGUI.sampleOptionWindow);
 				MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.foodButton);
+				MainGUI.sampleOptionWindow.decideEnablePayButton();
 			}
 
 			private int calcTotalPrice(ArrayList<Order> orderList, int totalCount) {

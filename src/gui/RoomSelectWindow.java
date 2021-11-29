@@ -98,6 +98,7 @@ public class RoomSelectWindow extends Template {
                 // SampleOptionWindow 화면으로 전환
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.roomButton);
+                MainGUI.sampleOptionWindow.decideEnablePayButton();
             }
         });
 

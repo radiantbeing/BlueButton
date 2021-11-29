@@ -14,7 +14,7 @@ public class NonMember implements Manageable {
     int remainingTime;
     Game playingGame;
     Timer timer;
-    public ArrayList<Order> orderList;
+    public ArrayList<Order> orderList = new ArrayList<>();
 
     @Override
     public void read(Scanner scan) {

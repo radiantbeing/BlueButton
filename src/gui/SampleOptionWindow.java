@@ -121,8 +121,20 @@ public class SampleOptionWindow extends Template {
 
     void addButton(){
         BasicButton payButton = new BasicButton("결제");
-        payButton.setBounds(new Rectangle(1000,600,200,40));
+        payButton.setBackground(new Color(121, 117, 117));
+
+        payButton.setBounds(new Rectangle(1100,611,150,40));
         payButton.setEnabled(false);
-        basicPanel.add(payButton);
+        add(payButton);
+
+        BasicButton logOutButton = new BasicButton("로그아웃");
+        logOutButton.setBounds(new Rectangle(10,611,150,40));
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainGUI.changeWindow(MainGUI.logInWindow);
+            }
+        });
+        add(logOutButton);
     }
 }

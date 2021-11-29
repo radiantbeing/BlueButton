@@ -25,7 +25,7 @@ import gui.template.BasicPanel;
 import gui.template.Template;
 import mgr.Manageable;
 
-public class SnackOrderWindow extends Template{
+public class SnackSelectWindow extends Template{
 	private static final long serialVersionUID = 1L;
 	BasicPanel snackOptionPanel, orderListPanel;
 	BasicLabel orderListTitle, orderListLabel;

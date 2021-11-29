@@ -10,6 +10,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SampleOptionWindow extends Template {
     BasicPanel basicPanel;
@@ -17,6 +19,7 @@ public class SampleOptionWindow extends Template {
     BasicButton timeButton;
     BasicButton gameButton;
     BasicButton foodButton;
+    BasicButton payButton;
 
     @Override
     public void addComponents() {
@@ -124,12 +127,18 @@ public class SampleOptionWindow extends Template {
     }
 
     void addButton(){
-        BasicButton payButton = new BasicButton("결제");
+        payButton = new BasicButton("결제");
         payButton.setBackground(new Color(121, 117, 117));
 
         payButton.setBounds(new Rectangle(800,580,320,40));
         payButton.setEnabled(false);
         add(payButton);
+        payButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                MainGUI.changeWindow(MainGUI.mypageWindow);
+            }
+        });
 
         BasicButton logOutButton = new BasicButton("로그아웃");
         logOutButton.setBounds(new Rectangle(160,580,320,40));
@@ -146,5 +155,17 @@ public class SampleOptionWindow extends Template {
 
     void grayScaleButton(JButton button) {
         button.setBackground(new Color(121, 117, 117));
+    }
+
+    void decideEnablePayButton() {
+        if(roomButton.getBackground().equals(new Color(121, 117, 117))
+        && timeButton.getBackground().equals(new Color(121, 117, 117))
+        && gameButton.getBackground().equals(new Color(121, 117, 117))
+        && foodButton.getBackground().equals(new Color(121, 117, 117))) {
+            payButton.setBackground(new Color(0, 120, 242));
+            payButton.setEnabled(true);
+        }
+
+
     }
 }

@@ -11,10 +11,11 @@ public class Room implements Manageable{
 	int person = 0;
 	int roomNumber = 0;
 
-	void setRoomNumber(int roomNumber){
+	public void setRoomNumber(int roomNumber){
 		this.roomNumber = roomNumber;
 	}
 
+	public void setReserve() {reserve = !reserve;}
 	public void setUse(){
 		use = !use;
 	}

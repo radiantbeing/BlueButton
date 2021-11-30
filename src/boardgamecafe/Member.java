@@ -8,7 +8,7 @@ public class Member extends NonMember {
     // 서팔광 01017634965 3645 4154
     // member가 주문하면 주문은 어떻게 처리할까?
     String password;
-    int point = 0;//신규등록은 어짜피 포인트는 0이니 필드는 0으로
+    public int point = 0;//신규등록은 어짜피 포인트는 0이니 필드는 0으로
 
     @Override
     public void read(Scanner scan) {

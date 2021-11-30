@@ -72,7 +72,6 @@ public class GameSelectWindow extends Template {
                     return;
                 }
                 // Timer가 끝까지 흐르면 gameMgr.mList에 돌려놓는 코드 추가 예정
-                BoardGameCafe.gameMgr.getList().remove(selectedGame);
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.gameButton);
                 MainGUI.sampleOptionWindow.decideEnablePayButton();
@@ -304,5 +303,13 @@ public class GameSelectWindow extends Template {
                 return true;
         }
         return false;
+    }
+
+    public void removeSelectedRows(JTable table){
+        DefaultTableModel model = (DefaultTableModel) this.table.getModel();
+        int[] rows = table.getSelectedRows();
+        for(int i=0;i<rows.length;i++){
+            model.removeRow(rows[i]-i);
+        }
     }
 }

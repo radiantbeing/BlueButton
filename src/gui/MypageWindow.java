@@ -147,6 +147,8 @@ public class MypageWindow extends Template {
                 // 결제 완료 버튼을 누르면 게임 table과 gamrMgr에서 선택된 게임 삭제. Timer 종료되면 복구
                 MainGUI.gameSelectWindow.removeSelectedRows(MainGUI.gameSelectWindow.table);
                 BoardGameCafe.gameMgr.getList().remove(MainGUI.gameSelectWindow.selectedGame);
+                // 잔여 방 개수 새로고침
+                MainGUI.roomViewWindow.updateRemainingRoomLabel();
             }
         });
         

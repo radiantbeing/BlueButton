@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class RoomViewWindow extends Template {
     static ArrayList<JPanel> roomPanelArrayList = new ArrayList<>();
     static BasicLabel[] roomPanelTexts = new BasicLabel[10];
+    BasicLabel remainingRoomLabel;
     @Override
     public void addComponents() {
         // Initialize
@@ -54,7 +55,7 @@ public class RoomViewWindow extends Template {
         }
 
         // About Number Of remainingRoom Label
-        BasicLabel remainingRoomLabel = new BasicLabel();
+        remainingRoomLabel = new BasicLabel();
         remainingRoomLabel.setText(String.format("잔여 방: %d개", getNumberOfRemainingRoom()));
         remainingRoomLabel.setFontAttribute(15);
         remainingRoomLabel.setBounds(160, 10, 100, 50);
@@ -128,6 +129,10 @@ public class RoomViewWindow extends Template {
             }
         }
         return numberOfRemainingRoom;
+    }
+
+    void updateRemainingRoomLabel() {
+        remainingRoomLabel.setText(String.format("잔여 방: %d개", getNumberOfRemainingRoom()));
     }
 
 

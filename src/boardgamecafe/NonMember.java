@@ -53,7 +53,7 @@ public class NonMember implements Manageable {
         return false;
     }
 
-    void setRoomNumber(int num) {
+    public void setRoomNumber(int num) {
         roomNumber = num;
     }
 
@@ -81,6 +81,9 @@ public class NonMember implements Manageable {
     //남은시간을 얻을때 쓰는 메소드
     public int getRemainingTime() {
         return remainingTime;
+    }
+    public String getName() {
+		return this.name;
     }
     public Game getPlayingGame() {
     	return this.playingGame;

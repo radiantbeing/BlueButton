@@ -1,6 +1,7 @@
 package gui;
 
 import boardgamecafe.BoardGameCafe;
+import boardgamecafe.NonMember;
 import boardgamecafe.Room;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
@@ -90,10 +91,12 @@ public class RoomSelectWindow extends Template {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	NonMember m = LogInWindow.getNowLoginMember();
                 MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
                 selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum-1);
                 selectedRoom.setUse();
                 BoardGameCafe.roomAndUserInfo.put(selectedRoom, LogInWindow.getNowLoginMember());//로그인한 상태에서 정보저장
+                m.setRoomNumber(roomNum);
                 JOptionPane.showMessageDialog(null, "방이 선택되었습니다.");
                 // SampleOptionWindow 화면으로 전환
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);

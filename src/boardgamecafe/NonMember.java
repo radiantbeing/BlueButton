@@ -16,6 +16,7 @@ public class NonMember implements Manageable {
     Timer timer;
     public int totalPrice = 0;
     public ArrayList<Order> orderList = new ArrayList<>();
+    public boolean timerFlag = true;
 
     @Override
     public void read(Scanner scan) {
@@ -23,7 +24,7 @@ public class NonMember implements Manageable {
         phoneNumber = scan.next();
     }
 
-    void addOrder(Order order){
+    void addOrder(Order order) {
         orderList.add(order);
     }
 
@@ -65,6 +66,7 @@ public class NonMember implements Manageable {
     // GUI의 요금제 선택 단계에서 사용하는 메소드
     public void addTime(int seconds) {
         remainingTime += seconds;
+        timerFlag = true;
     }
 
     // 잔여 시간을 계산하기 위한 Timer를 시작합니다.
@@ -82,12 +84,15 @@ public class NonMember implements Manageable {
     public int getRemainingTime() {
         return remainingTime;
     }
+
     public String getName() {
-		return this.name;
+        return this.name;
     }
+
     public Game getPlayingGame() {
-    	return this.playingGame;
+        return this.playingGame;
     }
+
     public void setPlayingGame(Game game) {
         playingGame = game;
     }
@@ -99,12 +104,14 @@ public class NonMember implements Manageable {
     public void setPhoneNumber(String num) {
         phoneNumber = num;
     }
+
     public int getTotalPrice() {
-    	for(Order od : orderList) {
-    		totalPrice += od.totalPrice;
-    	}
-    	return totalPrice;
+        for (Order od : orderList) {
+            totalPrice += od.totalPrice;
+        }
+        return totalPrice;
     }
+
     class Timer extends Thread {
         public void run() {
             while (true) {
@@ -113,6 +120,8 @@ public class NonMember implements Manageable {
                     remainingTime--;
                     if (remainingTime <= 0) {
                         remainingTime = 0;
+                        timerFlag=false;
+                        currentThread().interrupt();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

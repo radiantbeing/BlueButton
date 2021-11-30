@@ -109,7 +109,7 @@ public class LogInWindow extends Template {
         benefitViewer.setOpaque(false);
         memberPanel.add(benefitViewer);
         benefitViewer.setBounds(265, 45, 30, 30);
-        benefitViewer.setToolTipText("<html>회원 혜택<br><br>-결제금액의 5% 적립가능<br>-회원 등급에 따른 할인부여</html>");
+        benefitViewer.setToolTipText("<html>회원 혜택<br><br>-결제 금액의 5% 할인</html>");
         ToolTipManager.sharedInstance().setInitialDelay(0);
     }
 

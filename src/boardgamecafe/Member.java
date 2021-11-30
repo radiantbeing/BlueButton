@@ -8,13 +8,11 @@ public class Member extends NonMember {
     // 서팔광 01017634965 3645 4154
     // member가 주문하면 주문은 어떻게 처리할까?
     String password;
-    public int point = 0;//신규등록은 어짜피 포인트는 0이니 필드는 0으로
 
     @Override
     public void read(Scanner scan) {
         super.read(scan);
         password = scan.next();
-        point = scan.nextInt();
     }
 
     // 파일을 추가하면서 수동으로 입력을 해야하는 경우가 생겨서 read를 오버로딩
@@ -26,7 +24,7 @@ public class Member extends NonMember {
     @Override
     public void print() {
         super.print();
-        System.out.printf("\t비밀번호:%s |포인트:%d\n", password, point);
+        System.out.printf("\t비밀번호:%s\n", password);
     }
 
     @Override

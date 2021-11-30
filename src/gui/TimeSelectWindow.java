@@ -46,12 +46,6 @@ public class TimeSelectWindow extends Template {
         prevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NonMember m = (NonMember) LogInWindow.getNowLoginMember();
-                try{//여기서 null 오류가  발생하는데 후에 수정예정
-                    m.addTime(Integer.parseInt(hour.substring(0,1))*3600);
-                }catch (Exception a){
-                    MainGUI.changeWindow(MainGUI.sampleOptionWindow);
-                }
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
             }
         });
@@ -79,6 +73,8 @@ public class TimeSelectWindow extends Template {
                     hour = buttonStr[tmp];
                     price = Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1));            
                     JOptionPane.showMessageDialog(null, hour + " " + price + "원으로 선택합니다.");
+                    m.addTime(Integer.parseInt(hour.substring(0,1))*3600);
+                    m.totalPrice += price;
                     // OptionWindow 화면으로 전환
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                     MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.timeButton);

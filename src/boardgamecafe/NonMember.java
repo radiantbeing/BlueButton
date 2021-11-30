@@ -14,6 +14,7 @@ public class NonMember implements Manageable {
     int remainingTime;
     Game playingGame;
     Timer timer;
+    public int totalPrice = 0;
     public ArrayList<Order> orderList = new ArrayList<>();
 
     @Override
@@ -81,7 +82,9 @@ public class NonMember implements Manageable {
     public int getRemainingTime() {
         return remainingTime;
     }
-
+    public Game getPlayingGame() {
+    	return this.playingGame;
+    }
     public void setPlayingGame(Game game) {
         playingGame = game;
     }
@@ -93,7 +96,12 @@ public class NonMember implements Manageable {
     public void setPhoneNumber(String num) {
         phoneNumber = num;
     }
-
+    public int getTotalPrice() {
+    	for(Order od : orderList) {
+    		totalPrice += od.totalPrice;
+    	}
+    	return totalPrice;
+    }
     class Timer extends Thread {
         public void run() {
             while (true) {

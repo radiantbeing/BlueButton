@@ -135,9 +135,14 @@ public class RoomViewWindow extends Template {
 
     static void changeRoomText(int roomNum,String name, String gameName){
         if(LogInWindow.getNowLoginMember().timerFlag){
-            roomPanelTexts[roomNum].setText("이름:"+name+"\n"+"이용중인 게임:"+gameName);//레이아웃에 맞게 수정예정
+            roomPanelTexts[roomNum-1].setFontAttribute(15);
+            roomPanelTexts[roomNum-1].setBounds(10, 75, 300, 100);
+            roomPanelTexts[roomNum-1].setText("<HTML><body><center>사용자: " + name +
+                    "<br>사용중인게임: " + gameName + "</center></body></HTML>");//레이아웃에 맞게 수정예정
             return;
         }
-        roomPanelTexts[roomNum].setText(roomNum+"");
+        roomPanelTexts[roomNum-1].setFontAttribute(18);
+        roomPanelTexts[roomNum-1].setBounds(95, 75, 100, 100);
+        roomPanelTexts[roomNum-1].setText(roomNum+"");
     }
 }

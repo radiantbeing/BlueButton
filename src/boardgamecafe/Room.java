@@ -19,7 +19,7 @@ public class Room implements Manageable{
 	public void setUse(){
 		use = !use;
 	}
-	public boolean getUse() { return use; }
+	public void getUse() { return use; }
 	@Override
 	public void print() {
 		System.out.printf("[%d번방] ", roomNumber++);

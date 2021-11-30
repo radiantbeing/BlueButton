@@ -96,6 +96,10 @@ public class RoomSelectWindow extends Template {
             	NonMember m = LogInWindow.getNowLoginMember();
                 MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
                 selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum-1);
+                if(selectedRoom.use) {
+                	JOptionPane.showMessageDialog(null, "이미 사용중인 방입니다");
+                	return;
+                }
                 selectedRoom.setUse();
 
                 //선택효과 초기화

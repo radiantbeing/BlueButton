@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class RoomViewWindow extends Template {
     static ArrayList<JPanel> roomPanelArrayList = new ArrayList<>();
-
+    static BasicLabel[] roomPanelTexts = new BasicLabel[10];
     @Override
     public void addComponents() {
         // Initialize
@@ -41,11 +41,11 @@ public class RoomViewWindow extends Template {
                 roomPanel.setBackground(new Color(62,111,74));
             }
             roomPanel.setBorder(new LineBorder(new Color(30, 31, 33), 1));
-            BasicLabel roomNumberLabel = new BasicLabel("" + (i + 1));
-            roomNumberLabel.setFont(new Font("NanumGothic", Font.PLAIN, 20));
-            roomNumberLabel.setForeground(Color.WHITE);
-            roomNumberLabel.setBounds(95, 75, 100, 100);
-            roomPanel.add(roomNumberLabel);
+            roomPanelTexts[i] = new BasicLabel("" + (i + 1));
+            roomPanelTexts[i].setFont(new Font("NanumGothic", Font.PLAIN, 20));
+            roomPanelTexts[i].setForeground(Color.WHITE);
+            roomPanelTexts[i].setBounds(95, 75, 100, 100);
+            roomPanel.add(roomPanelTexts[i]);
             roomPanelArrayList.add(roomPanel);
         }
         for (JPanel rPanel: roomPanelArrayList) {
@@ -131,5 +131,13 @@ public class RoomViewWindow extends Template {
         }
         //이용시간이 끝나거나 이용중이 아니면
         jPanel.setBackground(new Color(41, 42, 45));
+    }
+
+    static void changeRoomText(int roomNum,String name, String gameName){
+        if(LogInWindow.getNowLoginMember().timerFlag){
+            roomPanelTexts[roomNum].setText("이름:"+name+"\n"+"이용중인 게임:"+gameName);//레이아웃에 맞게 수정예정
+            return;
+        }
+        roomPanelTexts[roomNum].setText(roomNum+"");
     }
 }

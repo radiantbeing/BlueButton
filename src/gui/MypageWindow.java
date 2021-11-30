@@ -18,7 +18,7 @@ public class MypageWindow extends Template {
 	private static final long serialVersionUID = 1L;
 	BasicPanel MypagePanel;
     BasicLabel remainTimeLabel, gameLabel, totalpriceLabel;
-    NonMember m = null;
+    NonMember m;
     
     @Override
     public void addComponents() {
@@ -141,6 +141,7 @@ public class MypageWindow extends Template {
             	m.totalPrice = 0;
             	m.orderList.clear();
                 m.startTimer();//결제하는 순간부터 시간이 흐름
+                RoomViewWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
                 MainGUI.changeWindow(MainGUI.roomViewWindow);
             }
         });

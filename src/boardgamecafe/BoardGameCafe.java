@@ -18,7 +18,6 @@ public class BoardGameCafe extends Manager {
     public static Manager adminMgr = new Manager();
     public static Manager roomMgr = new Manager();
     final static int MAX_ROOM_NUMBER = 10;
-    public static Map<Room,Manageable> roomAndUserInfo = new HashMap<>();//사용하고있는 방, 사용자를 한번에 저장하기 위해서 map을 사용합니다.
     Administrator ad = new Administrator();
 
     public void run() {

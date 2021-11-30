@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 
 public class TimeSelectWindow extends Template {
     String hour;
-    int price;
 
     @Override
     public void addComponents() {
@@ -71,10 +70,10 @@ public class TimeSelectWindow extends Template {
                 public void actionPerformed(ActionEvent e) {
                 	NonMember m = (NonMember) LogInWindow.getNowLoginMember();
                     hour = buttonStr[tmp];
-                    price = Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1));            
-                    JOptionPane.showMessageDialog(null, hour + " " + price + "원으로 선택합니다.");
+                    m.addTotalPrice(Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1)));
+                    JOptionPane.showMessageDialog(null, hour +
+                            " " + Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1)) + "원으로 선택합니다.");
                     m.addTime(Integer.parseInt(hour.substring(0,1))*3600);
-                    m.totalPrice += price;
                     // OptionWindow 화면으로 전환
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                     MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.timeButton);

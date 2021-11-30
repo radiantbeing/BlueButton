@@ -69,6 +69,7 @@ public class NonMember implements Manageable {
         timerFlag = true;
     }
 
+
     // 잔여 시간을 계산하기 위한 Timer를 시작합니다.
     // GUI의 결제 단계에서 사용하는 메소드
     public void startTimer() {
@@ -106,12 +107,16 @@ public class NonMember implements Manageable {
     }
 
     public int getTotalPrice() {
-    	int total = 0;
+        int total = 0;
         for (Order od : orderList) {
             total += od.totalPrice;
         }
-        
+
         return totalPrice + total;
+    }
+
+    public void addTotalPrice(int price) {
+        totalPrice += price;
     }
 
     class Timer extends Thread {
@@ -122,7 +127,7 @@ public class NonMember implements Manageable {
                     remainingTime--;
                     if (remainingTime <= 0) {
                         remainingTime = 0;
-                        timerFlag=false;
+                        timerFlag = false;
                         currentThread().interrupt();
                     }
                 } catch (InterruptedException e) {

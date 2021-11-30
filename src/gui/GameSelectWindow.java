@@ -31,7 +31,7 @@ public class GameSelectWindow extends Template {
     Game selectedGame;
     BasicPanel viewRecommendGamePanel;
     BasicButton decideButton;
-
+    DefaultTableModel model;
     @Override
     public void addComponents() {
         // Initialize
@@ -162,7 +162,7 @@ public class GameSelectWindow extends Template {
 
     void setTable() {
         String header[] = {"", "이름", "난이도", "종류"};
-        DefaultTableModel model = new DefaultTableModel(header, 0);    //header추가, 행은 0개 지정
+        model = new DefaultTableModel(header, 0);    //header추가, 행은 0개 지정
 
         table = new JTable(model);
 
@@ -183,6 +183,7 @@ public class GameSelectWindow extends Template {
         table.getTableHeader().setReorderingAllowed(false);
         table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         addRow(model);
+
         resizeColumnWidth(table);
 
         scrolledTable = new JScrollPane(table);    // 스크롤 될 수 있도록 JScrollPane 적용
@@ -305,4 +306,13 @@ public class GameSelectWindow extends Template {
         }
         return false;
     }
+
+    //게임객체를 주면, table에 반환
+    void addGame(DefaultTableModel model, Game g){
+        Object[] row = new Object[]{new String("" + g.code), new String(g.name), new String(g.difficulty),
+                new String(g.genre)};
+        model.addRow(row);
+    }
+
+
 }

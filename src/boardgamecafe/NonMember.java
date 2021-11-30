@@ -68,7 +68,7 @@ public class NonMember implements Manageable {
         remainingTime += seconds;
         timerFlag = true;
     }
-
+    
 
     // 잔여 시간을 계산하기 위한 Timer를 시작합니다.
     // GUI의 결제 단계에서 사용하는 메소드

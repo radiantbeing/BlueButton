@@ -136,6 +136,7 @@ public class MypageWindow extends Template {
         paymentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                m.startTimer();//결제하는 순간부터 시간이 흐름
                 MainGUI.changeWindow(MainGUI.roomViewWindow);
             }
         });

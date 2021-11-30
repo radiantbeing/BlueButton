@@ -7,10 +7,8 @@ import gui.template.Template;
 
 import javax.swing.*;
 
-import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
 import boardgamecafe.NonMember;
-import boardgamecafe.Room;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -73,6 +71,7 @@ public class MypageWindow extends Template {
         	Member member = (Member) LogInWindow.getNowLoginMember();
         	pointLabel.setBounds(25, 275, 300, 50);
         	pointLabel.setText("잔여 포인트 : " + ("" + member.point) + "점");
+        	pointLabel.setFontAttribute(20, true);
         	int getPoint = (int) (member.getTotalPrice() * 0.05);
         	int totalPoint = member.point + getPoint;
         	

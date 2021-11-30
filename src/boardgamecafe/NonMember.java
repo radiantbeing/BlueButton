@@ -106,10 +106,12 @@ public class NonMember implements Manageable {
     }
 
     public int getTotalPrice() {
+    	int total = 0;
         for (Order od : orderList) {
-            totalPrice += od.totalPrice;
+            total += od.totalPrice;
         }
-        return totalPrice;
+        
+        return totalPrice + total;
     }
 
     class Timer extends Thread {

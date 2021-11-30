@@ -1,5 +1,6 @@
 package boardgamecafe;
 
+import gui.MainGUI;
 import mgr.Manageable;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class NonMember implements Manageable {
     Timer timer;
     public int totalPrice = 0;
     public ArrayList<Order> orderList = new ArrayList<>();
-    public boolean timerFlag = true;
+    public boolean timerFlag = false;
 
     @Override
     public void read(Scanner scan) {
@@ -128,6 +129,9 @@ public class NonMember implements Manageable {
                     if (remainingTime <= 0) {
                         remainingTime = 0;
                         timerFlag = false;
+                        // Timer가 모두 흐르면 게임 복구
+                        MainGUI.gameSelectWindow.addGame(MainGUI.gameSelectWindow.model, playingGame);
+                        BoardGameCafe.gameMgr.getList().add(playingGame);
                         currentThread().interrupt();
                     }
                 } catch (InterruptedException e) {

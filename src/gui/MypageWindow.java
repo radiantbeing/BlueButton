@@ -1,5 +1,6 @@
 package gui;
 
+import boardgamecafe.BoardGameCafe;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.BasicPanel;
@@ -143,6 +144,9 @@ public class MypageWindow extends Template {
                 m.startTimer();//결제하는 순간부터 시간이 흐름
                 RoomViewWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
                 MainGUI.changeWindow(MainGUI.roomViewWindow);
+                // 결제 완료 버튼을 누르면 게임 table과 gamrMgr에서 선택된 게임 삭제. Timer 종료되면 복구
+                MainGUI.gameSelectWindow.removeSelectedRows(MainGUI.gameSelectWindow.table);
+                BoardGameCafe.gameMgr.getList().remove(MainGUI.gameSelectWindow.selectedGame);
             }
         });
         

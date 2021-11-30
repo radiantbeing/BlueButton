@@ -31,7 +31,8 @@ public class GameSelectWindow extends Template {
     Game selectedGame;
     BasicPanel viewRecommendGamePanel;
     BasicButton decideButton;
-    DefaultTableModel model;
+    public DefaultTableModel model;
+
     @Override
     public void addComponents() {
         // Initialize
@@ -308,10 +309,18 @@ public class GameSelectWindow extends Template {
     }
 
     //게임객체를 주면, table에 반환
-    void addGame(DefaultTableModel model, Game g){
+    public void addGame(DefaultTableModel model, Game g) {
         Object[] row = new Object[]{new String("" + g.code), new String(g.name), new String(g.difficulty),
                 new String(g.genre)};
         model.addRow(row);
+    }
+
+    void removeSelectedRows(JTable table){
+        DefaultTableModel model = (DefaultTableModel) this.table.getModel();
+        int[] rows = table.getSelectedRows();
+        for(int i=0;i<rows.length;i++){
+            model.removeRow(rows[i]-i);
+        }
     }
 
 

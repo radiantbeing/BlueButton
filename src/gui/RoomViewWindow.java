@@ -134,11 +134,11 @@ public class RoomViewWindow extends Template {
     void changeRoomInfo(int roomNum, boolean flag) {
         JPanel jPanel = roomPanelArrayList.get(roomNum - 1);
         if (flag) {//방이 이용중일때
-            jPanel.setBackground(new Color(121, 117, 117));
+            jPanel.setBackground(new Color(115,52,54));
             return;
         }
         //이용시간이 끝나거나 이용중이 아니면
-        jPanel.setBackground(new Color(41, 42, 45));
+        jPanel.setBackground(new Color(62,111,74));
     }
 
     static void changeRoomText(int roomNum,String name, String gameName){

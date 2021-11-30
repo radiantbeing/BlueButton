@@ -7,7 +7,7 @@ import mgr.Manageable;
 public class Room implements Manageable{
 	//인원 최대 4명, 총 방 10개
 	boolean reserve = false;			// false = 현재 예약 가능 상태, true = 현재 예약완료
-	boolean use = false;				// false = 현재 사용중이 아님(예약 가능), true = 현재 사용중(예약 불가)
+	public boolean use = false;				// false = 현재 사용중이 아님(예약 가능), true = 현재 사용중(예약 불가)
 	int person = 0;
 	int roomNumber = 0;
 

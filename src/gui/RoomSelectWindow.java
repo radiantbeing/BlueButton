@@ -97,7 +97,6 @@ public class RoomSelectWindow extends Template {
                 MainGUI.roomViewWindow.changeRoomInfo(roomNum, true);
                 selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum-1);
                 selectedRoom.setUse();
-                BoardGameCafe.roomAndUserInfo.put(selectedRoom, LogInWindow.getNowLoginMember());//로그인한 상태에서 정보저장
 
                 //선택효과 초기화
                 for(JPanel j: roomPanelArrayList){

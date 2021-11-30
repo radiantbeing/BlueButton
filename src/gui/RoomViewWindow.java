@@ -3,6 +3,7 @@ package gui;
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.Member;
 import boardgamecafe.NonMember;
+import boardgamecafe.Room;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.Template;
@@ -111,11 +112,18 @@ public class RoomViewWindow extends Template {
         return false;
     }
 
+    boolean checkUsingRoom(int roomNumber){
+        Room r = (Room) BoardGameCafe.roomMgr.getList().get(roomNumber);
+        return r.use;
+    }
+
+
+
     // 잔여 방 개수 반환
     int getNumberOfRemainingRoom() {
         int numberOfRemainingRoom = 10;
         for (int i = 0; i < 10; i++) {
-            if (checkRoomReserved(i+1)) {
+            if (checkRoomReserved(i+1) || checkUsingRoom(i)) {
                 numberOfRemainingRoom--;
             }
         }

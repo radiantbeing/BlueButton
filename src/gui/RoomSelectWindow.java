@@ -17,10 +17,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import static gui.RoomViewWindow.roomPanelArrayList;
+
 public class RoomSelectWindow extends Template {
     static int roomNum;
     Room selectedRoom;
-
+    ArrayList<JPanel> roomPanelArrayList;
     public void addComponents() {
         setLayout(null);
         JPanel roomViewPanel = new JPanel();
@@ -39,7 +41,7 @@ public class RoomSelectWindow extends Template {
         roomViewPanel.setLayout(new GridLayout(2, 5));
 
         // About roomObjectPanel
-        ArrayList<JPanel> roomPanelArrayList = new ArrayList<>();
+        roomPanelArrayList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             JPanel roomPanel = new JPanel(null);
             roomPanel.setPreferredSize(new Dimension(200, 250));
@@ -96,6 +98,13 @@ public class RoomSelectWindow extends Template {
                 selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum-1);
                 selectedRoom.setUse();
                 BoardGameCafe.roomAndUserInfo.put(selectedRoom, LogInWindow.getNowLoginMember());//로그인한 상태에서 정보저장
+
+                //선택효과 초기화
+                for(JPanel j: roomPanelArrayList){
+                    j.setBorder(new LineBorder(new Color(30, 31, 33), 1));
+                }
+                //버튼초기화
+                nextButton.setBackground(new Color(121, 117, 117));
                 m.setRoomNumber(roomNum);
                 JOptionPane.showMessageDialog(null, "방이 선택되었습니다.");
                 // SampleOptionWindow 화면으로 전환

@@ -60,24 +60,6 @@ public class RoomSelectWindow extends Template {
             roomPanelTexts[i].setBounds(95, 75, 100, 100);
             roomPanel.add(roomPanelTexts[i]);
 
-            int finalI = i;
-            roomPanel.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (e.getClickCount() % 2 != 0) { //클릭시
-                        roomNum = Integer.parseInt(roomPanelTexts[finalI].getText());
-                        roomPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
-                        nextButton.setBackground(new Color(0, 120, 242));
-                        nextButton.setEnabled(true);
-                    }
-                    else {//재클릭시
-                        roomPanel.setBorder(new LineBorder(new Color(30, 31, 33)));
-                        nextButton.setBackground(new Color(121, 117, 117));
-                        nextButton.setEnabled(false);
-                    }
-                }
-            });
-
             roomPanelArrayList.add(roomPanel);
         }
         for (JPanel rPanel : roomPanelArrayList) {

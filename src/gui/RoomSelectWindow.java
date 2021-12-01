@@ -61,27 +61,40 @@ public class RoomSelectWindow extends Template {
             roomPanel.add(roomPanelTexts[i]);
 
             int finalI = i;
-            roomPanel.addMouseListener(new MouseAdapter() {
+            roomPanelArrayList.add(roomPanel);
+        }
+
+        for (JPanel rPanel : roomPanelArrayList) {
+            roomViewPanel.add(rPanel);
+        }
+
+        int i =0;
+        for(JPanel rPanel:roomPanelArrayList){
+            int finalI = i;
+            rPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    clearRoom();
                     if (e.getClickCount() % 2 != 0) { //클릭시
                         roomNum = Integer.parseInt(roomPanelTexts[finalI].getText());
-                        roomPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
+                        rPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
                         nextButton.setBackground(new Color(0, 120, 242));
                         nextButton.setEnabled(true);
                     }
                     else {//재클릭시
-                        roomPanel.setBorder(new LineBorder(new Color(30, 31, 33)));
+                        rPanel.setBorder(new LineBorder(new Color(30, 31, 33)));
                         nextButton.setBackground(new Color(121, 117, 117));
                         nextButton.setEnabled(false);
                     }
                 }
             });
-
-            roomPanelArrayList.add(roomPanel);
+            i++;
         }
-        for (JPanel rPanel : roomPanelArrayList) {
-            roomViewPanel.add(rPanel);
+    }
+
+    void clearRoom(){
+        for(JPanel j: roomPanelArrayList){
+            j.setBorder(new LineBorder(new Color(30, 31, 33), 1));
         }
     }
 
@@ -101,7 +114,6 @@ public class RoomSelectWindow extends Template {
                 	JOptionPane.showMessageDialog(null, "이미 사용중인 방입니다");
                 	return;
                 }
-
 
                 //선택효과 초기화
                 for(JPanel j: roomPanelArrayList){
@@ -129,6 +141,7 @@ public class RoomSelectWindow extends Template {
             }
         });
     }
+
 
     void changeRoomInfo(int roomNum, boolean flag) {
         JPanel jPanel = roomPanelArrayList.get(roomNum - 1);

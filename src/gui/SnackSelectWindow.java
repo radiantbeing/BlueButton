@@ -116,12 +116,13 @@ public class SnackSelectWindow extends Template{
 					return;
 				}			
 				Order od = orderList.get(0);
+				int orderedTotalPrice = calcTotalPrice(orderList, orderList.size());
 				JOptionPane.showMessageDialog(MainGUI.bFrame,
 					String.format("<html>%s 외 %d개가 주문됩니다"
 						+"<br>총액 : %5d원",
-							od.orderedMenu, orderList.size(), 
-								calcTotalPrice(orderList, orderList.size())));
+							od.orderedMenu, orderList.size(), orderedTotalPrice));
 				NonMember m = (NonMember) LogInWindow.getNowLoginMember();
+				m.totalPrice = orderedTotalPrice;
 				for(Order od1 : orderList) {
 					m.orderList.add(od1);
 				}

@@ -122,7 +122,7 @@ public class SignUpWindow extends Template {
         BoardGameCafe.memberMgr.addList(newMember);
 
         try {
-            writer.write("\n"+id + " " + phoneNumber + " " + passWord + " " + 0);
+            writer.write("\n"+id + " " + phoneNumber + " " + passWord);
             writer.close();
         } catch (IOException e) {
             System.out.println("파일쓰기오류");

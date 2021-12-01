@@ -21,7 +21,7 @@ public class MainGUI {
     static RoomSelectWindow roomSelectWindow = new RoomSelectWindow();
     static SnackSelectWindow snackOrderWindow = new SnackSelectWindow();
     public static GameSelectWindow gameSelectWindow = new GameSelectWindow();
-    static SampleOptionWindow sampleOptionWindow = new SampleOptionWindow();
+    static SampleOptionWindow sampleOptionWindow = null;
     static MypageWindow myPageWindow = null;
 
     public void run() {

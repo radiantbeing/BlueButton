@@ -167,7 +167,8 @@ public class LogInWindow extends Template {
                 nowLoginNonMember = new NonMember();
                 nowLoginNonMember.setName(name);
                 nowLoginNonMember.setPhoneNumber(phoneNumber);
-
+                BoardGameCafe.nonMemberMgr.getList().add(nowLoginNonMember);
+                
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 nonMemberIdTextField.setText("");
                 nonMemberPWTextField.setText("");

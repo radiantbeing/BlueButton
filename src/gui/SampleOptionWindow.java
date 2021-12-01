@@ -162,8 +162,7 @@ public class SampleOptionWindow extends Template {
     void decideEnablePayButton() {
         if(roomButton.getBackground().equals(new Color(121, 117, 117))
         && timeButton.getBackground().equals(new Color(121, 117, 117))
-        && gameButton.getBackground().equals(new Color(121, 117, 117))
-        && foodButton.getBackground().equals(new Color(121, 117, 117))) {
+        && gameButton.getBackground().equals(new Color(121, 117, 117))) {
             payButton.setBackground(new Color(0, 120, 242));
             payButton.setEnabled(true);
         }

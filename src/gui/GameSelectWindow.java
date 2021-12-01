@@ -69,7 +69,7 @@ public class GameSelectWindow extends Template {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (selectedGame == null) {
-                    JOptionPane.showMessageDialog(null, "게임을 선택해주세요");
+                    JOptionPane.showMessageDialog(MainGUI.bFrame, "게임을 선택해주세요");
                     return;
                 }
                 // Timer가 끝까지 흐르면 gameMgr.mList에 돌려놓는 코드 추가 예정

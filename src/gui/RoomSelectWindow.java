@@ -111,7 +111,7 @@ public class RoomSelectWindow extends Template {
 
                 selectedRoom = (Room) BoardGameCafe.roomMgr.getList().get(roomNum - 1);
                 if (selectedRoom.use) {
-                    JOptionPane.showMessageDialog(null, "이미 사용중인 방입니다");
+                    JOptionPane.showMessageDialog(MainGUI.bFrame, "이미 사용중인 방입니다");
                     return;
                 }
 
@@ -123,7 +123,7 @@ public class RoomSelectWindow extends Template {
                 //버튼초기화
                 nextButton.setBackground(new Color(121, 117, 117));
                 m.setRoomNumber(roomNum);
-                JOptionPane.showMessageDialog(null, "방이 선택되었습니다.");
+                JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d번 방이 선택되었습니다.", roomNum));
                 // SampleOptionWindow 화면으로 전환
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.roomButton);

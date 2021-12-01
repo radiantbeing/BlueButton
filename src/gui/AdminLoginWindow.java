@@ -73,19 +73,19 @@ public class AdminLoginWindow extends Template {
 				
 				Admin admin = (Admin) BoardGameCafe.adminMgr.find(adminId);
 				if(admin == null || adminId.equals("")) {
-					JOptionPane.showMessageDialog(null, "관리자 아이디가 일치하지 않습니다.");
+					JOptionPane.showMessageDialog(MainGUI.bFrame, "관리자 아이디가 일치하지 않습니다.");
 					adminIdField.setText("");
 					adminPwdField.setText("");
 					return;
 				}
 				
 				if(admin.matches(adminPwd)) {
-					JOptionPane.showMessageDialog(null, "로그인 성공!");
+					JOptionPane.showMessageDialog(MainGUI.bFrame, "로그인 성공!");
 					adm.run();
 					return;
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "관리자 비밀번호가 일치하지 않습니다!");
+					JOptionPane.showMessageDialog(MainGUI.bFrame, "관리자 비밀번호가 일치하지 않습니다!");
 					adminPwdField.setText("");
 					return;
 				}

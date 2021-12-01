@@ -81,14 +81,14 @@ public class SignUpWindow extends Template {
             public void actionPerformed(ActionEvent e) {
 
                 if (BoardGameCafe.memberMgr.find(memberPhoneTextField.getText()) != null) {// phone이 중복일경우
-                    JOptionPane.showMessageDialog(null, "Duplicated Phone Number");
+                    JOptionPane.showMessageDialog(MainGUI.bFrame, "중복된 전화번호입니다.");
                 }
                 else if (BoardGameCafe.memberMgr.find(memberPWTextField.getText()) != null) { //passWord 중복인 경우
-                    JOptionPane.showMessageDialog(null, "Duplicated PassWord");
+                    JOptionPane.showMessageDialog(MainGUI.bFrame, "중복된 비밀번호입니다.");
                 }
                 else {
                     registerMember(memberIdTextField, memberPhoneTextField, memberPWTextField);
-                    JOptionPane.showMessageDialog(null, "Sign up Complete\n Please Login again");
+                    JOptionPane.showMessageDialog(MainGUI.bFrame, "회원가입이 완료되었습니다.\n 다시 로그인해 주세요.");
                     MainGUI.changeWindow(MainGUI.logInWindow);
                 }
                 memberIdTextField.setText("");

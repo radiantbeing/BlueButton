@@ -71,7 +71,7 @@ public class TimeSelectWindow extends Template {
                 	NonMember m = (NonMember) LogInWindow.getNowLoginMember();
                     hour = buttonStr[tmp];
                     m.addTotalPrice(Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1)));
-                    JOptionPane.showMessageDialog(null, hour +
+                    JOptionPane.showMessageDialog(MainGUI.bFrame, hour +
                             " " + Integer.parseInt(timeStr[tmp].substring(0, timeStr[tmp].length() - 1)) + "원으로 선택합니다.");
                     m.addTime(Integer.parseInt(hour.substring(0,1))*3600);
                     // OptionWindow 화면으로 전환

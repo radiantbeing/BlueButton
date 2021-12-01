@@ -112,11 +112,11 @@ public class SnackSelectWindow extends Template{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(orderList.size() == 0) {
-					JOptionPane.showMessageDialog(null, "주문내역이 존재하지 않습니다.");
+					JOptionPane.showMessageDialog(MainGUI.bFrame, "주문내역이 존재하지 않습니다.");
 					return;
 				}			
 				Order od = orderList.get(0);
-				JOptionPane.showMessageDialog(null,
+				JOptionPane.showMessageDialog(MainGUI.bFrame,
 					String.format("<html>%s 외 %d개가 주문됩니다"
 						+"<br>총액 : %5d원",
 							od.orderedMenu, orderList.size(), 

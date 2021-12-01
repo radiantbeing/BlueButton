@@ -154,7 +154,7 @@ public class LogInWindow extends Template {
                 name = nonMemberIdTextField.getText();
                 phoneNumber = nonMemberPWTextField.getText();
 
-                if (name.equals("")) {// 잘못된 아이디 입력시
+                if (name.equals("") || phoneNumber.equals("")) {// 잘못된 아이디 입력시
                     JOptionPane.showMessageDialog(MainGUI.bFrame, "아이디를 정확히 입력하세요");
                     nonMemberIdTextField.setText("");
                     nonMemberPWTextField.setText("");

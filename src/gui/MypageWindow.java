@@ -64,7 +64,7 @@ public class MypageWindow extends Template {
         	pointLabel.setText("회원 가입시 총 결제 금액의 5%를 할인해 드립니다");
         }
 
-        System.out.println(m.getTotalPrice());
+        System.out.println(m.totalPrice);
         // -------------- 여기부터 다른 메뉴 이동 버튼
         BasicLabel label = new BasicLabel("더 이용하시고 싶으시면 아래 버튼을 통해 이동해 주세요");
         label.setBounds(25, 500, 600, 50);

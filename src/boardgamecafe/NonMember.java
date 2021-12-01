@@ -48,9 +48,9 @@ public class NonMember implements Manageable {
 
     @Override
     public boolean matches(String kwd) {
-        if (name.contains(kwd))
+        if (name.equals(kwd))
             return true;
-        if (("" + phoneNumber).contains(kwd))
+        if (("" + phoneNumber).equals(kwd))
             return true;
         return false;
     }

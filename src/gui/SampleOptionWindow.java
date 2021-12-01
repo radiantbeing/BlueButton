@@ -6,6 +6,9 @@ import gui.template.Template;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+
+import boardgamecafe.NonMember;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +33,8 @@ public class SampleOptionWindow extends Template {
     }
 
     void setMenu() {
+    	NonMember m = LogInWindow.getNowLoginMember();
+    	
         //basicPanel 세팅
         basicPanel.setBounds(new Rectangle(160, 15, 960, 550));
         basicPanel.setBorder(new LineBorder(new Color(30, 31, 33), 3));
@@ -56,6 +61,9 @@ public class SampleOptionWindow extends Template {
         roomLabel.setBounds(new Rectangle(50,0,200,200));
         roomButton = new BasicButton("방 선택");
         roomButton.setBounds(new Rectangle(0,200,200,40));
+        if(m.getRoomNumber() != 0) {		// 이미 방을 가지고 있는 경우 방선택 버튼 선택이 불가능하게
+        	roomButton.setEnabled(false);
+        }
         roomButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -135,6 +143,11 @@ public class SampleOptionWindow extends Template {
         payButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+            	NonMember m = LogInWindow.getNowLoginMember();
+            	if(m.getPlayingGame() == null) {
+            		JOptionPane.showMessageDialog(null, "게임이 선택되지 않아 결제가 불가능 합니다.");
+            		return;
+            	}
             	MainGUI.myPageWindow = new MypageWindow();
                 resetAllButton();
                 MainGUI.changeWindow(MainGUI.myPageWindow);
@@ -160,9 +173,10 @@ public class SampleOptionWindow extends Template {
     }
 
     void decideEnablePayButton() {
-        if(roomButton.getBackground().equals(new Color(121, 117, 117))
-        && timeButton.getBackground().equals(new Color(121, 117, 117))
-        && gameButton.getBackground().equals(new Color(121, 117, 117))) {
+    	NonMember m = LogInWindow.getNowLoginMember();
+        if((m.getRoomNumber() != 0)
+        && m.getRemainingTime() > 0
+        && m.getPlayingGame() != null) {
             payButton.setBackground(new Color(0, 120, 242));
             payButton.setEnabled(true);
         }

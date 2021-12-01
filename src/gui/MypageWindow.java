@@ -55,7 +55,7 @@ public class MypageWindow extends Template {
         remainTimeLabel.setText("잔여 시간 : " + getTimeText(m));
         
         // -------------- 선택한 게임
-        gameLabel.setBounds(25,175,300,50);
+        gameLabel.setBounds(25,175,500,50);
         gameLabel.setFontAttribute(20, true);
         gameLabel.setHorizontalAlignment(JLabel.LEFT);
         gameLabel.setText("현재 선택한 게임 : " + m.getPlayingGame().name);
@@ -69,14 +69,13 @@ public class MypageWindow extends Template {
         BasicLabel pointLabel = new BasicLabel();
         
         if(LogInWindow.flag) {	// member가 로그인한 경우
-        	Member member = (Member) LogInWindow.getNowLoginMember();
-
-            int salePrice= (int) (member.getTotalPrice()*0.05);
+            int salePrice= (int) (m.getTotalPrice()*0.05);
         	BasicLabel getPointLabel = new BasicLabel("할인된 금액 : " + ("" + salePrice+"원"));
         	getPointLabel.setBounds(25,325,300,50);
         	getPointLabel.setFontAttribute(20, true);
         	mypagePanel.add(getPointLabel);
-        	m.totalPrice= m.getTotalPrice()-salePrice;
+        	m.totalPrice = (m.getTotalPrice()-salePrice);
+            System.out.println("total:"+m.totalPrice);
         	BasicLabel totalPointLabel = new BasicLabel("최종 결제금액 : " + ("" + m.totalPrice)+"원");
         	totalPointLabel.setBounds(25,375,300,50);
         	totalPointLabel.setFontAttribute(20, true);
@@ -87,6 +86,8 @@ public class MypageWindow extends Template {
         	pointLabel.setFontAttribute(20, true);
         	pointLabel.setText("회원 가입시 총 결제 금액의 5%를 할인해 드립니다");
         }
+
+        System.out.println(m.getTotalPrice());
         // -------------- 여기부터 다른 메뉴 이동 버튼
         BasicLabel label = new BasicLabel("더 이용하시고 싶으시면 아래 버튼을 통해 이동해 주세요");
         label.setBounds(25, 500, 600, 50);
@@ -133,7 +134,6 @@ public class MypageWindow extends Template {
         paymentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	NonMember m = LogInWindow.getNowLoginMember();
             	JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d원이 결제됩니다.", m.getTotalPrice()));
             	m.totalPrice = 0;
             	m.orderList.clear();

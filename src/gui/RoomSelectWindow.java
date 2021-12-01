@@ -64,16 +64,18 @@ public class RoomSelectWindow extends Template {
             roomPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    if (e.getClickCount() % 2 != 0) { //클릭시
-                        roomNum = Integer.parseInt(roomPanelTexts[finalI].getText());
-                        roomPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
-                        nextButton.setBackground(new Color(0, 120, 242));
-                        nextButton.setEnabled(true);
-                    }
-                    else {//재클릭시
-                        roomPanel.setBorder(new LineBorder(new Color(30, 31, 33)));
-                        nextButton.setBackground(new Color(121, 117, 117));
-                        nextButton.setEnabled(false);
+                    if (isNumeric(roomPanelTexts[finalI].getText())) {
+                        if (e.getClickCount() % 2 != 0) { //클릭시
+                            roomNum = Integer.parseInt(roomPanelTexts[finalI].getText());
+                            roomPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
+                            nextButton.setBackground(new Color(0, 120, 242));
+                            nextButton.setEnabled(true);
+                        }
+                        else {//재클릭시
+                            roomPanel.setBorder(new LineBorder(new Color(30, 31, 33)));
+                            nextButton.setBackground(new Color(121, 117, 117));
+                            nextButton.setEnabled(false);
+                        }
                     }
                 }
             });
@@ -151,5 +153,15 @@ public class RoomSelectWindow extends Template {
         roomPanelTexts[roomNum-1].setFontAttribute(18);
         roomPanelTexts[roomNum-1].setBounds(95, 75, 100, 100);
         roomPanelTexts[roomNum-1].setText(roomNum+"");
+    }
+
+    public boolean isNumeric(String input) {
+        try {
+            Double.parseDouble(input);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

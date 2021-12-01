@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class NonMember implements Manageable {
     // 김성철 01055789968
-    String name;
-    String phoneNumber;
+    public String name;
+    public String phoneNumber;
     // 게임 방은 1, 2, 3, ..., 9, 10의 숫자로 구분
     int roomNumber;
     int remainingTime;

@@ -59,17 +59,13 @@ public class RoomSelectWindow extends Template {
             roomPanelTexts[i].setForeground(Color.WHITE);
             roomPanelTexts[i].setBounds(95, 75, 100, 100);
             roomPanel.add(roomPanelTexts[i]);
-            BasicLabel roomNumberLabel = new BasicLabel("" + (i + 1));
-            roomNumberLabel.setFont(new Font("NanumGothic", Font.PLAIN, 20));
-            roomNumberLabel.setForeground(Color.WHITE);
-            roomNumberLabel.setBounds(95, 75, 100, 100);
-            roomPanel.add(roomNumberLabel);
 
+            int finalI = i;
             roomPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() % 2 != 0) { //클릭시
-                        roomNum = Integer.parseInt(roomNumberLabel.getText());
+                        roomNum = Integer.parseInt(roomPanelTexts[finalI].getText());
                         roomPanel.setBorder(new LineBorder(new Color(0, 120, 242), 3));
                         nextButton.setBackground(new Color(0, 120, 242));
                         nextButton.setEnabled(true);

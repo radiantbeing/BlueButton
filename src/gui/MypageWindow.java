@@ -138,7 +138,12 @@ public class MypageWindow extends Template {
             	m.totalPrice = 0;
             	m.orderList.clear();
                 m.startTimer();//결제하는 순간부터 시간이 흐름
+                // 방의 색 변경, 정보 텍스트 추가
                 RoomViewWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
+                RoomSelectWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
+                MainGUI.roomViewWindow.changeRoomInfo(m.getRoomNumber(), true);
+                MainGUI.roomSelectWindow.changeRoomInfo(m.getRoomNumber(), true);
+                MainGUI.roomSelectWindow.selectedRoom.setUse();
                 MainGUI.changeWindow(MainGUI.roomViewWindow);
                 // 결제 완료 버튼을 누르면 게임 table과 gamrMgr에서 선택된 게임 삭제. Timer 종료되면 복구
                 MainGUI.gameSelectWindow.removeSelectedRows(MainGUI.gameSelectWindow.table);

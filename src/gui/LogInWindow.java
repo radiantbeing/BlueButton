@@ -89,6 +89,10 @@ public class LogInWindow extends Template {
                     JOptionPane.showMessageDialog(MainGUI.bFrame, "로그인 성공");
                     nowLoginMember = m;
                     flag = true;
+                    if(MainGUI.sampleOptionWindow != null) {
+                    	MainGUI.sampleOptionWindow = null;
+                    }
+                    MainGUI.sampleOptionWindow = new SampleOptionWindow();
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                     // 후에 좌석선택, 시간선택으로 넘어가야함
                 } else { // 다른 비밀번호
@@ -164,11 +168,22 @@ public class LogInWindow extends Template {
                 JOptionPane.showMessageDialog(MainGUI.bFrame, "로그인 성공");
                 flag = false;
 
-                nowLoginNonMember = new NonMember();
-                nowLoginNonMember.setName(name);
-                nowLoginNonMember.setPhoneNumber(phoneNumber);
-                BoardGameCafe.nonMemberMgr.getList().add(nowLoginNonMember);
+                NonMember m = (NonMember) BoardGameCafe.nonMemberMgr.find(name);
+                if(m != null) {
+                	nowLoginNonMember = m;
+                }
+                else {
+                	m = new NonMember();
+                	m.setName(name);
+                	m.setPhoneNumber(phoneNumber);
+                	nowLoginNonMember = m;
+                	BoardGameCafe.nonMemberMgr.addList(m);
+                }
                 
+                if(MainGUI.sampleOptionWindow != null) {
+                	MainGUI.sampleOptionWindow = null;
+                }
+                MainGUI.sampleOptionWindow = new SampleOptionWindow();
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 nonMemberIdTextField.setText("");
                 nonMemberPWTextField.setText("");

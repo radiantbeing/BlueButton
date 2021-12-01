@@ -1,8 +1,13 @@
 package boardgamecafe;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+import mgr.Manageable;
 
 public class Administrator{
 	// 좌석 관리, 보드게임 관리(수량, 상태), 식음료 관리, 회원 관리(회원, 비회원, 포인트), 이용시간 조회
@@ -32,8 +37,6 @@ public class Administrator{
 		}
 	}
 	
-	// 일단 콘솔에다가 구현하는 거라 switch문이 많이 들어갔습니다.
-	// 추후에 GUI개발시 JTable로 변경하고 지금의 기능들은 버튼 리스너로 들어갈거 같습니다.
 	public void registerGame() {		// 보드게임 관리
 		int num = 0;
 		while(true) {
@@ -71,6 +74,7 @@ public class Administrator{
 			System.out.printf("현재 선택한 게임의 정보를 바꾸실건가요(y/n)\n>> ");
 			kwd = scan.next();
 			changeGameInfo(kwd, g);
+			
 		}
 	}
 	
@@ -93,6 +97,7 @@ public class Administrator{
 					g.code--;
 				}
 			}
+			deleteGameFileAndWrite();
 		}
 	}
 	
@@ -143,8 +148,10 @@ public class Administrator{
 			System.out.printf("변경하고 싶은 유형 입력 (이름, 종류, 난이도, 상태)\n"
 								+ "변경하고 싶지 않을시 end입력\n>> ");
 			kwd = scan.next();
-			if(kwd.equals("end"))
+			if(kwd.equals("end")) {
+				deleteGameFileAndWrite();
 				break;
+			}
 			switch(kwd) {
 			case "이름":{
 				System.out.print(">> ");
@@ -175,6 +182,23 @@ public class Administrator{
 				break;
 			}
 			}
+		}
+	}
+	private void deleteGameFileAndWrite() {
+		try {
+			FileOutputStream fo = new FileOutputStream(new File("boardgame.txt"));
+			fo.close();
+			for(Manageable m : BoardGameCafe.gameMgr.getList()) {
+				FileWriter writer =	BoardGameCafe.gameMgr.openfileWriter("boardgame.txt");
+				Game g = (Game)m;
+				writer.write(g.code+" "+g.name+" "+g.location+" "
+						+g.genre+" "+g.difficulty+" "+g.condition+ "\n");
+				writer.close();
+			}
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 	// 회원 관리 기능
@@ -211,6 +235,7 @@ public class Administrator{
 		System.out.printf("변경할 비밀번호 입력\n>> ");
 		m.password = scan.next();
 		System.out.println("변경 완료!");
+		deleteUserFileAndWrite();
 	}
 	
 	private void withdrawMem() {
@@ -230,8 +255,24 @@ public class Administrator{
 		}
 		BoardGameCafe.memberMgr.getList().remove(m);
 		System.out.println("탈퇴 완료!");
+		deleteUserFileAndWrite();
 	}
-	
+	private void deleteUserFileAndWrite() {
+		try {
+			FileOutputStream fo = new FileOutputStream(new File("member.txt"));
+			fo.close();
+			for(Manageable m : BoardGameCafe.memberMgr.getList()) {
+				FileWriter writer =	BoardGameCafe.memberMgr.openfileWriter("member.txt");
+				Member s = (Member)m;
+				writer.write(s.name + " " + s.phoneNumber + " " + s.password+ "\n");
+				writer.close();
+			}
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	private void checkRemainTime() {
 		System.out.printf("이름 입력\n>> ");
 		String tmp = scan.next();
@@ -299,7 +340,7 @@ public class Administrator{
 		
 		BoardGameCafe.snackMgr.getList().add(s);
 		try {
-			writer.write("\n"+ s.name +" "+ s.kind + " " + s.price + " " + s.quantity);
+			writer.write(s.name +" "+ s.kind + " " + s.price + " " + s.quantity + "\n");
 			writer.close();
 		} catch(IOException e) {
 			System.out.println("파일쓰기 오류");
@@ -320,6 +361,7 @@ public class Administrator{
 				continue;
 			}
 			BoardGameCafe.snackMgr.getList().remove(s);
+			deleteSnackFileAndWrite();
 		}
 	}
 
@@ -349,8 +391,10 @@ public class Administrator{
 		while (true) {
 			System.out.printf("변경하고 싶은 유형 입력 (이름, 종류, 가격, 수량)\n" + "변경하고 싶지 않을시 end입력\n>> ");
 			kwd = scan.next();
-			if (kwd.equals("end"))
+			if (kwd.equals("end")) {
+				deleteSnackFileAndWrite();
 				break;
+			}
 			switch (kwd) {
 			case "이름": {
 				System.out.print(">> ");
@@ -381,6 +425,23 @@ public class Administrator{
 				break;
 			}
 			}
+		}
+	}
+	
+	private void deleteSnackFileAndWrite() {
+		try {
+			FileOutputStream fo = new FileOutputStream(new File("snack.txt"));
+			fo.close();
+			for(Manageable m : BoardGameCafe.snackMgr.getList()) {
+				FileWriter writer =	BoardGameCafe.snackMgr.openfileWriter("snack.txt");
+				Snack s = (Snack)m;
+				writer.write(s.name +" "+ s.kind + " " + s.price + " " + s.quantity + "\n");
+				writer.close();
+			}
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

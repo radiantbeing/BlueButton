@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 public class MypageWindow extends Template {
 	private static final long serialVersionUID = 1L;
 	BasicPanel mypagePanel;
-    BasicLabel remainTimeLabel, gameLabel, totalpriceLabel, nameLabel, pointLabel, roomLabel;
+    BasicLabel remainTimeLabel, gameLabel, totalpriceLabel, nameLabel, pointLabel;
     NonMember m;
     
     @Override

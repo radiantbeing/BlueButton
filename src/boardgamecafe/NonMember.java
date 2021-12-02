@@ -132,6 +132,7 @@ public class NonMember implements Manageable {
                         timerFlag = false;
                         // Timer가 모두 흐르면 게임 복구
                         MainGUI.gameSelectWindow.addGame(MainGUI.gameSelectWindow.model, playingGame);
+                        MainGUI.roomViewWindow.changeRoomInfo(roomNumber,false);
                         BoardGameCafe.gameMgr.getList().add(playingGame);
                         currentThread().interrupt();
                     }

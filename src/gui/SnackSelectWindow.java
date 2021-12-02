@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 import boardgamecafe.BoardGameCafe;
 import boardgamecafe.NonMember;
@@ -400,7 +402,9 @@ public class SnackSelectWindow extends Template{
 			countPanel = new BasicPanel();
 			countPanel.setLayout(null);
 			countPanel.setSize(400, 100);
-			
+			countPanel.setBorder(new LineBorder(new Color(0, 120, 242)));
+
+
 			label = new BasicLabel("  주문을 원치 않으시면 0 입력후 확인 버튼을 누르세요");
 			label.setBounds(0, 0, 300, 50);
 			label.setFontAttribute(12, true);
@@ -477,6 +481,7 @@ public class SnackSelectWindow extends Template{
 	    private void addComponentToPane() {
 	        snackOptionPanel.setLayout(null);
 	        snackOptionPanel.setBackground(new Color(41,42,45));
+			//border
 	        snackOptionPanel.setBounds(0, 0, 640, 560);
 
 	        // -------------- 타이틀
@@ -699,6 +704,10 @@ public class SnackSelectWindow extends Template{
 
 	        snackOptionPanel.add(finalButton);
 	        // ————————— 구성 끝
+
+
+			//border
+			snackOptionPanel.setBorder(new LineBorder(new Color(0, 120, 242)));
 
 	        // 메인 패널에 위 블럭에서 추가한거 적용하는
 	        add(snackOptionPanel);

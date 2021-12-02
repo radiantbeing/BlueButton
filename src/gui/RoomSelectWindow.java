@@ -48,12 +48,7 @@ public class RoomSelectWindow extends Template {
             JPanel roomPanel = new JPanel(null);
             roomPanel.setPreferredSize(new Dimension(200, 250));
             // 예약된 방은 빨강, 예약 가능 방은 초록
-            boolean roomReserved = RoomViewWindow.checkRoomReserved(i + 1);
-            if (roomReserved) {
-                roomPanel.setBackground(new Color(115, 52, 54));
-            } else {
-                roomPanel.setBackground(new Color(62, 111, 74));
-            }
+            roomPanel.setBackground(new Color(62, 111, 74));
             roomPanel.setBorder(new LineBorder(new Color(30, 31, 33), 1));
             roomPanelTexts[i] = new BasicLabel("" + (i + 1));
             roomPanelTexts[i].setFont(new Font("NanumGothic", Font.PLAIN, 20));

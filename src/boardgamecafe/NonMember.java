@@ -123,6 +123,7 @@ public class NonMember implements Manageable {
     class Timer extends Thread {
         public void run() {
             while (true) {
+                MainGUI.roomViewWindow.changeRoomText(roomNumber,name,playingGame.name);
                 try {
                     sleep(1000);
                     remainingTime--;
@@ -135,7 +136,7 @@ public class NonMember implements Manageable {
                         currentThread().interrupt();
                     }
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    continue;
                 }
             }
         }

@@ -13,7 +13,7 @@ public class MainGUI {
     // Create BaseFrame
     static BaseFrame bFrame = new BaseFrame();
     // Create Windows
-    static RoomViewWindow roomViewWindow = new RoomViewWindow();
+    public static RoomViewWindow roomViewWindow = new RoomViewWindow();
     static LogInWindow logInWindow = new LogInWindow();
     static AdminLoginWindow adminLoginWindow = new AdminLoginWindow();
     static SignUpWindow signUpWindow = new SignUpWindow();

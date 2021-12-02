@@ -139,7 +139,6 @@ public class MypageWindow extends Template {
             	m.orderList.clear();
                 m.startTimer();//결제하는 순간부터 시간이 흐름
                 // 방의 색 변경, 정보 텍스트 추가
-                RoomViewWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
                 RoomSelectWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
                 MainGUI.roomViewWindow.changeRoomInfo(m.getRoomNumber(), true);
                 MainGUI.roomSelectWindow.changeRoomInfo(m.getRoomNumber(), true);

@@ -146,7 +146,7 @@ public class RoomViewWindow extends Template {
         jPanel.setBackground(new Color(62,111,74));
     }
 
-    static void changeRoomText(int roomNum,String name, String gameName){
+    public static void changeRoomText(int roomNum,String name, String gameName){
         if(LogInWindow.getNowLoginMember().timerFlag){
             roomPanelTexts[roomNum-1].setFontAttribute(15);
             roomPanelTexts[roomNum-1].setBounds(10, 75, 300, 100);

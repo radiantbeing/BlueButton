@@ -1,6 +1,7 @@
 package gui;
 
 import boardgamecafe.BoardGameCafe;
+import com.sun.tools.javac.Main;
 import gui.template.BasicButton;
 import gui.template.BasicLabel;
 import gui.template.BasicPanel;
@@ -51,7 +52,6 @@ public class MypageWindow extends Template {
         	getPointLabel.setFontAttribute(20, true);
         	mypagePanel.add(getPointLabel);
         	m.totalPrice = (m.getTotalPrice()-salePrice);
-            System.out.println("total:"+m.totalPrice);
         	BasicLabel totalPointLabel = new BasicLabel("최종 결제금액 : " + ("" + m.totalPrice)+"원");
         	totalPointLabel.setBounds(25,375,300,50);
         	totalPointLabel.setFontAttribute(20, true);
@@ -64,7 +64,6 @@ public class MypageWindow extends Template {
         	pointLabel.setText("회원 가입시 총 결제 금액의 5%를 할인해 드립니다");
         }
 
-        System.out.println(m.totalPrice);
         // -------------- 여기부터 다른 메뉴 이동 버튼
         BasicLabel label = new BasicLabel("더 이용하시고 싶으시면 아래 버튼을 통해 이동해 주세요");
         label.setBounds(25, 500, 600, 50);
@@ -126,6 +125,8 @@ public class MypageWindow extends Template {
                 MainGUI.roomSelectWindow.changeRoomInfo(m.getRoomNumber(), true);
                 MainGUI.roomSelectWindow.selectedRoom.setUse();
                 MainGUI.changeWindow(MainGUI.roomViewWindow);
+                //reset button
+                MainGUI.sampleOptionWindow.resetAllButton();
                 // 결제 완료 버튼을 누르면 게임 table과 gamrMgr에서 선택된 게임 삭제. Timer 종료되면 복구
                 MainGUI.gameSelectWindow.removeSelectedRows(MainGUI.gameSelectWindow.table);
                 BoardGameCafe.gameMgr.getList().remove(MainGUI.gameSelectWindow.selectedGame);

@@ -149,7 +149,6 @@ public class SampleOptionWindow extends Template {
             		return;
             	}
             	MainGUI.myPageWindow = new MypageWindow();
-                resetAllButton();
                 MainGUI.changeWindow(MainGUI.myPageWindow);
             }
         });
@@ -161,7 +160,6 @@ public class SampleOptionWindow extends Template {
             public void actionPerformed(ActionEvent e) {
                 LogInWindow.nowLoginMember = null;
                 LogInWindow.nowLoginNonMember = null;
-                resetAllButton();
                 MainGUI.changeWindow(MainGUI.logInWindow);
             }
         });
@@ -184,7 +182,7 @@ public class SampleOptionWindow extends Template {
     }
 
     //로그아웃이나, 다음사용자 로그인시 처음 버튼의 상태를 유지합니다,
-    void resetAllButton(){
+    public void resetAllButton(){
         roomButton.setBackground(new Color(0, 120, 242));
         timeButton.setBackground(new Color(0, 120, 242));
         gameButton.setBackground(new Color(0, 120, 242));

@@ -399,17 +399,17 @@ public class SnackSelectWindow extends Template{
 		private void addComponentToPane() {
 			countPanel = new BasicPanel();
 			countPanel.setLayout(null);
-			countPanel.setSize(300, 100);
+			countPanel.setSize(400, 100);
 			
-			label = new BasicLabel("주문을 원치 않으시면 0 입력후 확인 버튼을 누르세요");
+			label = new BasicLabel("  주문을 원치 않으시면 0 입력후 확인 버튼을 누르세요");
 			label.setBounds(0, 0, 300, 50);
 			label.setFontAttribute(12, true);
 			
 			countField = new JTextField("1");
-			countField.setBounds(0, 60, 200, 30);
+			countField.setBounds(7, 60, 200, 30);
 			
 			okBtn = new BasicButton("확인");
-			okBtn.setBounds(200, 50, 100, 50);
+			okBtn.setBounds(210, 60, 100, 30);
 			okBtn.setFontAttribute(12, true);
 			okBtn.addActionListener(new ActionListener() {			
 				@Override
@@ -476,7 +476,7 @@ public class SnackSelectWindow extends Template{
 
 	    private void addComponentToPane() {
 	        snackOptionPanel.setLayout(null);
-	        snackOptionPanel.setBackground(new Color(41, 42, 45));
+	        snackOptionPanel.setBackground(new Color(41,42,45));
 	        snackOptionPanel.setBounds(0, 0, 640, 560);
 
 	        // -------------- 타이틀

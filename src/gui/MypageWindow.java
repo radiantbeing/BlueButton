@@ -17,58 +17,34 @@ import java.awt.event.ActionListener;
 
 public class MypageWindow extends Template {
 	private static final long serialVersionUID = 1L;
-	BasicPanel MypagePanel;
-    BasicLabel remainTimeLabel, gameLabel, totalpriceLabel;
+	BasicPanel mypagePanel;
+    BasicLabel remainTimeLabel, gameLabel, totalpriceLabel, nameLabel, pointLabel, roomLabel;
     NonMember m;
     
     @Override
     public void addComponents() {
-        MypagePanel = new BasicPanel();
+    	mypagePanel = new BasicPanel();
+        nameLabel = new BasicLabel();
         remainTimeLabel = new BasicLabel();
         gameLabel = new BasicLabel();
         totalpriceLabel = new BasicLabel("현재 결제 금액: ");
+        pointLabel = new BasicLabel();
 
         setLayout(null);
-        setMypagePanel(MypagePanel);
-        add(MypagePanel);
+        setMypagePanel();
+        add(mypagePanel);
     }
-    private void setMypagePanel(BasicPanel mypagePanel) {
+    private void setMypagePanel() {
     	m = LogInWindow.getNowLoginMember();
     	
         mypagePanel.setLayout(null);
         mypagePanel.setBackground(new Color(41, 42, 45));
         mypagePanel.setBounds(20, 20, 1200, 640);
         
-        BasicLabel nameLabel = new BasicLabel(m.getName() +"님 안녕하세요");
-        nameLabel.setBounds(25, 25, 300, 50);
-        nameLabel.setFontAttribute(20, true);
-        nameLabel.setHorizontalAlignment(JLabel.LEFT);
-        
-        BasicLabel roomLabel = new BasicLabel((""+m.getRoomNumber()) + "번 방 사용중");
-        roomLabel.setBounds(25,75,300,50);
-        roomLabel.setFontAttribute(20, true);
-        
-        // -------------- 잔여 시간
-        remainTimeLabel.setBounds(25,125,300,50);
-        remainTimeLabel.setFontAttribute(20, true);
-        remainTimeLabel.setHorizontalAlignment(JLabel.LEFT);
-        remainTimeLabel.setText("잔여 시간 : " + getTimeText(m));
-        
-        // -------------- 선택한 게임
-        gameLabel.setBounds(25,175,500,50);
-        gameLabel.setFontAttribute(20, true);
-        gameLabel.setHorizontalAlignment(JLabel.LEFT);
-        gameLabel.setText("현재 선택한 게임 : " + m.getPlayingGame().name);
-
-        // --------------현재 전체 금액
-        totalpriceLabel.setBounds(25,225,300,50);
-        totalpriceLabel.setFontAttribute(20, true);
-        totalpriceLabel.setHorizontalAlignment(JLabel.LEFT);
-        totalpriceLabel.setText("현재 사용 금액 : " + ("" + m.getTotalPrice()) + "원");
-        
-        BasicLabel pointLabel = new BasicLabel();
+       
         
         if(LogInWindow.flag) {	// member가 로그인한 경우
+        	setmypagePanel(m);
             int salePrice= (int) (m.getTotalPrice()*0.05);
         	BasicLabel getPointLabel = new BasicLabel("할인된 금액 : " + ("" + salePrice+"원"));
         	getPointLabel.setBounds(25,325,300,50);
@@ -82,12 +58,13 @@ public class MypageWindow extends Template {
         	mypagePanel.add(totalPointLabel);
         }
         else {		// 비회원 로그인
+        	setmypagePanel(m);
         	pointLabel.setBounds(25,275,600,50);
         	pointLabel.setFontAttribute(20, true);
         	pointLabel.setText("회원 가입시 총 결제 금액의 5%를 할인해 드립니다");
         }
 
-        System.out.println(m.getTotalPrice());
+        System.out.println(m.totalPrice);
         // -------------- 여기부터 다른 메뉴 이동 버튼
         BasicLabel label = new BasicLabel("더 이용하시고 싶으시면 아래 버튼을 통해 이동해 주세요");
         label.setBounds(25, 500, 600, 50);
@@ -134,9 +111,14 @@ public class MypageWindow extends Template {
         paymentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d원이 결제됩니다.", m.getTotalPrice()));
+            	JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d원이 결제됩니다.", m.totalPrice));
+            	if(m.getPlayingGame() == null) {
+            		JOptionPane.showMessageDialog(null, "게임이 선택되어있지않아\n 결제가 불가능 합니다");
+            	}
             	m.totalPrice = 0;
-            	m.orderList.clear();
+            	if(m.orderList.size() > 0) {
+            		m.orderList.clear();
+            	}
                 m.startTimer();//결제하는 순간부터 시간이 흐름
                 // 방의 색 변경, 정보 텍스트 추가
                 RoomSelectWindow.changeRoomText(m.getRoomNumber(),m.getName(),m.getPlayingGame().name);
@@ -157,12 +139,6 @@ public class MypageWindow extends Template {
         centerLabel.setBounds(600, 0, 600, 600);
         
         mypagePanel.add(centerLabel);
-        mypagePanel.add(nameLabel);
-        mypagePanel.add(roomLabel);
-        mypagePanel.add(remainTimeLabel);
-        mypagePanel.add(gameLabel);
-        mypagePanel.add(totalpriceLabel);
-    	mypagePanel.add(pointLabel);
         mypagePanel.add(label);
         mypagePanel.add(timeaddButton);
         mypagePanel.add(gameButton);
@@ -171,6 +147,41 @@ public class MypageWindow extends Template {
 
     }
     
+    private void setmypagePanel(NonMember m) {
+        BasicLabel nameLabel = new BasicLabel(m.getName() +"님 안녕하세요");
+        nameLabel.setBounds(25, 25, 300, 50);
+        nameLabel.setFontAttribute(20, true);
+        nameLabel.setHorizontalAlignment(JLabel.LEFT);
+        
+        BasicLabel roomLabel = new BasicLabel((""+m.getRoomNumber()) + "번 방 사용중");
+        roomLabel.setBounds(25,75,300,50);
+        roomLabel.setFontAttribute(20, true);
+        
+        // -------------- 잔여 시간
+        remainTimeLabel.setBounds(25,125,300,50);
+        remainTimeLabel.setFontAttribute(20, true);
+        remainTimeLabel.setHorizontalAlignment(JLabel.LEFT);
+        remainTimeLabel.setText("잔여 시간 : " + getTimeText(m));
+        
+        // -------------- 선택한 게임
+        gameLabel.setBounds(25,175,500,50);
+        gameLabel.setFontAttribute(20, true);
+        gameLabel.setHorizontalAlignment(JLabel.LEFT);
+        gameLabel.setText("현재 선택한 게임 : " + m.getPlayingGame().name);
+
+        // --------------현재 전체 금액
+        totalpriceLabel.setBounds(25,225,300,50);
+        totalpriceLabel.setFontAttribute(20, true);
+        totalpriceLabel.setHorizontalAlignment(JLabel.LEFT);
+        totalpriceLabel.setText("현재 사용 금액 : " + ("" + m.totalPrice) + "원");
+        
+        mypagePanel.add(nameLabel);
+        mypagePanel.add(roomLabel);
+        mypagePanel.add(remainTimeLabel);
+        mypagePanel.add(gameLabel);
+        mypagePanel.add(totalpriceLabel);
+    	mypagePanel.add(pointLabel);
+    }
 	private String getTimeText(NonMember nonMember) {
 		int remainTime = nonMember.getRemainingTime();
 		int hour = remainTime / 3600;

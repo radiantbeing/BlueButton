@@ -122,7 +122,7 @@ public class SnackSelectWindow extends Template{
 						+"<br>총액 : %5d원",
 							od.orderedMenu, orderList.size(), orderedTotalPrice));
 				NonMember m = (NonMember) LogInWindow.getNowLoginMember();
-				m.totalPrice = orderedTotalPrice;
+				m.totalPrice += orderedTotalPrice;
 				for(Order od1 : orderList) {
 					m.orderList.add(od1);
 				}

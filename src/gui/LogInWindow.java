@@ -94,7 +94,6 @@ public class LogInWindow extends Template {
                     }
                     MainGUI.sampleOptionWindow = new SampleOptionWindow();
                     MainGUI.changeWindow(MainGUI.sampleOptionWindow);
-                    // 후에 좌석선택, 시간선택으로 넘어가야함
                 } else { // 다른 비밀번호
                     JOptionPane.showMessageDialog(MainGUI.bFrame, "비밀번호를 정확히 입력해 주세요");
                     memberPWTextField.setText("");

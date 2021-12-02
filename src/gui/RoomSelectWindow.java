@@ -109,16 +109,12 @@ public class RoomSelectWindow extends Template {
                     JOptionPane.showMessageDialog(MainGUI.bFrame, "이미 사용중인 방입니다");
                     return;
                 }
-
-
-                //선택효과 초기화
-                for (JPanel j : roomPanelArrayList) {
-                    j.setBorder(new LineBorder(new Color(30, 31, 33), 1));
-                }
                 //버튼초기화
                 nextButton.setBackground(new Color(121, 117, 117));
                 m.setRoomNumber(roomNum);
                 JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d번 방이 선택되었습니다.", roomNum));
+                //선택효과 초기화
+                clearRoom();
                 // SampleOptionWindow 화면으로 전환
                 MainGUI.changeWindow(MainGUI.sampleOptionWindow);
                 MainGUI.sampleOptionWindow.grayScaleButton(MainGUI.sampleOptionWindow.roomButton);
@@ -153,7 +149,7 @@ public class RoomSelectWindow extends Template {
             roomPanelTexts[roomNum - 1].setFontAttribute(15);
             roomPanelTexts[roomNum - 1].setBounds(10, 75, 300, 100);
             roomPanelTexts[roomNum - 1].setText("<HTML><body><center>사용자: " + name +
-                    "<br>사용중인게임: " + gameName + "</center></body></HTML>");//레이아웃에 맞게 수정예정
+                    "<br>사용중인게임: " + gameName + "</center></body></HTML>");
             return;
         }
         roomPanelTexts[roomNum - 1].setFontAttribute(18);

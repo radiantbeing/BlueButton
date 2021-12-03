@@ -36,6 +36,7 @@ public class MypageWindow extends Template {
         add(mypagePanel);
     }
     private void setMypagePanel() {
+        int salePrice = 0;
     	m = LogInWindow.getNowLoginMember();
     	
         mypagePanel.setLayout(null);
@@ -46,13 +47,13 @@ public class MypageWindow extends Template {
         
         if(LogInWindow.flag) {	// member가 로그인한 경우
         	setmypagePanel(m);
-            int salePrice= (int) (m.getTotalPrice()*0.05);
+            salePrice= (int) (m.getTotalPrice()*0.05);
         	BasicLabel getPointLabel = new BasicLabel("할인된 금액 : " + ("" + salePrice+"원"));
         	getPointLabel.setBounds(25,325,300,50);
         	getPointLabel.setFontAttribute(20, true);
         	mypagePanel.add(getPointLabel);
-        	m.totalPrice = (m.getTotalPrice()-salePrice);
-        	BasicLabel totalPointLabel = new BasicLabel("최종 결제금액 : " + ("" + m.totalPrice)+"원");
+        	m.totalPrice = (m.totalPrice-salePrice);
+            BasicLabel totalPointLabel = new BasicLabel("최종 결제금액 : " + ("" + m.totalPrice+"원"));
         	totalPointLabel.setBounds(25,375,300,50);
         	totalPointLabel.setFontAttribute(20, true);
         	mypagePanel.add(totalPointLabel);
@@ -110,11 +111,12 @@ public class MypageWindow extends Template {
         paymentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d원이 결제됩니다.", m.totalPrice));
+            	JOptionPane.showMessageDialog(MainGUI.bFrame, String.format("%d원이 결제됩니다.", (m.totalPrice)));
             	if(m.getPlayingGame() == null) {
             		JOptionPane.showMessageDialog(null, "게임이 선택되어있지않아\n 결제가 불가능 합니다");
             	}
             	m.totalPrice = 0;
+
             	if(m.orderList.size() > 0) {
             		m.orderList.clear();
             	}

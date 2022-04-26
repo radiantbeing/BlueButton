@@ -1,2 +1,3 @@
 # BlueButton
-Object Oriented Programming Team
+Object Oriented Programming Project
+Board Game Cafe Kiosk

@@ -10,7 +10,7 @@
   - [Time Selection Window](#time-selection-window)
   - [Game Selection Window](#game-selection-window)
   - [Snack Selection Window](#snack-selection-window)
-- [Order Contents Window](#order-contents-window)
+- [Summary Window](#summary-window)
 
 ## Overview
 
